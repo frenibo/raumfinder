@@ -22,6 +22,7 @@
     "@angular/router": "^17.0.2",
     "@capacitor/android": "^5.5.1",
     "@capacitor/core": "^5.5.1",
+    "angular-in-memory-web-api": "^0.17.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.2"
