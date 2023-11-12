@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 
-import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 
@@ -30,7 +29,8 @@ import { PracticeComponent } from './practice/practice.component';
     MatIconModule,
     MatButtonModule,
     MatDividerModule,
-    HttpClientModule,
+    HttpClientInMemoryWebApiModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
