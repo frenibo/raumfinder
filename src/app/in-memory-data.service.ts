@@ -5,9 +5,10 @@ import { Floor } from './floor';
 import { Building } from './building';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class InMemoryDataService implements InMemoryDbService {
+
   createDb() {
     const rooms = [
       { id: 12, ownerid: 12, privacy: 'restricted', name: 'Dr. Nice',   
@@ -29,18 +30,6 @@ export class InMemoryDataService implements InMemoryDbService {
     ];
 
     return {rooms, floors, buildings};
+
   }
-
-
-  // Overrides the genId method to ensure that a topology always has an id.
-  // If the topologies array is empty,
-  // the method below returns the initial number (11).
-  // if the topologiess array is not empty, the method below returns the highest
-  // topology id + 1.
-  /**
-  genId(topologies: Topology[]): number {
-    return topologies.length > 0 ? Math.max(...topologies.map(topology => topology.id)) + 1 : 11;
-  }
-  */
-
 }

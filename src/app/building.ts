@@ -7,4 +7,5 @@ export interface Building {
     building_country: string;
     building_image: string;
     floor_ids: number[];
+    room_ids: number[];
 }
