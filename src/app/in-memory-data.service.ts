@@ -11,21 +11,33 @@ export class InMemoryDataService implements InMemoryDbService {
 
   createDb() {
     const rooms = [
-      { id: 12, ownerid: 12, privacy: 'restricted', name: 'Dr. Nice',   
-        date: '2023-08-18T10:44:34.421Z', image: 'assets/topology_images/default.jpg',
-        description: 'This text is a brief comment by the author describing the purpose and contents of the topology.',
+      { id: 1,
+        room_number: 'I032',
+        room_image: 'default.jpg',
+        floor_id: '1',
+        building_id: '1'
       },
     ];
 
     const floors = [
-      { id: 0,  name: 'Guest',    forename: 'Guest',      surname: '',           
-        email: '',               password: '',         image: 'assets/user_images/default.png'
+      { id: 1,
+        floor_number: 1,
+        floor_image: 'default.jpg',
+        building_id: 1,
+        room_ids: [1,2],
       },
     ];
 
     const buildings = [
-      { id: 0,  name: 'Guest',    forename: 'Guest',      surname: '',           
-        email: '',               password: '',         image: 'assets/user_images/default.png'
+      { id: 1,
+        building_streetname: 'streetname',
+        building_number: '1a',
+        building_ort: 'ort',
+        building_plz: 123456,
+        building_country: 'Land',
+        building_image: 'default.jpg',
+        floor_ids: [1,2],
+        room_ids: [1,2],
       },
     ];
 

@@ -3,7 +3,7 @@ export interface Building {
     building_streetname: string;
     building_number: string;
     building_ort: string;
-    building_plz: string;
+    building_plz: number;
     building_country: string;
     building_image: string;
     floor_ids: number[];
