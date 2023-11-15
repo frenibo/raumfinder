@@ -1,0 +1,22 @@
+<div id="searchbar">
+    <mat-form-field>
+        <mat-icon matPrefix>search</mat-icon>
+        <mat-label>Search Rooms</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Example: Bombasto" [(ngModel)]="searchValue" type="text" [matAutocomplete]="auto">
+        <!--button *ngIf="searchValue" matSuffix mat-icon-button aria-label="Clear" (click)="searchValue=''; applyFilter()">
+            <mat-icon>close</mat-icon>
+        </button-->
+        <button [disabled]="!searchValue" matSuffix mat-icon-button aria-label="Clear" (click)="searchValue=''; applyFilter()">
+            <div *ngIf="searchValue">
+                <mat-icon>close</mat-icon>
+            </div>
+        </button>
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <div *ngIf="autocomplete">
+                <mat-option *ngFor="let topology of dataSource.connect().value" (click)="openInEditor(topology)">
+                    {{topology.name}}
+                </mat-option>
+            </div>
+        </mat-autocomplete>
+    </mat-form-field>
+</div>
