@@ -58,4 +58,5 @@ export class RoomService {
     }
     return this.http.get<Room[]>(`${this.roomsUrl}/?name=${term}`)
   }
+
 }

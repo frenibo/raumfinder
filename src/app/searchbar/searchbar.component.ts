@@ -16,7 +16,7 @@ import { MatSort, MatSortable, Sort } from '@angular/material/sort';
   templateUrl: './searchbar.component.html',
   styleUrl: './searchbar.component.scss'
 })
-export class SearchbarComponent {
+export class SearchbarComponent implements OnInit {
 
   constructor(
     private sharedService: SharedService,
