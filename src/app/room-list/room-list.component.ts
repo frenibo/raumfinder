@@ -18,8 +18,6 @@ import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-room-list',
-  standalone: true,
-  imports: [CommonModule],
   templateUrl: './room-list.component.html',
   styleUrl: './room-list.component.scss'
 })
@@ -89,6 +87,10 @@ export class RoomListComponent implements OnInit {
       id: this.sort.active,
       start: this.sort.direction,
     });
+  }
+
+  empty() {
+
   }
 
 }

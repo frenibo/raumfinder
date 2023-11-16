@@ -10,7 +10,7 @@
     <!-- Date Column -->
     <ng-container matColumnDef="date">
         <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by date"> last changed </th>
-        <td mat-cell *matCellDef="let topology"> {{getTimeSinceLastChange(topology)}} </td>
+        <td mat-cell *matCellDef="let topology"> getTimeSinceLastChange </td>
     </ng-container>
 
     <!-- Privacy Column -->
@@ -38,7 +38,7 @@
 
     <tr
         mat-row
-        (click)="openDetailViewDialog(row, getOwner(row)!)"
+        (click)="empty()"
         [class.demo-row-is-clicked]="clickedRows.has(row)"
         *matRowDef="let row; columns: displayedColumns;"  
     ></tr>

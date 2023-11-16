@@ -11,8 +11,6 @@ import { MatSort, MatSortable, Sort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-searchbar',
-  //standalone: true,
-  //imports: [CommonModule,],
   templateUrl: './searchbar.component.html',
   styleUrl: './searchbar.component.scss'
 })
