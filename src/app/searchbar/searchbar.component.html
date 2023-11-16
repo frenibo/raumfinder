@@ -13,8 +13,8 @@
         </button>
         <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
             <div *ngIf="autocomplete">
-                <mat-option *ngFor="let topology of dataSource.connect().value" (click)="openInEditor(topology)">
-                    {{topology.name}}
+                <mat-option *ngFor="let room of dataSource.connect().value">
+                    {{room.room_number}}
                 </mat-option>
             </div>
         </mat-autocomplete>

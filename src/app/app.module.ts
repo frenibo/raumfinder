@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { PracticeComponent } from './practice/practice.component';
+import { SearchbarComponent } from './searchbar/searchbar.component';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
@@ -23,24 +24,26 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    PracticeComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatIconModule,
-    MatButtonModule,
-    MatDividerModule,
-    HttpClientInMemoryWebApiModule,
-    MatTableModule,
-
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        HeaderComponent,
+        FooterComponent,
+        PracticeComponent,
+        SearchbarComponent,
+    ],
+    providers: [],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatIconModule,
+        MatButtonModule,
+        MatDividerModule,
+        HttpClientInMemoryWebApiModule,
+        MatTableModule,
+        MatInputModule,
+        MatFormFieldModule,
+    ]
 })
 export class AppModule { }

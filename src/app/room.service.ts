@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Room } from './room'
-import { Observable, of } from 'rxjs';
+import { Observable, Subject, lastValueFrom, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +12,16 @@ export class RoomService {
 
   private roomsUrl = 'api/rooms';  // URL to web api
 
+  currentRooms: Subject<Room[]> = new Subject();
+
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
+
+  async changedTopologies() {
+    var rooms: Room[] = await lastValueFrom(this.getRooms());
+    this.currentRooms?.next(rooms);
+  }
 
   /** GET Rooms from the server */
   getRooms(): Observable<Room[]> { 

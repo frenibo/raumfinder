@@ -1,24 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { lastValueFrom } from 'rxjs';
 
-//import { SharedService } from '../shared.service';
 import { Room } from '../room';
 import { RoomService } from '../room.service';
+import { SharedService } from '../shared.service';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatSort, MatSortable, Sort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-searchbar',
-  standalone: true,
-  imports: [CommonModule],
+  //standalone: true,
+  //imports: [CommonModule,],
   templateUrl: './searchbar.component.html',
   styleUrl: './searchbar.component.scss'
 })
 export class SearchbarComponent {
 
   constructor(
-    //private sharedService: SharedService,
+    private sharedService: SharedService,
     private roomService: RoomService,
   ) {}
 
@@ -48,15 +49,5 @@ export class SearchbarComponent {
   applyFilter(event?: Event): void {
     this.sharedService.applyFilter(event);
   }
-  /*
-  openInEditor(topology: Topology) {
-    var id: string = String(topology.id);
-    this.changeRoute('editor-view', '0', id);
-    this.applyFilter();
-  }
-
-  changeRoute(view?: string, id?: string, edit?: string){
-    this.sharedService.changeRoute(view, id, edit)
-  }
-  */
+    
 }
