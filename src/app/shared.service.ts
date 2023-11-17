@@ -33,8 +33,6 @@ export class SharedService {
   rooms: Room[] = [];
   floors: Floor[] = [];
   buildings: Building[] = [];
-  //fav_rooms: string[] = [];
-  //fav_buildings: string[] = [];
 
   roomsChanged: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
   floorsChanged: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
@@ -108,12 +106,12 @@ export class SharedService {
 
   async checkLoaded() {
     if(this.loadingComplete.value == false ){
-      this.rooms = await lastValueFrom(this.roomService.getRooms())
-      this.floors = await lastValueFrom(this.floorService.getFloors())
-      this.buildings = await lastValueFrom(this.buildingService.getBuildings())
-      //this.fav_rooms = await this.getFavRooms();
-      //this.fav_buildings = await this.getFavBuildings();
-      //this.loadingComplete.next(true)
+      this.rooms = await lastValueFrom(this.roomService.getRooms());
+      this.floors = await lastValueFrom(this.floorService.getFloors());
+      this.buildings = await lastValueFrom(this.buildingService.getBuildings());
+      this.getFavRooms();
+      this.getFavBuildings();
+      this.loadingComplete.next(true)
     }
   }
 
@@ -216,10 +214,10 @@ export class SharedService {
 
 }
 
-
+//Converts String[] to Number[]
 /*
-    const favdIdsAsNumber: Number[] = favIdsAsSrting.map(function(item) {
+    const favdIdsAsNumber: Number[] = favIdsAsString.map(function(item) {
       return Number(item)
     })
-    //Converts String[] to Number[]
-    */
+    
+*/

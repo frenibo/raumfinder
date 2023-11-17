@@ -26,10 +26,4 @@ export class ViewRoomComponent {
     this.sharedService.roomsChanged.subscribe( roomsChanged => this.sharedService.updateCurrentRoomById(this.currentRoom.id));
   }
 
-
-
-  goBack() {
-    this.sharedService.goBack();
-  }
-
 }
