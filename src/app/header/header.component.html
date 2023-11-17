@@ -2,9 +2,9 @@
 <div class="header" id="startmenu" *ngIf="currentLocation === 'startmenu'">
     <img class="hsb-logo" src="../../assets/hsb assets/logo_hsb.svg">
     <div class="title">Raumfinder</div>
-    <button class="button" mat-icon-button>
+    <!--button class="button" mat-icon-button>
         <mat-icon>menu</mat-icon>
-    </button>
+    </button-->
 </div>
 
 <div class="header" id="list-room" *ngIf="currentLocation === 'list-room'">
@@ -17,7 +17,7 @@
     </button-->
 </div>
 
-<div class="header" id="list-room" *ngIf="currentLocation === 'view-room'">
+<div class="header" id="view-room" *ngIf="currentLocation === 'view-room'">
     <button class="return" mat-icon-button (click)="goBack()">
         <mat-icon>keyboard_arrow_left</mat-icon>
     </button>
@@ -35,4 +35,14 @@
     <!--button class="button" mat-icon-button>
         <mat-icon>menu</mat-icon>
     </button-->
+</div>
+
+<div class="header" id="view-building" *ngIf="currentLocation === 'view-building'">
+    <button class="return" mat-icon-button (click)="goBack()">
+        <mat-icon>keyboard_arrow_left</mat-icon>
+    </button>
+    <div class="title">{{currentBuilding.name}}</div>
+    <button class="button" mat-icon-button>
+        <mat-icon>star</mat-icon>
+    </button>
 </div>

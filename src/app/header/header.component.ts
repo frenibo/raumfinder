@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { SharedService } from '../shared.service';
 import { NavigationEnd } from '@angular/router';
 import { Room } from '../room';
+import { Building } from '../building';
 
 @Component({
   selector: 'app-header',
@@ -17,6 +18,7 @@ export class HeaderComponent {
   currentLocation: string = 'startmenu';
 
   currentRoom?: Room | any;
+  currentBuilding?: Building | any;
 
   ngOnInit() {
     this.sharedService.router.events.subscribe(
@@ -27,6 +29,7 @@ export class HeaderComponent {
       }
     );
     this.sharedService.currentRoom.subscribe( currentRoom => this.currentRoom = currentRoom )
+    this.sharedService.currentBuilding.subscribe( currentBuilding => this.currentBuilding = currentBuilding )
   }
 
   goBack() {

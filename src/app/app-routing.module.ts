@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoaderComponent } from './loader/loader.component';
 import { StartmenuComponent } from './startmenu/startmenu.component';
 import { ViewRoomComponent } from './view-room/view-room.component';
+import { ViewBuildingComponent } from './view-building/view-building.component';
 import { ListRoomComponent } from './list-room/list-room.component';
 import { ListBuildingComponent } from './list-building/list-building.component';
 
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'list-room', component: ListRoomComponent },
   { path: 'view-room', component: ViewRoomComponent },
   { path: 'list-building', component: ListBuildingComponent },
+  { path: 'view-building', component: ViewBuildingComponent },
 
 ];
 

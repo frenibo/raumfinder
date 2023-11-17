@@ -28,6 +28,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { ListBuildingComponent } from './list-building/list-building.component';
+import { ViewBuildingComponent } from './view-building/view-building.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { ListBuildingComponent } from './list-building/list-building.component';
         ViewRoomComponent,
         ListRoomComponent,
         ListBuildingComponent,
+        ViewBuildingComponent,
     ],
     providers: [],
     bootstrap: [AppComponent],
