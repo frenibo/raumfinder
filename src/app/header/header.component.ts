@@ -35,4 +35,21 @@ export class HeaderComponent {
   goBack() {
     this.sharedService.goBack();
   }
+
+  favedRoom() {
+    this.sharedService.addFav(this.currentRoom.id, 'favorite-rooms');
+  }
+
+  favedBuilding() {
+    this.sharedService.addFav(this.currentBuilding.id, 'favorite-buildings');
+  }
+
+  unfavedRoom() {
+    this.sharedService.deleteFav(this.currentRoom.id, 'favorite-rooms');
+  }
+
+  unfavedBuilding() {
+    this.sharedService.deleteFav(this.currentBuilding.id, 'favorite-buildings');
+  }
+
 }

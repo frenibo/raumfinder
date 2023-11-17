@@ -29,8 +29,11 @@ Möchte man für ein neues Component einen Header erstellen, kopiert man eines d
         <mat-icon>keyboard_arrow_left</mat-icon>
     </button>
     <div class="title">{{currentRoom.name}}, {{currentRoom.building}}</div>
-    <button class="button" mat-icon-button>
+    <button class="button" mat-icon-button (click)="unfavedRoom()" *ngIf="currentRoom.favorite == true">
         <mat-icon>star</mat-icon>
+    </button>
+    <button class="button" mat-icon-button (click)="favedRoom()" *ngIf="currentRoom.favorite == false">
+        <mat-icon>star_border</mat-icon>
     </button>
 </div>
 
@@ -49,8 +52,11 @@ Möchte man für ein neues Component einen Header erstellen, kopiert man eines d
         <mat-icon>keyboard_arrow_left</mat-icon>
     </button>
     <div class="title">{{currentBuilding.name}}</div>
-    <button class="button" mat-icon-button>
+    <button class="button" mat-icon-button (click)="unfavedBuilding()" *ngIf="currentBuilding.favorite == true">
         <mat-icon>star</mat-icon>
+    </button>
+    <button class="button" mat-icon-button (click)="favedBuilding()" *ngIf="currentBuilding.favorite == false">
+        <mat-icon>star_border</mat-icon>
     </button>
 </div>
 

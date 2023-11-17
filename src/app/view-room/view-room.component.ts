@@ -22,7 +22,8 @@ export class ViewRoomComponent {
   };
 
   async ngOnInit() {
-    this.sharedService.currentRoom.subscribe( currentRoom => this.currentRoom = currentRoom )
+    this.sharedService.currentRoom.subscribe( currentRoom => this.currentRoom = currentRoom);
+    this.sharedService.roomsChanged.subscribe( roomsChanged => this.sharedService.updateCurrentRoomById(this.currentRoom.id));
   }
 
 

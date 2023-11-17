@@ -33,8 +33,8 @@ export class LoaderComponent {
 
   async ngOnInit() {
 
-    this.sharedService.loadingComplete.subscribe( loadingComplete => this.loadingState(loadingComplete) )
-    
+    this.sharedService.loadingComplete.subscribe( loadingComplete => this.loadingState(loadingComplete));
+      
   }
 
   async loadingState(loadingComplete: boolean) {

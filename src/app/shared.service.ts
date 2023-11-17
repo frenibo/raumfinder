@@ -36,6 +36,10 @@ export class SharedService {
   fav_rooms: string[] = [];
   fav_buildings: string[] = [];
 
+  roomsChanged: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
+  floorsChanged: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
+  buildingsChanged: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
+
   loadingComplete: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   currentRoom: BehaviorSubject<Room> = new BehaviorSubject<Room>(
@@ -80,8 +84,20 @@ export class SharedService {
     this.currentBuilding.next(building);
   }
 
+  async updateCurrentRoomById(id: number) {
+    if(this.rooms.find( room => room.id == id)){
+      this.currentRoom.next(this.rooms.find( room => room.id == id)!);
+    }
+  }
+
+  async updateCurrentBuildingById(id: number) {
+    if(this.buildings.find( building => building.id == id)){
+      this.currentBuilding.next(this.buildings.find( building => building.id == id)!);
+    }
+  }
+
   async loadAllData() {
-    this.cookie.deleteAll(); //must be removed once testing cookie behavior is finished
+    //this.cookie.deleteAll(); //must be removed once testing cookie behavior is finished
     this.rooms = await lastValueFrom(this.roomService.getRooms());
     this.floors = await lastValueFrom(this.floorService.getFloors());
     this.buildings = await lastValueFrom(this.buildingService.getBuildings());
@@ -130,6 +146,7 @@ export class SharedService {
       this.rooms.forEach(room => {
         room.id === id ? room.favorite = false : null
       });
+      this.roomsChanged.next(!this.roomsChanged.value);
     }
     if( key === 'favorite-buildings') {
       const value: string =  this.cookie.get(key).split('/').filter(i => i !== String(id)).join('/');
@@ -138,6 +155,7 @@ export class SharedService {
       this.buildings.forEach(building => {
         building.id === id ? building.favorite = false : null
       });
+      this.buildingsChanged.next(!this.buildingsChanged.value);
     }
   }
 
@@ -149,6 +167,7 @@ export class SharedService {
       this.rooms.forEach(room => {
         room.id === id ? room.favorite = true : null
       });
+      this.roomsChanged.next(!this.roomsChanged.value);
     }
     if( key === 'favorite-buildings') {
       const value: string =  this.cookie.get(key).concat(String(id)+'/');
@@ -157,6 +176,7 @@ export class SharedService {
       this.buildings.forEach(building => {
         building.id === id ? building.favorite = true : null
       });
+      this.buildingsChanged.next(!this.buildingsChanged.value);
     }
   }
 
@@ -165,10 +185,14 @@ export class SharedService {
       room.favorite ? room.favorite = false : null
     });
     this.cookie.set('favorite-rooms', '/');
+    this.roomsChanged.next(!this.roomsChanged.value);
+
+
     this.buildings.forEach(building => {
       building.favorite ? building.favorite = false : null
     });
     this.cookie.set('favorite-buildings', '/');
+    this.buildingsChanged.next(!this.buildingsChanged.value);
   }
 
 }
