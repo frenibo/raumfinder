@@ -33,8 +33,8 @@ export class SharedService {
   rooms: Room[] = [];
   floors: Floor[] = [];
   buildings: Building[] = [];
-  fav_rooms: string[] = [];
-  fav_buildings: string[] = [];
+  //fav_rooms: string[] = [];
+  //fav_buildings: string[] = [];
 
   roomsChanged: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
   floorsChanged: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
@@ -101,9 +101,8 @@ export class SharedService {
     this.rooms = await lastValueFrom(this.roomService.getRooms());
     this.floors = await lastValueFrom(this.floorService.getFloors());
     this.buildings = await lastValueFrom(this.buildingService.getBuildings());
-    this.fav_rooms = await this.getFavRooms();
-    this.fav_buildings = await this.getFavBuildings();
-    console.log(this.fav_rooms)
+    this.getFavRooms();
+    this.getFavBuildings();
     this.loadingComplete.next(true);
   }
 
@@ -112,37 +111,57 @@ export class SharedService {
       this.rooms = await lastValueFrom(this.roomService.getRooms())
       this.floors = await lastValueFrom(this.floorService.getFloors())
       this.buildings = await lastValueFrom(this.buildingService.getBuildings())
-      this.fav_rooms = await this.getFavRooms();
-      this.fav_buildings = await this.getFavBuildings();
-      this.loadingComplete.next(true)
+      //this.fav_rooms = await this.getFavRooms();
+      //this.fav_buildings = await this.getFavBuildings();
+      //this.loadingComplete.next(true)
     }
   }
 
-  async getFavRooms(): Promise<string[]>{
+  getFavRooms() {
     if(this.cookie.get('favorite-rooms') === '') {
       this.cookie.set('favorite-rooms', '/')
     }
-    return this.cookie.get('favorite-rooms').split('/').filter(i => i)
+    const favIds = this.cookie.get('favorite-rooms').split('/').filter(i => i);
     // filter( i => i) excludes empty string elements as explained here by user1079877:
     // "if you have more than one space character, you'll have empty string ('') in your results, and because if('') is false, filter function filter strip them in the final result."
     // https://stackoverflow.com/questions/9141951/splitting-string-by-whitespace-without-empty-elements
+
+    for(var j=0; j<favIds.length; j++) {
+      for(var i=0; i<this.rooms.length; i++) {
+        if(this.rooms[i].id == Number(favIds[j])) {
+          this.rooms[i].favorite = true;
+        }
+      }
+    }
+    this.roomsChanged.next(!this.roomsChanged.value);
+    
   }
 
-  async getFavBuildings(): Promise<string[]> {
+  getFavBuildings() {
     if(this.cookie.get('favorite-buildings') === '') {
       this.cookie.set('favorite-buildings', '/')
     }
-    return this.cookie.get('favorite-buildings').split('/').filter(i => i)
+    const favIds = this.cookie.get('favorite-buildings').split('/').filter(i => i);
     // filter( i => i) excludes empty string elements as explained here by user1079877:
     // "if you have more than one space character, you'll have empty string ('') in your results, and because if('') is false, filter function filter strip them in the final result."
     // https://stackoverflow.com/questions/9141951/splitting-string-by-whitespace-without-empty-elements
+
+    for(var j=0; j<favIds.length; j++) {
+      for(var i=0; i<this.buildings.length; i++) {
+        if(this.buildings[i].id == Number(favIds[j])) {
+          this.buildings[i].favorite = true;
+        }
+      }
+    }
+    this.buildingsChanged.next(!this.buildingsChanged.value);
+    
   }
 
   async deleteFav(id: number, key: string) {
     if(key === 'favorite-rooms') {
       const value: string =  this.cookie.get(key).split('/').filter(i => i !== String(id)).join('/');
       this.cookie.set(key, value);
-      this.fav_rooms = await this.getFavRooms();
+      //this.fav_rooms = await this.getFavRooms();
       this.rooms.forEach(room => {
         room.id === id ? room.favorite = false : null
       });
@@ -151,7 +170,7 @@ export class SharedService {
     if( key === 'favorite-buildings') {
       const value: string =  this.cookie.get(key).split('/').filter(i => i !== String(id)).join('/');
       this.cookie.set(key, value);
-      this.fav_buildings = await this.getFavBuildings();
+      //this.fav_buildings = await this.getFavBuildings();
       this.buildings.forEach(building => {
         building.id === id ? building.favorite = false : null
       });
@@ -163,7 +182,7 @@ export class SharedService {
     if(key === 'favorite-rooms') {
       const value: string =  this.cookie.get(key).concat(String(id)+'/');
       this.cookie.set(key, value);
-      this.fav_rooms = await this.getFavRooms();
+      //this.fav_rooms = await this.getFavRooms();
       this.rooms.forEach(room => {
         room.id === id ? room.favorite = true : null
       });
@@ -172,7 +191,7 @@ export class SharedService {
     if( key === 'favorite-buildings') {
       const value: string =  this.cookie.get(key).concat(String(id)+'/');
       this.cookie.set(key, value);
-      this.fav_buildings = await this.getFavBuildings();
+      //this.fav_buildings = await this.getFavBuildings();
       this.buildings.forEach(building => {
         building.id === id ? building.favorite = true : null
       });
@@ -196,3 +215,11 @@ export class SharedService {
   }
 
 }
+
+
+/*
+    const favdIdsAsNumber: Number[] = favIdsAsSrting.map(function(item) {
+      return Number(item)
+    })
+    //Converts String[] to Number[]
+    */
