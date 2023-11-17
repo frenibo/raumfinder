@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SharedService } from '../shared.service';
+import { NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +16,11 @@ export class HeaderComponent {
   currentLocation: string = 'startmenu';
 
   ngOnInit() {
-    this.sharedService.currentLocation?.subscribe( location => this.changeLocation(location));
+    this.sharedService.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.currentLocation = event.url.split('/')[1];
+      }
+      });
   }
 
   goBack() {

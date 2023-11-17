@@ -33,53 +33,44 @@ export class SharedService {
   buildings: Building[] = [];
   complete: boolean = false;
 
-  history: string[] = [];
-  history_position: number = 0;
+  currentRoom: BehaviorSubject<Room> = new BehaviorSubject<Room>(
+    {
+      id: 0,
+      name: 'noname',
+      floor: '',
+      building: '', 
+    }
+  );
 
-  currentLocation: BehaviorSubject<string> = new BehaviorSubject('startmenu');
-
-  currentRoom: Room = {
-    id: 0,
-    name: '',
-    floor: '',
-    building: '', 
-  };
-
-  currentBuilding: Building = {
-    id: 1,
-    building_name: 'ZIMT',
-    building_street: 'Flughafenallee',
-    building_number: '10',
-    building_ort: 'Bremen',
-    building_plz: 28199,
-    building_country: 'Deutschland',
-    building_image: 'default.jpg',
-    floor_ids: [1,2,3],
-    room_ids: [1,2],
-  };
+  currentBuilding: BehaviorSubject<Building> = new BehaviorSubject<Building>(
+    {
+      id: 1,
+      building_name: 'ZIMT',
+      building_street: 'Flughafenallee',
+      building_number: '10',
+      building_ort: 'Bremen',
+      building_plz: 28199,
+      building_country: 'Deutschland',
+      building_image: 'default.jpg',
+      floor_ids: [1,2,3],
+      room_ids: [1,2],
+    }
+  );
 
   navigate(location: string): void {
-    console.log('first', this.history);
     this.router.navigate([location]);
-
-    while(this.history_position < this.history.length){
-      this.history.pop();
-    }
-    
-    this.history_position = this.history.push(location) -1;
-    
-    this.currentLocation.next(location);
-
   }
 
-
   goBack() {
-    if(this.history_position > 0) {
-      this.location.back();
-      this.history_position -= 1;
-      console.log(this.history[this.history_position]);
-      this.currentLocation.next(this.history[this.history_position]);
-    }
+    this.location.back();
+  }
+
+  updateCurrentRoom(room: Room) {
+    this.currentRoom.next(room);
+  }
+
+  updateCurrentBuilding(building: Building) {
+    this.currentBuilding.next(building);
   }
 
   loadData(rooms: Room[], floors: Floor[], buildings: Building[]): boolean {

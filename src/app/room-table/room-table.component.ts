@@ -54,8 +54,9 @@ export class RoomTableComponent {
     this.dataSource.filter = "";
   }
 
-  navigate(location: string, room: Room | undefined) {
+  navigate(location: string, room: Room) {
     this.sharedService.navigate(location);
+    this.sharedService.updateCurrentRoom(room);
   }
 
 }
