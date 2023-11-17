@@ -9,6 +9,10 @@
     justify-content: flex-start;
 }
 
+#startmenu {
+    //display:none;
+}
+
 .title {
     padding:0.5vw;
     color: white;
@@ -41,6 +45,19 @@
     align-items: center;
     justify-content: flex-start;
     
+}
+
+.return {
+    color: white;
+    background-color: transparent;
+    border-style: hidden;
+    align-self: center;
+    height: 10vw;
+    width: 10vw;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
 }
 
 mat-icon {

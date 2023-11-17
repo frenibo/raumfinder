@@ -12,31 +12,50 @@ export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const rooms = [
       { id: 1,
-        room_number: 'I032',
-        room_image: 'default.jpg',
-        floor_id: '1',
-        building_id: '1'
+        name: 'I032',
+        floor: 'EG',
+        building: 'ZIMT'
+      },
+
+      { id: 2,
+        name: 'I233',
+        floor: 'OG2',
+        building: 'ZIMT'
       },
     ];
 
     const floors = [
       { id: 1,
-        floor_number: 1,
-        floor_image: 'default.jpg',
+        name: 'EG',
+        image: 'default.jpg',
+        building_id: 1,
+        room_ids: [1,2],
+      },
+      { id: 2,
+        name: 'OG1',
+        image: 'default.jpg',
+        building_id: 1,
+        room_ids: [1,2],
+      },
+      { id: 3,
+        name: 'OG2',
+        image: 'default.jpg',
         building_id: 1,
         room_ids: [1,2],
       },
     ];
 
     const buildings = [
-      { id: 1,
-        building_streetname: 'streetname',
-        building_number: '1a',
-        building_ort: 'ort',
-        building_plz: 123456,
-        building_country: 'Land',
+      { 
+        id: 1,
+        building_name: 'ZIMT',
+        building_street: 'Flughafenallee',
+        building_number: '10',
+        building_ort: 'Bremen',
+        building_plz: 28199,
+        building_country: 'Deutschland',
         building_image: 'default.jpg',
-        floor_ids: [1,2],
+        floor_ids: [1,2,3],
         room_ids: [1,2],
       },
     ];

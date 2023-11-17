@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RoomListComponent } from './room-list.component';
+import { StartmenuComponent } from './startmenu.component';
 
-describe('RoomListComponent', () => {
-  let component: RoomListComponent;
-  let fixture: ComponentFixture<RoomListComponent>;
+describe('StartmenuComponent', () => {
+  let component: StartmenuComponent;
+  let fixture: ComponentFixture<StartmenuComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RoomListComponent]
+      declarations: [StartmenuComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(RoomListComponent);
+    fixture = TestBed.createComponent(StartmenuComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

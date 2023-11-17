@@ -12,19 +12,13 @@ export class RoomService {
 
   private roomsUrl = 'api/rooms';  // URL to web api
 
-  currentRooms: Subject<Room[]> = new Subject();
-
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  async changedTopologies() {
-    var rooms: Room[] = await lastValueFrom(this.getRooms());
-    this.currentRooms?.next(rooms);
-  }
-
   /** GET Rooms from the server */
   getRooms(): Observable<Room[]> { 
+    //return this.http.get<Room[]>(this.roomsUrl)
     return this.http.get<Room[]>(this.roomsUrl)
   }
 
