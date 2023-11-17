@@ -9,4 +9,5 @@ export interface Building {
     image: string;
     floor_ids: number[];
     room_ids: number[];
+    favorite: boolean;
 }

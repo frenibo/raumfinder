@@ -7,6 +7,7 @@ import { ViewRoomComponent } from './view-room/view-room.component';
 import { ViewBuildingComponent } from './view-building/view-building.component';
 import { ListRoomComponent } from './list-room/list-room.component';
 import { ListBuildingComponent } from './list-building/list-building.component';
+import { FavoritesComponent } from './favorites/favorites.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '', pathMatch: 'full' },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'view-room', component: ViewRoomComponent },
   { path: 'list-building', component: ListBuildingComponent },
   { path: 'view-building', component: ViewBuildingComponent },
+  { path: 'favorites', component: FavoritesComponent },
 
 ];
 

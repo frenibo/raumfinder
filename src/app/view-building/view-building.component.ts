@@ -23,7 +23,8 @@ export class ViewBuildingComponent {
       country: 'Deutschland',
       image: 'default.jpg',
       floor_ids: [1,2,3],
-      room_ids: [1,2], 
+      room_ids: [1,2],
+      favorite: false,
   };
 
   async ngOnInit() {

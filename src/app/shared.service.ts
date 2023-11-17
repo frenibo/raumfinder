@@ -12,6 +12,7 @@ import { LoaderComponent } from './loader/loader.component';
 import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
 import { ParamMap, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @Injectable({
@@ -26,19 +27,24 @@ export class SharedService {
     public router: Router,
     private route: ActivatedRoute,
     private location: Location,
+    private cookie: CookieService,
   ) { }
 
   rooms: Room[] = [];
   floors: Floor[] = [];
   buildings: Building[] = [];
-  complete: boolean = false;
+  fav_rooms: string[] = [];
+  fav_buildings: string[] = [];
+
+  loadingComplete: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   currentRoom: BehaviorSubject<Room> = new BehaviorSubject<Room>(
     {
       id: 0,
       name: 'noname',
       floor: '',
-      building: '', 
+      building: '',
+      favorite: false,
     }
   );
 
@@ -54,6 +60,7 @@ export class SharedService {
       image: 'default.jpg',
       floor_ids: [1,2,3],
       room_ids: [1,2],
+      favorite: false,
     }
   );
 
@@ -73,21 +80,95 @@ export class SharedService {
     this.currentBuilding.next(building);
   }
 
-  loadData(rooms: Room[], floors: Floor[], buildings: Building[]): boolean {
-    this.rooms = rooms;
-    this.floors = floors;
-    this.buildings = buildings;
-    this.complete = true;
-    return this.complete
+  async loadAllData() {
+    this.cookie.deleteAll(); //must be removed once testing cookie behavior is finished
+    this.rooms = await lastValueFrom(this.roomService.getRooms());
+    this.floors = await lastValueFrom(this.floorService.getFloors());
+    this.buildings = await lastValueFrom(this.buildingService.getBuildings());
+    this.fav_rooms = await this.getFavRooms();
+    this.fav_buildings = await this.getFavBuildings();
+    console.log(this.fav_rooms)
+    this.loadingComplete.next(true);
   }
 
   async checkLoaded() {
-    if(this.complete == false ){
+    if(this.loadingComplete.value == false ){
       this.rooms = await lastValueFrom(this.roomService.getRooms())
       this.floors = await lastValueFrom(this.floorService.getFloors())
       this.buildings = await lastValueFrom(this.buildingService.getBuildings())
+      this.fav_rooms = await this.getFavRooms();
+      this.fav_buildings = await this.getFavBuildings();
+      this.loadingComplete.next(true)
     }
-    return this.complete = true
+  }
+
+  async getFavRooms(): Promise<string[]>{
+    if(this.cookie.get('favorite-rooms') === '') {
+      this.cookie.set('favorite-rooms', '/')
+    }
+    return this.cookie.get('favorite-rooms').split('/').filter(i => i)
+    // filter( i => i) excludes empty string elements as explained here by user1079877:
+    // "if you have more than one space character, you'll have empty string ('') in your results, and because if('') is false, filter function filter strip them in the final result."
+    // https://stackoverflow.com/questions/9141951/splitting-string-by-whitespace-without-empty-elements
+  }
+
+  async getFavBuildings(): Promise<string[]> {
+    if(this.cookie.get('favorite-buildings') === '') {
+      this.cookie.set('favorite-buildings', '/')
+    }
+    return this.cookie.get('favorite-buildings').split('/').filter(i => i)
+    // filter( i => i) excludes empty string elements as explained here by user1079877:
+    // "if you have more than one space character, you'll have empty string ('') in your results, and because if('') is false, filter function filter strip them in the final result."
+    // https://stackoverflow.com/questions/9141951/splitting-string-by-whitespace-without-empty-elements
+  }
+
+  async deleteFav(id: number, key: string) {
+    if(key === 'favorite-rooms') {
+      const value: string =  this.cookie.get(key).split('/').filter(i => i !== String(id)).join('/');
+      this.cookie.set(key, value);
+      this.fav_rooms = await this.getFavRooms();
+      this.rooms.forEach(room => {
+        room.id === id ? room.favorite = false : null
+      });
+    }
+    if( key === 'favorite-buildings') {
+      const value: string =  this.cookie.get(key).split('/').filter(i => i !== String(id)).join('/');
+      this.cookie.set(key, value);
+      this.fav_buildings = await this.getFavBuildings();
+      this.buildings.forEach(building => {
+        building.id === id ? building.favorite = false : null
+      });
+    }
+  }
+
+  async addFav(id: number, key: string) {
+    if(key === 'favorite-rooms') {
+      const value: string =  this.cookie.get(key).concat(String(id)+'/');
+      this.cookie.set(key, value);
+      this.fav_rooms = await this.getFavRooms();
+      this.rooms.forEach(room => {
+        room.id === id ? room.favorite = true : null
+      });
+    }
+    if( key === 'favorite-buildings') {
+      const value: string =  this.cookie.get(key).concat(String(id)+'/');
+      this.cookie.set(key, value);
+      this.fav_buildings = await this.getFavBuildings();
+      this.buildings.forEach(building => {
+        building.id === id ? building.favorite = true : null
+      });
+    }
+  }
+
+  clearFaves() {
+    this.rooms.forEach(room => {
+      room.favorite ? room.favorite = false : null
+    });
+    this.cookie.set('favorite-rooms', '/');
+    this.buildings.forEach(building => {
+      building.favorite ? building.favorite = false : null
+    });
+    this.cookie.set('favorite-buildings', '/');
   }
 
 }

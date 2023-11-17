@@ -14,13 +14,15 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 1,
         name: 'I032',
         floor: 'EG',
-        building: 'ZIMT'
+        building: 'ZIMT',
+        favorite: false,
       },
 
       { id: 2,
         name: 'I233',
         floor: 'OG2',
-        building: 'ZIMT'
+        building: 'ZIMT',
+        favorite: false,
       },
     ];
 
@@ -57,6 +59,7 @@ export class InMemoryDataService implements InMemoryDbService {
         image: 'default.jpg',
         floor_ids: [1,2,3],
         room_ids: [1,2],
+        favorite: false,
       },
     ];
 

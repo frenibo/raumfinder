@@ -18,6 +18,7 @@ export class ViewRoomComponent {
     name: 'noname',
     floor: '',
     building: '', 
+    favorite: false,
   };
 
   async ngOnInit() {

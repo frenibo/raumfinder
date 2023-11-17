@@ -29,34 +29,23 @@ export class LoaderComponent {
   rooms: Room[] = [];
   floors: Floor[] = [];
   buildings: Building[] = [];
-  complete: boolean = false;
+  loadingComplete: boolean = false;
 
   async ngOnInit() {
-    await this.getRooms();
-    await this.getFloors();
-    await this.getBuildings();
-    await this.shareData();
-    if(this.complete) {
-      this.router.navigate(['startmenu'])
-    }
+
+    this.sharedService.loadingComplete.subscribe( loadingComplete => this.loadingState(loadingComplete) )
     
   }
 
-  async getRooms() {
-    return this.rooms = await lastValueFrom(this.roomService.getRooms())
+  async loadingState(loadingComplete: boolean) {
+    if(loadingComplete == true) {
+      //this.sharedService.navigate('startmenu');
+      this.loadingComplete = true;
+    }
+    if(loadingComplete == false) {
+      this.loadingComplete = false;
+      this.sharedService.loadAllData();
+    }
   }
-
-  async getFloors() {
-    return this.floors = await lastValueFrom(this.floorService.getFloors())
-  }
-
-  async getBuildings() {
-    return this.buildings = await lastValueFrom(this.buildingService.getBuildings())
-  }
-
-  async shareData() {
-    return this.complete = this.sharedService.loadData(this.rooms, this.floors, this.buildings)
-  }
-
 
 }
