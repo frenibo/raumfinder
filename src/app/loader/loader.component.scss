@@ -7,3 +7,11 @@ app-footer {
     bottom: 0;
     width:100%;
 }
+
+.loader-image {
+  background-image: url("../../assets/hsb assets/rf_loader.png");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
