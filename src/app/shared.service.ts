@@ -45,13 +45,13 @@ export class SharedService {
   currentBuilding: BehaviorSubject<Building> = new BehaviorSubject<Building>(
     {
       id: 1,
-      building_name: 'ZIMT',
-      building_street: 'Flughafenallee',
-      building_number: '10',
-      building_ort: 'Bremen',
-      building_plz: 28199,
-      building_country: 'Deutschland',
-      building_image: 'default.jpg',
+      name: 'ZIMT',
+      street: 'Flughafenallee',
+      street_number: '10',
+      ort: 'Bremen',
+      plz: 28199,
+      country: 'Deutschland',
+      image: 'default.jpg',
       floor_ids: [1,2,3],
       room_ids: [1,2],
     }

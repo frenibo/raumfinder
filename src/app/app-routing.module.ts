@@ -5,12 +5,14 @@ import { LoaderComponent } from './loader/loader.component';
 import { StartmenuComponent } from './startmenu/startmenu.component';
 import { ViewRoomComponent } from './view-room/view-room.component';
 import { ListRoomComponent } from './list-room/list-room.component';
+import { ListBuildingComponent } from './list-building/list-building.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '', pathMatch: 'full' },
   { path: 'startmenu', component: StartmenuComponent },
   { path: 'list-room', component: ListRoomComponent },
   { path: 'view-room', component: ViewRoomComponent },
+  { path: 'list-building', component: ListBuildingComponent },
 
 ];
 

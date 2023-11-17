@@ -1,12 +1,12 @@
 export interface Building {
     id: number;
-    building_name: string;
-    building_street: string;
-    building_number: string;
-    building_ort: string;
-    building_plz: number;
-    building_country: string;
-    building_image: string;
+    name: string;
+    street: string;
+    street_number: string;
+    ort: string;
+    plz: number;
+    country: string;
+    image: string;
     floor_ids: number[];
     room_ids: number[];
 }

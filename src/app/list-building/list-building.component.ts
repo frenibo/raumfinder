@@ -11,11 +11,11 @@ import { MatTableDataSource } from '@angular/material/table';
 import { lastValueFrom } from 'rxjs';
 
 @Component({
-  selector: 'app-list-room',
-  templateUrl: './list-room.component.html',
-  styleUrl: './list-room.component.scss'
+  selector: 'app-list-building',
+  templateUrl: './list-building.component.html',
+  styleUrl: './list-building.component.scss'
 })
-export class ListRoomComponent {
+export class ListBuildingComponent {
 
   constructor(
     private roomService: RoomService,
@@ -27,17 +27,17 @@ export class ListRoomComponent {
   rooms: Room[] = [];
   floors: Floor[] = [];
   buildings: Building[] = [];
-  displayedColumns: string[] = ['name', 'building', 'floor'];
-  dataSource = new MatTableDataSource(this.rooms);
+  displayedColumns: string[] = ['image', 'name', 'street'];
+  dataSource = new MatTableDataSource(this.buildings);
 
   async ngOnInit(): Promise<void> {
     await this.checkLoaded();
-    this.getRooms();
-    this.dataSource = new MatTableDataSource<Room>(this.rooms);
+    this.getBuildings();
+    this.dataSource = new MatTableDataSource<Building>(this.buildings);
   }
 
-  getRooms() {
-    return this.rooms =  this.sharedService.rooms
+  getBuildings() {
+    return this.buildings =  this.sharedService.buildings
   }
 
   async checkLoaded() {
@@ -54,9 +54,9 @@ export class ListRoomComponent {
     this.dataSource.filter = "";
   }
 
-  navigate(location: string, room: Room) {
+  navigate(location: string, building: Building) {
     this.sharedService.navigate(location);
-    this.sharedService.updateCurrentRoom(room);
+    this.sharedService.updateCurrentBuilding(building);
   }
 
 }

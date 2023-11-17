@@ -27,6 +27,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { ListBuildingComponent } from './list-building/list-building.component';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
         StartmenuComponent,
         ViewRoomComponent,
         ListRoomComponent,
+        ListBuildingComponent,
     ],
     providers: [],
     bootstrap: [AppComponent],
