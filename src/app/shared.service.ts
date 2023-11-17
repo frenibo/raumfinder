@@ -53,7 +53,7 @@ export class SharedService {
   currentBuilding: BehaviorSubject<Building> = new BehaviorSubject<Building>(
     {
       id: 1,
-      name: 'ZIMT',
+      name: 'Noname',
       street: 'Flughafenallee',
       street_number: '10',
       ort: 'Bremen',

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-favorites',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrl: './favorites.component.scss'
 })
 export class FavoritesComponent {
+
+  constructor(
+    private sharedService: SharedService,
+  ){}
+
+  deleteAllFaves(){
+    this.sharedService.clearFaves();
+  }
 
 }
