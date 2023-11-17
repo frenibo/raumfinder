@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BuildingTableComponent } from './building-table.component';
+import { ListRoomComponent } from './list-room.component';
 
-describe('BuildingTableComponent', () => {
-  let component: BuildingTableComponent;
-  let fixture: ComponentFixture<BuildingTableComponent>;
+describe('ListRoomComponent', () => {
+  let component: ListRoomComponent;
+  let fixture: ComponentFixture<ListRoomComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [BuildingTableComponent]
+      declarations: [ListRoomComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(BuildingTableComponent);
+    fixture = TestBed.createComponent(ListRoomComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

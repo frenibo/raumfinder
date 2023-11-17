@@ -11,11 +11,11 @@ import { MatTableDataSource } from '@angular/material/table';
 import { lastValueFrom } from 'rxjs';
 
 @Component({
-  selector: 'app-room-table',
-  templateUrl: './room-table.component.html',
-  styleUrl: './room-table.component.scss'
+  selector: 'app-list-room',
+  templateUrl: './list-room.component.html',
+  styleUrl: './list-room.component.scss'
 })
-export class RoomTableComponent {
+export class ListRoomComponent {
 
   constructor(
     private roomService: RoomService,

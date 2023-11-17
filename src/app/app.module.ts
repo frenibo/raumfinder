@@ -7,9 +7,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { RoomTableComponent } from './room-table/room-table.component';
-import { BuildingTableComponent } from './building-table/building-table.component';
 import { LoaderComponent } from './loader/loader.component';
+import { StartmenuComponent } from './startmenu/startmenu.component';
+import { ViewRoomComponent } from './view-room/view-room.component';
+import { ListRoomComponent } from './list-room/list-room.component';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { HttpClientModule } from '@angular/common/http';
@@ -26,8 +27,6 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import { StartmenuComponent } from './startmenu/startmenu.component';
-import { ViewRoomComponent } from './view-room/view-room.component';
 
 
 @NgModule({
@@ -35,11 +34,10 @@ import { ViewRoomComponent } from './view-room/view-room.component';
         AppComponent,
         HeaderComponent,
         FooterComponent,
-        RoomTableComponent,
-        BuildingTableComponent,
         LoaderComponent,
         StartmenuComponent,
         ViewRoomComponent,
+        ListRoomComponent,
     ],
     providers: [],
     bootstrap: [AppComponent],
