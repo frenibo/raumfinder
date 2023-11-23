@@ -1,5 +1,45 @@
 
+//.buttons {
+//    display: flex;
+//    flex-wrap: wrap;
+//}
+
 .buttons {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* Ändere die Anordnung in eine Spalte */
+}
+
+.button1, .button2, .button3, .button4 {
+  padding: 20px;
+  width: 200px;
+  height: 60px;
+  margin: 5px;
+  background-color: white;
+  border: 2px solid black;
+  color: black;
+  font-weight: bold;
+  transition: background-color 0.3s; /* Animiere die Hintergrundfarbe beim Übergang */
+  &:hover {
+    background-color: #001D3D;
+    color: white;
+  }
+}
+
+.button5 {
+  width: 200px;
+  height: 60px;
+  margin: 5px;
+  padding: 10px;
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-weight: bold;
+  text-decoration: underline;
+  &:hover {
+    background-color: transparent;
+    color: black;
+  }
 }
