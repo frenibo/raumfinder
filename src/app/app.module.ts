@@ -26,13 +26,14 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ListBuildingComponent } from './list-building/list-building.component';
 import { ViewBuildingComponent } from './view-building/view-building.component';
 import { CookieService } from 'ngx-cookie-service';
 import { FavoriteRoomComponent } from './favorite-room/favorite-room.component';
 import { FavoriteBuildingComponent } from './favorite-building/favorite-building.component';
 import { FavoritesComponent } from './favorites/favorites.component';
+import { AutofocusDirective } from './autofocus.directive';
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import { FavoritesComponent } from './favorites/favorites.component';
         FavoriteRoomComponent,
         FavoriteBuildingComponent,
         FavoritesComponent,
+        AutofocusDirective,
     ],
     providers: [
         CookieService,

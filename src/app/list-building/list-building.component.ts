@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 
 import { Room } from '../room';
 import { RoomService } from '../room.service';
@@ -9,6 +9,7 @@ import { BuildingService } from '../building.service';
 import { SharedService } from '../shared.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { lastValueFrom } from 'rxjs';
+import { MatInput } from '@angular/material/input';
 
 @Component({
   selector: 'app-list-building',
@@ -29,6 +30,7 @@ export class ListBuildingComponent {
   buildings: Building[] = [];
   displayedColumns: string[] = ['image', 'name', 'street'];
   dataSource = new MatTableDataSource(this.buildings);
+  defaultValue: string = '';
 
   async ngOnInit(): Promise<void> {
     await this.checkLoaded();

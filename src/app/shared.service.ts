@@ -9,7 +9,7 @@ import { BuildingService } from './building.service';
 
 import { LoaderComponent } from './loader/loader.component';
 
-import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot, NavigationEnd } from '@angular/router';
 import { ParamMap, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { CookieService } from 'ngx-cookie-service';
@@ -40,6 +40,10 @@ export class SharedService {
 
   loadingComplete: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
+  currentFilter: BehaviorSubject<string> = new BehaviorSubject<string>('');
+
+  currentLocation: BehaviorSubject<string> = new BehaviorSubject<string>('');
+
   currentRoom: BehaviorSubject<Room> = new BehaviorSubject<Room>(
     {
       id: 0,
@@ -66,12 +70,26 @@ export class SharedService {
     }
   );
 
-  navigate(location: string): void {
-    this.router.navigate([location]);
+  navigate(location: string, replaceUrl?: boolean | undefined): void {
+    if( replaceUrl == true ) {
+      this.router.navigate([location], { replaceUrl: true});
+    }
+    else {
+      this.router.navigate([location]);
+    }
+    this.currentFilter.next('');
   }
 
   goBack() {
     this.location.back();
+  }
+
+  updateURL(event: NavigationEnd) {
+    this.currentLocation.next(event.url.split('/')[1]);
+  }
+
+  setCurrentFilter(value: string) {
+    this.currentFilter.next(value);
   }
 
   updateCurrentRoom(room: Room) {
@@ -197,16 +215,16 @@ export class SharedService {
     }
   }
 
-  clearFaves() {
+  async clearFaves() {
     this.rooms.forEach(room => {
-      room.favorite ? room.favorite = false : null
+      room.favorite == true ? room.favorite = false : null
     });
     this.cookie.set('favorite-rooms', '/');
     this.roomsChanged.next(!this.roomsChanged.value);
 
 
     this.buildings.forEach(building => {
-      building.favorite ? building.favorite = false : null
+      building.favorite == true ? building.favorite = false : null
     });
     this.cookie.set('favorite-buildings', '/');
     this.buildingsChanged.next(!this.buildingsChanged.value);

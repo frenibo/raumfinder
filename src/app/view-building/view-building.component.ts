@@ -31,4 +31,10 @@ export class ViewBuildingComponent {
     this.sharedService.currentBuilding.subscribe( currentBuilding => this.currentBuilding = currentBuilding);
     this.sharedService.buildingsChanged.subscribe( buildingsChanged => this.sharedService.updateCurrentBuildingById(this.currentBuilding.id));
   }
+
+  navigate(location: string) {
+    this.sharedService.navigate(location);
+    this.sharedService.setCurrentFilter(this.currentBuilding.name);
+  }
+
 }

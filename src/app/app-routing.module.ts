@@ -10,7 +10,8 @@ import { ListBuildingComponent } from './list-building/list-building.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '', pathMatch: 'full' },
+  { path: '', redirectTo: 'loading', pathMatch: 'full' },
+  { path: 'loading', component: LoaderComponent },
   { path: 'startmenu', component: StartmenuComponent },
   { path: 'list-room', component: ListRoomComponent },
   { path: 'view-room', component: ViewRoomComponent },

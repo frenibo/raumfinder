@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 
 import { Room } from '../room';
 import { RoomService } from '../room.service';
@@ -29,17 +29,31 @@ export class LoaderComponent {
   rooms: Room[] = [];
   floors: Floor[] = [];
   buildings: Building[] = [];
+  currentLocation: string = '';
   loadingComplete: boolean = false;
+
+
 
   async ngOnInit() {
 
+    this.sharedService.router.events.subscribe(
+      (event) => {
+        if (event instanceof NavigationEnd) {
+          this.sharedService.updateURL(event);
+        }
+      }
+    );
+
+    this.sharedService.currentLocation.subscribe( currentLocation => this.currentLocation = currentLocation );
     this.sharedService.loadingComplete.subscribe( loadingComplete => this.loadingState(loadingComplete));
       
   }
 
   async loadingState(loadingComplete: boolean) {
     if(loadingComplete == true) {
-      //this.sharedService.navigate('startmenu');
+      if(this.currentLocation === '' || this.currentLocation === 'loading') {
+        this.sharedService.navigate('startmenu', true);
+      }
       this.loadingComplete = true;
     }
     if(loadingComplete == false) {

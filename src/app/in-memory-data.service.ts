@@ -24,6 +24,13 @@ export class InMemoryDataService implements InMemoryDbService {
         building: 'ZIMT',
         favorite: false,
       },
+
+      { id: 3,
+        name: 'A003',
+        floor: 'EG',
+        building: 'AB-Gebäude',
+        favorite: false,
+      },
     ];
 
     const floors = [

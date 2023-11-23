@@ -1,7 +1,6 @@
 <mat-form-field subscriptSizing="dynamic">
     <mat-icon matPrefix>search</mat-icon>
-    <mat-label>Search Rooms</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. I032" #input>
+    <input matInput matInputAutofocus (keyup)="applyFilter($event)" placeholder="Filtern" #input value="{{defaultValue}}">
     <button [disabled]="!input.value" matSuffix mat-icon-button aria-label="Clear" (click)="input.value=''; clearFilter()">
         <div *ngIf="input.value">
             <mat-icon>close</mat-icon>

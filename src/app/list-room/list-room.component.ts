@@ -29,11 +29,14 @@ export class ListRoomComponent {
   buildings: Building[] = [];
   displayedColumns: string[] = ['name', 'building', 'floor'];
   dataSource = new MatTableDataSource(this.rooms);
+  defaultValue: string = '';
 
   async ngOnInit(): Promise<void> {
     await this.checkLoaded();
     this.getRooms();
     this.dataSource = new MatTableDataSource<Room>(this.rooms);
+    this.sharedService.currentFilter.subscribe(
+      currentFilter => currentFilter ? this.dataSource.filter = this.defaultValue = currentFilter + ' ' : null);
   }
 
   getRooms() {

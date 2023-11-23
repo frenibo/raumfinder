@@ -15,26 +15,25 @@ export class HeaderComponent {
     private sharedService: SharedService,
   ) {}
 
-  currentLocation: string = 'startmenu'; //This decides which header is displayed
+  currentLocation: string = ''; //This decides which header is displayed
 
   currentRoom?: Room | any;
   currentBuilding?: Building | any;
 
   ngOnInit() {
+    
     //Header component listens for changes in the URL and swaps out the Headers accordingly.
-    this.sharedService.router.events.subscribe(
-      (event) => {
-        if (event instanceof NavigationEnd) {
-          this.currentLocation = event.url.split('/')[1];
-        }
-      }
-    );
+    this.sharedService.currentLocation.subscribe( currentLocation => this.currentLocation = currentLocation );
     this.sharedService.currentRoom.subscribe( currentRoom => this.currentRoom = currentRoom );
     this.sharedService.currentBuilding.subscribe( currentBuilding => this.currentBuilding = currentBuilding );
   }
 
   goBack() {
     this.sharedService.goBack();
+  }
+
+  navigate(location: string) {
+    this.sharedService.navigate(location);
   }
 
   favedRoom() {

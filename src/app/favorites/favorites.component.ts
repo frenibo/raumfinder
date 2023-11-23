@@ -12,8 +12,12 @@ export class FavoritesComponent {
     private sharedService: SharedService,
   ){}
 
-  deleteAllFaves(){
-    this.sharedService.clearFaves();
+  ngOnInit() {
+
+  }
+
+  async deleteAllFaves(){
+    await this.sharedService.clearFaves();
   }
 
 }

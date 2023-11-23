@@ -31,6 +31,11 @@ export class FavoriteRoomComponent {
   dataSource = new MatTableDataSource(this.rooms);
 
   async ngOnInit(): Promise<void> {
+    await this.loadList();
+    this.sharedService.roomsChanged.subscribe( roomsChanged => this.loadList());
+  }
+
+  async loadList() {
     await this.checkLoaded();
     this.getRooms();
     this.dataSource = new MatTableDataSource<Room>(this.rooms.filter(room => room.favorite == true));
