@@ -50,7 +50,12 @@ export class ListRoomComponent {
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    //this.dataSource.filter = filterValue.trim().toLowerCase();
+    const filterArray = filterValue.toLocaleLowerCase().split(' ');
+    filterArray.forEach(filterValue => {
+      this.dataSource.filter = filterValue
+    });
+    //this.dataSource.filter = filterValue.toLocaleLowerCase();
   }
 
   clearFilter() {
