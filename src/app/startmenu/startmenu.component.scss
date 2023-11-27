@@ -9,18 +9,12 @@
   height: 100%;
   width: 100%;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap:nowrap;
   justify-content: center;
   align-items: center;
   flex-direction: column; /* Ändere die Anordnung in eine Spalte */
   background-color: transparent;
   
-  .background {
-    //height: 100%;
-    //scale: 100%;
-    size-adjust: 80%;
-  }
-
   .title {
     font-size: 2rem;
     color:white;
