@@ -35,6 +35,7 @@ export class ListRoomComponent {
     await this.checkLoaded();
     this.getRooms();
     this.dataSource = new MatTableDataSource<Room>(this.rooms);
+   
     this.sharedService.currentFilter.subscribe(
       currentFilter => currentFilter ? this.dataSource.filter = this.defaultValue = currentFilter + ' ' : null);
   }
@@ -49,13 +50,13 @@ export class ListRoomComponent {
 
 
   applyFilter(event: Event) {
+    this.dataSource = new MatTableDataSource(this.rooms);
     const filterValue = (event.target as HTMLInputElement).value;
-    //this.dataSource.filter = filterValue.trim().toLowerCase();
     const filterArray = filterValue.toLocaleLowerCase().split(' ');
     filterArray.forEach(filterValue => {
-      this.dataSource.filter = filterValue
+      this.dataSource.filter = filterValue;
+      this.dataSource = new MatTableDataSource(this.dataSource.filteredData);
     });
-    //this.dataSource.filter = filterValue.toLocaleLowerCase();
   }
 
   clearFilter() {
