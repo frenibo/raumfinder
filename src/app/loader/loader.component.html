@@ -1,11 +1,15 @@
-<div [hidden]="loadingComplete" src="../../assets/hsb assets/rf_loader.jpg" class="loader-image"></div>
 
-<span [hidden]="!loadingComplete">
+<div [hidden]="loadingComplete" class="loader"></div>
+
+<div [hidden]="!loadingComplete" class="loaded">
 
     <app-header></app-header>
+    
+    <div class="below-header">
+        <router-outlet></router-outlet>
+    </div>
+    
 
-    <router-outlet></router-outlet>
+    <!--app-footer></app-footer-->
 
-    <app-footer></app-footer>
-
-</span>
+</div>
