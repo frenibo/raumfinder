@@ -11,3 +11,9 @@ table {
 app-searchbar {
     width: 100%;
 }
+
+.nonheader-row:hover {
+    background-color: rgba(0, 29, 61, 0.1);
+    color:white;
+    cursor: pointer;
+}

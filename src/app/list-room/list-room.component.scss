@@ -1,3 +1,6 @@
+//TODO: Bug: In widescreen mode only text is clickable, not entire table row
+
+
 /* Structure */
 table {
     width: 100%;
@@ -12,16 +15,9 @@ app-searchbar {
     width: 100%;
 }
 
-.nonheader-row {
-    margin:auto;
-    padding: 0;
-}
 .nonheader-row:hover {
     background-color: rgba(0, 29, 61, 0.1);
     color:white;
     cursor: pointer;
 }
 
-td.mat-mdc-cell.mdc-data-table__cell.cdk-cell.cdk-column-building.mat-column-building.ng-star-inserted {
-    padding: 0;
-}
