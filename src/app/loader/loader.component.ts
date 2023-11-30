@@ -64,7 +64,7 @@ export class LoaderComponent {
   }
 
   hideLoader() {
-    (this.loaderWidth == 100) ? this.loaderWidth = 0 : this.loaderWidth = 100;
+    this.loaderWidth = 0;
   }
 
 }
