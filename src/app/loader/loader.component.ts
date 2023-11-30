@@ -32,6 +32,7 @@ export class LoaderComponent {
   currentLocation: string = '';
   loadingComplete: boolean = false;
   loaderWidth: number = 100;
+  loaderHidden: boolean = true;
 
   async ngOnInit() {
 
