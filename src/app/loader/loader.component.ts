@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, Router, UrlSegment } from '@angular/router';
 
 import { Room } from '../room';
 import { RoomService } from '../room.service';
@@ -31,8 +31,7 @@ export class LoaderComponent {
   buildings: Building[] = [];
   currentLocation: string = '';
   loadingComplete: boolean = false;
-
-
+  loaderWidth: number = 100;
 
   async ngOnInit() {
 
@@ -55,11 +54,16 @@ export class LoaderComponent {
         this.sharedService.navigate('startmenu', true);
       }
       this.loadingComplete = true;
+      this.hideLoader();
     }
     if(loadingComplete == false) {
       this.loadingComplete = false;
       this.sharedService.loadAllData();
     }
+  }
+
+  hideLoader() {
+    (this.loaderWidth == 100) ? this.loaderWidth = 0 : this.loaderWidth = 100;
   }
 
 }

@@ -7,7 +7,8 @@ app-footer {
 
 .loader {
   //background-image: url("../../assets/hsb assets/rf_loader.png");
-  background: url(../../assets/hsb\ assets/hsb_loader.png);
+  background-image: url(../../assets/hsb\ assets/hsb_loader.png);
+  //background-image: none;
   box-shadow: inset 0 0 0 100vh rgba(0, 29, 61, 0.6);
   background-color: #001d3d;
   height: 100%;
@@ -19,6 +20,11 @@ app-footer {
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
+
+  transition: all 0.2s ease-in-out;
+  z-index: 2;
+  position: absolute;
+  top: 0;
   //height: 0px;
   .logo-wrapper {
     display: flex;
@@ -54,6 +60,10 @@ app-footer {
 }
 
 .loaded {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  width: 100%;
   .below-header {
     height: calc(100vh - 90px);
     background: url(../../assets/hsb\ assets/hsb_background.jpg);

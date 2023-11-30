@@ -1,5 +1,6 @@
-
-<div [hidden]="loadingComplete" class="loader">
+<div [hidden]="loadingComplete" class="loader" 
+[ngStyle]="{'width' : loaderWidth + '%'}"
+>
     <div class="logo-wrapper">
         <img src="../../assets/hsb assets/logo_hsb.png" class="logo">
     </div>
