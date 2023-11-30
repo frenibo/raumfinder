@@ -6,9 +6,7 @@ app-footer {
 }
 
 .loader {
-  //background-image: url("../../assets/hsb assets/rf_loader.png");
   background-image: url(../../assets/hsb\ assets/hsb_loader.png);
-  //background-image: none;
   box-shadow: inset 0 0 0 100vh rgba(0, 29, 61, 0.6);
   background-color: #001d3d;
   height: 100%;
@@ -18,6 +16,7 @@ app-footer {
   background-size: cover;
   display:flex;
   flex-wrap: wrap;
+  gap: 0;
   justify-content: center;
   align-items: flex-start;
 
@@ -25,36 +24,23 @@ app-footer {
   z-index: 2;
   position: absolute;
   top: 0;
-  //height: 0px;
-  .logo-wrapper {
+  .wrapper {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
-    height: fit-content;
-    align-items: center;
     margin-top: 18vh;
 
     .logo {
       width: 50%;
-      height:fit-content;
       margin-bottom: -2vw;
     }
-  }
-  .title-wrapper {
-    margin:0;
-    padding:0;
-    width:100%;
-    height: 70%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
+
     .title {
       font-size: 9vw;
       font-weight: bold;
       color:white;
-      justify-content: center;
-      margin-bottom: auto
+      transition: all 0.2s ease-in-out;
     }
   }
 }
