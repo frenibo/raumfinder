@@ -74,6 +74,7 @@ import { AutofocusDirective } from './autofocus.directive';
         HttpClientInMemoryWebApiModule.forRoot(
             InMemoryDataService, { dataEncapsulation: false }
         ),
+        MatButtonToggleModule,
     ]
 })
 export class AppModule { }

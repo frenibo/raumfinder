@@ -34,6 +34,28 @@ export class SharedService {
   floors: Floor[] = [];
   buildings: Building[] = [];
 
+  defaultRoom: Room = {
+    id: 0,
+    name: 'noname',
+    floor: '',
+    building: '',
+    favorite: false,
+  }
+
+  defaultBuilding: Building = {
+    id: 0,
+    name: 'Noname',
+    street: 'Flughafenallee',
+    street_number: '10',
+    ort: 'Bremen',
+    plz: 28199,
+    country: 'Deutschland',
+    image: 'default.jpg',
+    floor_ids: [1,2,3],
+    room_ids: [1,2],
+    favorite: false,
+  }
+
   roomsChanged: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
   floorsChanged: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
   buildingsChanged: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
@@ -44,31 +66,9 @@ export class SharedService {
 
   currentLocation: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
-  currentRoom: BehaviorSubject<Room> = new BehaviorSubject<Room>(
-    {
-      id: 0,
-      name: 'noname',
-      floor: '',
-      building: '',
-      favorite: false,
-    }
-  );
+  currentRoom: BehaviorSubject<Room> = new BehaviorSubject<Room>(this.defaultRoom);
 
-  currentBuilding: BehaviorSubject<Building> = new BehaviorSubject<Building>(
-    {
-      id: 1,
-      name: 'Noname',
-      street: 'Flughafenallee',
-      street_number: '10',
-      ort: 'Bremen',
-      plz: 28199,
-      country: 'Deutschland',
-      image: 'default.jpg',
-      floor_ids: [1,2,3],
-      room_ids: [1,2],
-      favorite: false,
-    }
-  );
+  currentBuilding: BehaviorSubject<Building> = new BehaviorSubject<Building>(this.defaultBuilding);
 
   navigate(location: string, replaceUrl?: boolean | undefined): void {
     if( replaceUrl == true ) {
@@ -85,7 +85,22 @@ export class SharedService {
   }
 
   updateURL(event: NavigationEnd) {
-    this.currentLocation.next(event.url.split('/')[1]);
+    const pathParam1 = event.url.split('/')[1];
+    this.currentLocation.next(pathParam1);
+    // for room and building id
+    if(pathParam1 == 'view-room' && event.url.split('/')[2]) {
+      const pathParam2 = event.url.split('/')[2];
+      this.rooms.find(
+        room => room.id == Number(pathParam2) ? this.updateCurrentRoom(room) : null
+      );
+    }
+    if(pathParam1 == 'view-building' && event.url.split('/')[2]) {
+      const pathParam2 = event.url.split('/')[2];
+      this.buildings.find(
+        building => building.id == Number(pathParam2) ? this.updateCurrentBuilding(building) : null
+      );
+    }
+
   }
 
   setCurrentFilter(value: string) {

@@ -57,7 +57,8 @@ export class ListBuildingComponent {
   }
 
   navigate(location: string, building: Building) {
-    this.sharedService.navigate(location);
+    const path: string = location.concat('/' + String(building.id));
+    this.sharedService.navigate(path);
     this.sharedService.updateCurrentBuilding(building);
   }
 

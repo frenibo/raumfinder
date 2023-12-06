@@ -33,12 +33,14 @@ export class LoaderComponent {
   loadingComplete: boolean = false;
   loaderWidth: number = 100;
   loaderHidden: boolean = true;
+  lastNavigationEvent!: NavigationEnd;
 
   async ngOnInit() {
 
     this.sharedService.router.events.subscribe(
       (event) => {
         if (event instanceof NavigationEnd) {
+          this.lastNavigationEvent = event;
           this.sharedService.updateURL(event);
         }
       }
@@ -55,6 +57,9 @@ export class LoaderComponent {
         this.sharedService.navigate('startmenu', true);
       }
       this.loadingComplete = true;
+      if(this.lastNavigationEvent) {
+        this.sharedService.updateURL(this.lastNavigationEvent);
+      }
       this.hideLoader();
     }
     if(loadingComplete == false) {

@@ -15,8 +15,10 @@ const routes: Routes = [
   { path: 'startmenu', component: StartmenuComponent },
   { path: 'list-room', component: ListRoomComponent },
   { path: 'view-room', component: ViewRoomComponent },
+  { path: 'view-room/:id', component: ViewRoomComponent },
   { path: 'list-building', component: ListBuildingComponent },
   { path: 'view-building', component: ViewBuildingComponent },
+  { path: 'view-building/:id', component: ViewBuildingComponent },
   { path: 'favorites', component: FavoritesComponent },
 
 ];
