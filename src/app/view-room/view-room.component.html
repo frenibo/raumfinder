@@ -1,9 +1,22 @@
-<span>{{currentRoom.name}}, {{currentRoom.building}}</span>
-
-<p>
-    <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
-            <mat-button-toggle value="bold">Bold</mat-button-toggle>
-            <mat-button-toggle value="italic">Italic</mat-button-toggle>
-            <mat-button-toggle value="underline">Underline</mat-button-toggle>
+<div class="button-wrapper">
+    <ng-container *ngIf="currentRoomBuildingFloors.length >= 5">
+        <mat-button-toggle class="scroll-toggle-left" (click)="scroll('left')">
+            <span class="material-icons">arrow_left</span>
+        </mat-button-toggle>
+    </ng-container>
+    <mat-button-toggle-group name="fontStyle" aria-label="Font Style" #toggleButtons>
+        <ng-container *ngFor="let floor of currentRoomBuildingFloors; index as i">
+            <mat-button-toggle class="toggle-button" value="bold">
+                {{this.currentRoomBuildingFloors[i].name}}
+            </mat-button-toggle>
+        </ng-container>
     </mat-button-toggle-group>
-  </p>
+    <ng-container *ngIf="currentRoomBuildingFloors.length >= 5">
+        <mat-button-toggle class="scroll-toggle-right" (click)="scroll('right')">
+            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="arrow_right"></mat-icon>
+        </mat-button-toggle>
+    </ng-container>
+</div>
+
+
+<span>{{currentRoom.name}}, {{currentRoom.building}}</span>

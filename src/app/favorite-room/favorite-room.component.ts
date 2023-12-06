@@ -50,7 +50,8 @@ export class FavoriteRoomComponent {
   }
 
   navigate(location: string, room: Room) {
-    this.sharedService.navigate(location);
+    const path: string = location.concat('/' + String(room.id));
+    this.sharedService.navigate(path);
     this.sharedService.updateCurrentRoom(room);
   }
 

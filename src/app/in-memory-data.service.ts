@@ -15,6 +15,7 @@ export class InMemoryDataService implements InMemoryDbService {
         name: 'I032',
         floor: 'EG',
         building: 'ZIMT',
+        building_id: 1,
         favorite: false,
       },
 
@@ -22,6 +23,7 @@ export class InMemoryDataService implements InMemoryDbService {
         name: 'I233',
         floor: 'OG2',
         building: 'ZIMT',
+        building_id: 1,
         favorite: false,
       },
 
@@ -29,6 +31,7 @@ export class InMemoryDataService implements InMemoryDbService {
         name: 'A003',
         floor: 'EG',
         building: 'AB-Gebäude',
+        building_id: 2,
         favorite: false,
       },
     ];
@@ -52,12 +55,37 @@ export class InMemoryDataService implements InMemoryDbService {
         building_id: 1,
         room_ids: [1,2],
       },
+      { id: 4,
+        name: 'OG3',
+        image: 'default.jpg',
+        building_id: 1,
+        room_ids: [1,2],
+      },
+      { id: 5,
+        name: 'OG4',
+        image: 'default.jpg',
+        building_id: 1,
+        room_ids: [1,2],
+      },
     ];
 
     const buildings = [
       { 
         id: 1,
         name: 'ZIMT',
+        street: 'Flughafenallee',
+        street_number: '10',
+        ort: 'Bremen',
+        plz: 28199,
+        country: 'Deutschland',
+        image: 'default.jpg',
+        floor_ids: [1,2,3,4,5],
+        room_ids: [1,2],
+        favorite: false,
+      },
+      { 
+        id: 2,
+        name: 'AB-Gebäude',
         street: 'Flughafenallee',
         street_number: '10',
         ort: 'Bremen',

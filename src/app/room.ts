@@ -5,5 +5,6 @@ export interface Room {
     name: string;
     floor: string;
     building: string;
+    building_id: number;
     favorite: boolean;
 }

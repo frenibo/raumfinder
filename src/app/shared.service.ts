@@ -39,6 +39,7 @@ export class SharedService {
     name: 'noname',
     floor: '',
     building: '',
+    building_id: 0,
     favorite: false,
   }
 
