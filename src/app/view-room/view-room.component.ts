@@ -32,6 +32,8 @@ export class ViewRoomComponent {
 
   currentRoomBuilding: Building = this.sharedService.defaultBuilding;
   currentRoomBuildingFloors: any[] = [];
+  floorName: string = 'EG';
+  scrollToggle: boolean = false;
 
   @ViewChild('toggleButtons') toggleButtons: ElementRef | undefined;
 
@@ -56,12 +58,15 @@ export class ViewRoomComponent {
   }
 
   scroll(direction: string) {
-    console.log(window.innerWidth);
     if(direction === 'right' && this.toggleButtons) {
       this.toggleButtons.nativeElement.scrollLeft += ((window.innerWidth + 20) / 5);
     }
     if(direction === 'left' && this.toggleButtons) {
       this.toggleButtons.nativeElement.scrollLeft -= ((window.innerWidth + 20) / 5);
     }
+  }
+
+  toggleBlueprint(floorName: string) {
+    this.floorName = floorName;
   }
 }
