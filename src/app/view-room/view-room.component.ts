@@ -55,6 +55,7 @@ export class ViewRoomComponent {
         });
       }
     }
+    this.floorName = this.currentRoom.floor;
   }
 
   scroll(direction: string) {

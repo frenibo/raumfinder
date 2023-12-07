@@ -30,6 +30,11 @@
         border-radius: 0%;
     }
 
+    .toggle-button.mat-button-toggle-checked {
+        background-color: grey !important;
+        color: #000000 !important;
+    }
+
     mat-button-toggle-group {
         width: 60vw;
         flex-grow: 1;
