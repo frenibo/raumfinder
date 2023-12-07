@@ -56,11 +56,12 @@ export class ViewRoomComponent {
   }
 
   scroll(direction: string) {
+    console.log(window.innerWidth);
     if(direction === 'right' && this.toggleButtons) {
-      this.toggleButtons.nativeElement.scrollLeft += 160;
+      this.toggleButtons.nativeElement.scrollLeft += ((window.innerWidth + 20) / 5);
     }
     if(direction === 'left' && this.toggleButtons) {
-      this.toggleButtons.nativeElement.scrollLeft -= 160;
+      this.toggleButtons.nativeElement.scrollLeft -= ((window.innerWidth + 20) / 5);
     }
   }
 }

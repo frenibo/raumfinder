@@ -20,6 +20,7 @@
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr 
+        class="nonheader-row"
         mat-row 
         (click)="navigate('view-building', row)"
         *matRowDef="let row; columns: displayedColumns;"
