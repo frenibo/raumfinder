@@ -1,0 +1,21 @@
+<div [hidden]="loadingComplete" class="loader" 
+[ngStyle]="{'width' : loaderWidth + '%'}"
+>
+    <div class="wrapper">
+        <img src="../../assets/hsb assets/logo_hsb.png" class="logo">
+        <div class="title" [ngStyle]="{'font-size' : loaderWidth}" >RAUMFINDER</div>
+    </div>
+</div>
+
+<div [hidden]="!loadingComplete" class="loaded">
+
+    <app-header></app-header>
+
+    <div class="below-header">
+        <router-outlet></router-outlet>
+    </div>
+    
+
+    <!--app-footer></app-footer-->
+
+</div>

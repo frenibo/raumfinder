@@ -1,4 +1,4 @@
-package com.example.app;
+package com.roomfinder.app;
 
 import com.getcapacitor.BridgeActivity;
 

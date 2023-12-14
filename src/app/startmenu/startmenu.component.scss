@@ -1,0 +1,70 @@
+
+//.buttons {
+//    display: flex;
+//    flex-wrap: wrap;
+//}
+
+
+.content {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-wrap:nowrap;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* Ändere die Anordnung in eine Spalte */
+  background-color: transparent;
+  
+  .title {
+    font-size: 2rem;
+    color:white;
+    font-weight: bold;
+    margin-bottom: 0;
+  }
+
+  .subtitle {
+    font-size: 1.5rem;
+    color:white;
+    width: 60vw;
+    text-align: center;
+    margin-top: 0;
+
+  }
+
+  .button1, .button2, .button3, .button4 {
+    width: 80vw;
+    height: 5rem;
+    margin: 0.5rem;
+    background-color: white;
+    border: 2px solid black;
+    color: black;
+    font-size: 1.5rem;
+    font-weight: bold;
+    transition: background-color 0.3s; /* Animiere die Hintergrundfarbe beim Übergang */
+    &:hover {
+      background-color: #001D3D;
+      color: white;
+      border-color: white;
+      cursor: pointer;
+    }
+  }
+  
+  .button5 {
+    width: 70vw;
+    height: 5rem;
+    margin: 0.5rem;
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: underline;
+    &:hover {
+      text-decoration: none;
+      background-color: transparent;
+      color: #001D3D;
+      text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,73 @@
+<div class="button-wrapper">
+    <ng-container *ngIf="currentRoomBuildingFloors.length >= 5">
+        <mat-button-toggle class="scroll-toggle-left" (click)="scroll('left')">
+            <span class="material-icons">arrow_left</span>
+        </mat-button-toggle>
+    </ng-container>
+    <mat-button-toggle-group name="fontStyle" aria-label="Font Style" #toggleButtons>
+        <ng-container *ngFor="let floor of currentRoomBuildingFloors; index as i">
+            <mat-button-toggle class="toggle-button" [checked]="floorName == this.currentRoomBuildingFloors[i].name" (click)="toggleBlueprint(this.currentRoomBuildingFloors[i].name)">
+                {{this.currentRoomBuildingFloors[i].name}}
+            </mat-button-toggle>
+        </ng-container>
+    </mat-button-toggle-group>
+    <ng-container *ngIf="currentRoomBuildingFloors.length >= 5">
+        <mat-button-toggle class="scroll-toggle-right" (click)="scroll('right')">
+            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="arrow_right"></mat-icon>
+        </mat-button-toggle>
+    </ng-container>
+</div>
+
+<div class="flex-wrapper">
+    <div class="blueprintImage">
+        {{floorName}}
+        {{currentRoom.name}}
+        {{currentRoom.building}}
+    </div>
+
+    <div class="info-bar">
+        <div class="adress">
+            <span id="room-name">{{currentRoom.name}}</span>
+            <span id="building-name">{{currentRoomBuilding.name}}</span>
+            <span id="street-name">{{currentRoomBuilding.street}} </span>
+            <span id="street-number">{{currentRoomBuilding.street_number}}, </span>
+            <span id="plz">{{currentRoomBuilding.plz}} </span>
+            <span id="ort">{{currentRoomBuilding.ort}}</span>
+        </div>
+        <div class="info-button-wrapper">
+            <button mat-icon-button class="info-button">
+                <mat-icon>
+                    info
+                </mat-icon>
+            </button>
+        </div>
+    </div>
+    
+    <div class="navButton-wrapper">
+        <Button class="navButton" id="GebäudeAnsicht">
+            <div>
+                Gebäude
+            </div>
+            <div>
+                Ansicht
+            </div>
+        </Button>
+        <Button class="navButton" id="BelegungsPlan">
+            <div>
+                Belegungs
+            </div>
+            <div>
+                Plan
+            </div>
+        </Button>
+        <Button class="navButton" id="FreieRäume">
+            <div>
+                Freie
+            </div>
+            <div>
+                Räume
+            </div>
+        </Button>
+    </div>
+</div>
+
