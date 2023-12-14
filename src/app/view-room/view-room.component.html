@@ -18,8 +18,56 @@
     </ng-container>
 </div>
 
-<div class="blueprintImage">
-    {{floorName}}
-    {{currentRoom.name}}
-    {{currentRoom.building}}
+<div class="flex-wrapper">
+    <div class="blueprintImage">
+        {{floorName}}
+        {{currentRoom.name}}
+        {{currentRoom.building}}
+    </div>
+
+    <div class="info-bar">
+        <div class="adress">
+            <span id="room-name">{{currentRoom.name}}</span>
+            <span id="building-name">{{currentRoomBuilding.name}}</span>
+            <span id="street-name">{{currentRoomBuilding.street}} </span>
+            <span id="street-number">{{currentRoomBuilding.street_number}}, </span>
+            <span id="plz">{{currentRoomBuilding.plz}} </span>
+            <span id="ort">{{currentRoomBuilding.ort}}</span>
+        </div>
+        <div class="info-button-wrapper">
+            <button mat-icon-button class="info-button">
+                <mat-icon>
+                    info
+                </mat-icon>
+            </button>
+        </div>
+    </div>
+    
+    <div class="navButton-wrapper">
+        <Button class="navButton" id="GebäudeAnsicht">
+            <div>
+                Gebäude
+            </div>
+            <div>
+                Ansicht
+            </div>
+        </Button>
+        <Button class="navButton" id="BelegungsPlan">
+            <div>
+                Belegungs
+            </div>
+            <div>
+                Plan
+            </div>
+        </Button>
+        <Button class="navButton" id="FreieRäume">
+            <div>
+                Freie
+            </div>
+            <div>
+                Räume
+            </div>
+        </Button>
+    </div>
 </div>
+
