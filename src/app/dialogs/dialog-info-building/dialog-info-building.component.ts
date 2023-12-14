@@ -1,5 +1,13 @@
 import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
+import { 
+  MatDialog,
+  MAT_DIALOG_DATA,
+  MatDialogRef,
+  MatDialogTitle,
+  MatDialogContent,
+  MatDialogActions,
+  MatDialogClose, 
+} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dialog-info-building',
@@ -8,7 +16,7 @@ import { MAT_DIALOG_DATA, MatDialog, MatDialogConfig, MatDialogRef } from '@angu
 })
 export class DialogInfoBuildingComponent {
   constructor(
-    public dialogRef: MatDialogRef<any>,
+    private dialogRef: MatDialogRef<any>,
     @Inject(MAT_DIALOG_DATA) public data: {
     },
   ) {}

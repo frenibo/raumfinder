@@ -30,7 +30,21 @@ export class DialogService {
     public router: Router,
   ) { }
 
-  /* template
+  async openDialogInfoBuilding(): Promise<any> {
+
+    const dialogRef = this.dialog.open(DialogInfoBuildingComponent, {
+      data: { 
+        
+      },
+    });
+    
+    dialogRef.afterClosed().subscribe(result => {
+    })
+
+  }
+
+  // Template für Übergabe von Daten an Dialog
+  /* 
 
   async openDetailViewDialog(topology: Topology, owner: User): Promise<any> {
 
@@ -53,19 +67,6 @@ export class DialogService {
   }
 
   */
-
-  async openDialogInfoBuilding(): Promise<any> {
-
-    const dialogRef = this.dialog.open(DialogInfoBuildingComponent, {
-      data: { 
-        
-      },
-    });
-    
-    dialogRef.afterClosed().subscribe(result => {
-    })
-
-  }
 
 
 }
