@@ -40,6 +40,7 @@ import { ListFreeRoomsComponent } from './list-free-rooms/list-free-rooms.compon
 import { MatCardModule } from '@angular/material/card';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import { SettingsComponent } from './settings/settings.component';
 
 
 @NgModule({
@@ -59,6 +60,7 @@ import {MatNativeDateModule} from '@angular/material/core';
         AutofocusDirective,
         DialogInfoBuildingComponent,
         ListFreeRoomsComponent,
+        SettingsComponent,
     ],
     providers: [
         CookieService,

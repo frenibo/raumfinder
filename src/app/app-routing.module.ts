@@ -9,6 +9,7 @@ import { ListRoomComponent } from './list-room/list-room.component';
 import { ListBuildingComponent } from './list-building/list-building.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { ListFreeRoomsComponent } from './list-free-rooms/list-free-rooms.component';
+import { SettingsComponent } from './settings/settings.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'loading', pathMatch: 'full' },
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'view-building/:id', component: ViewBuildingComponent },
   { path: 'favorites', component: FavoritesComponent },
   { path: 'list-free-rooms', component: ListFreeRoomsComponent },
+  { path: 'settings', component: SettingsComponent },
 
 ];
 
