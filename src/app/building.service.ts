@@ -34,7 +34,7 @@ export class BuildingService {
   }
 
   /** POST: add a new room to the server */
-  addRBuildings(building: Building): Observable<Building> {
+  addBuildings(building: Building): Observable<Building> {
     return this.http.post<Building>(this.buildingsUrl, building, this.httpOptions)
   }
 
