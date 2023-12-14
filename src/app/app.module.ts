@@ -36,6 +36,10 @@ import { FavoritesComponent } from './favorites/favorites.component';
 import { AutofocusDirective } from './autofocus.directive';
 import { DialogInfoBuildingComponent } from './dialogs/dialog-info-building/dialog-info-building.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ListFreeRoomsComponent } from './list-free-rooms/list-free-rooms.component';
+import { MatCardModule } from '@angular/material/card';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 
 @NgModule({
@@ -54,6 +58,7 @@ import { MatDialogModule } from '@angular/material/dialog';
         FavoritesComponent,
         AutofocusDirective,
         DialogInfoBuildingComponent,
+        ListFreeRoomsComponent,
     ],
     providers: [
         CookieService,
@@ -79,6 +84,10 @@ import { MatDialogModule } from '@angular/material/dialog';
         ),
         MatButtonToggleModule,
         MatDialogModule,
+        MatCardModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+
         
     ]
 })

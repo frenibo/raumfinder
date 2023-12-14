@@ -1,0 +1,28 @@
+.wrapper-free-rooms {
+    height: 100%;
+
+    .mat-mdc-form-field {
+        font-size: 14px;
+        width: 100%;
+    }
+    
+    .cards {
+
+        //height: calc(100vh - var(--headerHeight); //TODO: 
+        width: 100%;
+        margin-top: 2.5vw;
+        display:grid;
+        grid-template-columns: repeat(auto-fit, minmax(46.25vw, max-content));
+        grid-gap: 2.5vw;
+        justify-content: center;
+    
+        .single-card {
+            //width: 46.25vw;
+        }
+    }
+}
+
+.mdc-text-field__input::-webkit-calendar-picker-indicator {
+    display: block;
+}
+

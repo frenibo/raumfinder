@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { NavigationEnd, Router, UrlSegment } from '@angular/router';
 
 import { Room } from '../room';
@@ -34,6 +34,8 @@ export class LoaderComponent {
   loaderWidth: number = 100;
   loaderHidden: boolean = true;
   lastNavigationEvent!: NavigationEnd;
+
+  @ViewChild('header') header: ElementRef<any> | undefined;
 
   async ngOnInit() {
 

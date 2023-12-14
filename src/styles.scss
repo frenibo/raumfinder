@@ -13,3 +13,7 @@ body {
 .mat-button-toggle-group::-webkit-scrollbar {
     display: none !important;
 }
+
+.mdc-text-field__input::-webkit-calendar-picker-indicator {
+    display: block !important;
+}
