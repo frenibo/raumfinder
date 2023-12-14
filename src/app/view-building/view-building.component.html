@@ -1,2 +1,47 @@
-<span>{{currentBuilding.name}}</span>
-<button (click)="navigate('list-room')">Raum suchen</button>
+
+<div class="flex-wrapper">
+    <div class="blueprintImage">
+        {{currentBuilding.name}}
+    </div>
+
+    <div class="info-bar">
+        <div class="oeffnungszeiten">
+            <span id="oeffnungszeitenTitel">Öffnungszeiten</span>
+            <span id="oeffnungszeitenText">Montag bis Freitag: 6 bis 22 Uhr<p></p>Sa-So: Zugang nur über Kartenleser</span>
+        </div>
+        <div class="info-button-wrapper">
+            <button mat-icon-button class="info-button">
+                <mat-icon>
+                    info
+                </mat-icon>
+            </button>
+        </div>
+    </div>
+    
+    <div class="navButton-wrapper">
+        <Button class="navButton" id="RaumSuchen" (click)="navigate('list-room')">
+            <div>
+                Raum
+            </div>
+            <div>
+                Suchen
+            </div>
+        </Button>
+        <Button class="navButton" id="GebäudeAnsicht">
+            <div>
+                Gebäude
+            </div>
+            <div>
+                Ansicht
+            </div>
+        </Button>
+        <Button class="navButton" id="FreieRäume">
+            <div>
+                Freie
+            </div>
+            <div>
+                Räume
+            </div>
+        </Button>
+    </div>
+</div>
