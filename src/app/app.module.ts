@@ -34,6 +34,8 @@ import { FavoriteRoomComponent } from './favorite-room/favorite-room.component';
 import { FavoriteBuildingComponent } from './favorite-building/favorite-building.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { AutofocusDirective } from './autofocus.directive';
+import { DialogInfoBuildingComponent } from './dialogs/dialog-info-building/dialog-info-building.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -51,6 +53,7 @@ import { AutofocusDirective } from './autofocus.directive';
         FavoriteBuildingComponent,
         FavoritesComponent,
         AutofocusDirective,
+        DialogInfoBuildingComponent,
     ],
     providers: [
         CookieService,
@@ -75,6 +78,8 @@ import { AutofocusDirective } from './autofocus.directive';
             InMemoryDataService, { dataEncapsulation: false }
         ),
         MatButtonToggleModule,
+        MatDialogModule,
+        
     ]
 })
 export class AppModule { }
