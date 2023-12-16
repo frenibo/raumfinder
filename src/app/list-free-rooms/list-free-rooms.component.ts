@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 import { Room } from '../room';
 import { RoomService } from '../room.service';
@@ -30,6 +30,10 @@ export class ListFreeRoomsComponent {
   displayedColumns: string[] = ['name', 'building', 'floor'];
   dataSource = new MatTableDataSource(this.rooms);
   defaultValue: string = '';
+  dateSet: string = '';
+  startDate: Date | undefined;
+
+  @ViewChild('input') input: ElementRef<any> | undefined;
 
   async ngOnInit(): Promise<void> {
     await this.checkLoaded();
@@ -43,6 +47,28 @@ export class ListFreeRoomsComponent {
   getRooms() {
     return this.rooms =  this.sharedService.rooms
   }
+
+  getDate(dateInput?: any): string { 
+    console.log(this.input);
+    if(dateInput) {
+      this.dateSet = dateInput;
+    }
+    
+    if(this.dateSet) {
+      var newDate = this.dateSet;
+    }
+    else {
+      const dateParams = Date().split(' ');
+      const timeParams = dateParams[4].split(':');
+      var newDate = String('').concat(dateParams[2], '. ', dateParams[1], ' ', dateParams[3], ' ', timeParams[0], ':', timeParams[1]);
+    }
+    return newDate;
+  }
+
+  setDate(Date: string) {
+    this.dateSet = Date;
+  }
+
 
   async checkLoaded() {
     return await this.sharedService.checkLoaded();

@@ -1,6 +1,6 @@
 <div class="wrapper-free-rooms">
     <mat-form-field subscriptSizing="dynamic">
-        <mat-icon matPrefix>search</mat-icon>
+        <!--mat-icon matPrefix>search</mat-icon-->
         <input matInput matInputAutofocus (keyup)="applyFilter($event)" placeholder="Raumnummer eingeben" #input value="{{defaultValue}}">
         <button [disabled]="!input.value" matSuffix mat-icon-button aria-label="Clear" (click)="input.value=''; clearFilter()">
             <div *ngIf="input.value">
@@ -11,10 +11,11 @@
 
     <div>
         <mat-form-field class="example-full-width" subscriptSizing="dynamic">
-            <!--mat-label>Choose a date</mat-label-->
-            <input matInput [matDatepicker]="picker">
+            <!--mat-label>{{this.getDate()}}</mat-label-->
+            <span>{{this.getDate(this.startDate)}} {{this.startDate}}</span>
+            <input matInput [matDatepicker]="picker" class="inputDatePicker" #input [(ngModel)]="startDate">
             <!--mat-hint>MM/DD/YYYY</mat-hint-->
-            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker-toggle [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker touchUi #picker>
                 <mat-datepicker-actions>
                     <mat-form-field appearance="fill">
@@ -22,7 +23,7 @@
                         <input matInput type="time">
                     </mat-form-field>
                     <button mat-button matDatepickerCancel>Cancel</button>
-                    <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                    <button mat-raised-button color="primary" matDatepickerApply >Apply</button>
                 </mat-datepicker-actions>
             </mat-datepicker>
         </mat-form-field>
