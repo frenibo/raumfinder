@@ -41,7 +41,7 @@ import { MatCardModule } from '@angular/material/card';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import { SettingsComponent } from './settings/settings.component';
-
+import { NgxMatTimepickerModule } from 'ngx-mat-timepicker'; 
 
 @NgModule({
     declarations: [
@@ -89,8 +89,7 @@ import { SettingsComponent } from './settings/settings.component';
         MatCardModule,
         MatDatepickerModule,
         MatNativeDateModule,
-
-        
+        NgxMatTimepickerModule,
     ]
 })
 export class AppModule { }

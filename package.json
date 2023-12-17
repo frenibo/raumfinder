@@ -25,6 +25,7 @@
     "@capacitor/core": "^5.5.1",
     "angular-in-memory-web-api": "^0.17.0",
     "ngx-cookie-service": "^17.0.0",
+    "ngx-mat-timepicker": "^17.0.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.2"

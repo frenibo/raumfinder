@@ -10,20 +10,37 @@
     </mat-form-field>
 
     <div>
-        <mat-form-field class="example-full-width" subscriptSizing="dynamic">
+        <button mat-button (click)="picker.open()" class="datePickerButton">
+            {{this.getDate(this.startDate)}} {{this.getTime(this.startTime)}}
+        </button>
+        <mat-form-field subscriptSizing="dynamic" class="mat-form-field-no-padding" [class.cdk-visually-hidden]="true">
             <!--mat-label>{{this.getDate()}}</mat-label-->
-            <span>{{this.getDate(this.startDate)}} {{this.startDate}}</span>
-            <input matInput [matDatepicker]="picker" class="inputDatePicker" #input [(ngModel)]="startDate">
+            <input matInput [matDatepicker]="picker" class="inputDatePicker" #input [(ngModel)]="startDate" [hidden]="true">
             <!--mat-hint>MM/DD/YYYY</mat-hint-->
-            <mat-datepicker-toggle [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker-toggle [for]="picker" [hidden]="true"></mat-datepicker-toggle>
             <mat-datepicker touchUi #picker>
+                <mat-form-field>
+                    <input matInput
+                           name="selected_time_B"
+                           [format]="24"
+                           [(ngModel)]="startTime"
+                           [ngxMatTimepicker]="timePicker"
+                           placeholder="16:00"
+                           readonly />
+                </mat-form-field>
+                <ngx-mat-timepicker #timePicker [(ngModel)]="startTime"></ngx-mat-timepicker>
+                
                 <mat-datepicker-actions>
-                    <mat-form-field appearance="fill">
+                    <!--mat-form-field appearance="fill">
                         <mat-label>Uhrzeit</mat-label>
-                        <input matInput type="time">
-                    </mat-form-field>
-                    <button mat-button matDatepickerCancel>Cancel</button>
-                    <button mat-raised-button color="primary" matDatepickerApply >Apply</button>
+                        <input matInput type="time" [(ngModel)]="startTime">
+                    </mat-form-field-->
+                    <div class="datepicker-actions">
+                        <button mat-button class="setTime" (click)="timePicker.open()">{{this.getTime(this.startTime)}}</button>   
+                                                    
+                        <button mat-button matDatepickerCancel>Cancel</button>
+                        <button mat-raised-button color="primary" matDatepickerApply >Apply</button>
+                    </div>
                 </mat-datepicker-actions>
             </mat-datepicker>
         </mat-form-field>
