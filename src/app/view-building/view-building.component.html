@@ -1,8 +1,9 @@
 
 <div class="flex-wrapper">
-    <div class="blueprintImage">
-        {{currentBuilding.name}}
-    </div>
+  <div class="blueprintImage">
+<!--    {{currentBuilding.name}}-->
+    <img [src]="imageURL" alt="Building Image">
+  </div>
 
     <div class="info-bar">
         <div class="oeffnungszeiten">
@@ -17,7 +18,7 @@
             </button>
         </div>
     </div>
-    
+
     <div class="navButton-wrapper">
         <Button class="navButton" id="RaumSuchen" (click)="navigate('list-room')">
             <div>

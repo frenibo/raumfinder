@@ -70,7 +70,7 @@ export class InMemoryDataService implements InMemoryDbService {
     ];
 
     const buildings = [
-      { 
+      {
         id: 1,
         name: 'ZIMT',
         street: 'Flughafenallee',
@@ -78,12 +78,12 @@ export class InMemoryDataService implements InMemoryDbService {
         ort: 'Bremen',
         plz: 28199,
         country: 'Deutschland',
-        image: 'default.jpg',
+        image: 'ZIMT.jpg',
         floor_ids: [1,2,3,4,5],
         room_ids: [1,2],
         favorite: false,
       },
-      { 
+      {
         id: 2,
         name: 'AB-Gebäude',
         street: 'Flughafenallee',
@@ -116,4 +116,11 @@ export class InMemoryDataService implements InMemoryDbService {
   genId(objects: any[]): number {
     return objects.length > 0 ? Math.max(...objects.map(object => object.id)) + 1 : 1;
   }
+
+  getBuildingImageNameById(id: number): string | undefined {
+    const buildings = this.createDb().buildings; // Direkter Zugriff auf die in-memory-Daten
+    const building = buildings.find(building => building.id === id);
+    return building?.image ? `../../assets/hsb/assets/${building.image}` : undefined;
+  }
+
 }

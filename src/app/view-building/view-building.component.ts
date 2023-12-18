@@ -9,6 +9,8 @@ import { Building } from '../building';
 })
 export class ViewBuildingComponent {
 
+  imageURL: string = '';
+
   constructor(
     private sharedService: SharedService,
   ) {}
@@ -30,6 +32,11 @@ export class ViewBuildingComponent {
   async ngOnInit() {
     this.sharedService.currentBuilding.subscribe( currentBuilding => this.currentBuilding = currentBuilding);
     this.sharedService.buildingsChanged.subscribe( buildingsChanged => this.sharedService.updateCurrentBuildingById(this.currentBuilding.id));
+    this.getImage();
+  }
+
+  getImage() {
+    this.imageURL = this.sharedService.loadBuildingImage(this.currentBuilding);
   }
 
   navigate(location: string) {
