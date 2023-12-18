@@ -17,7 +17,7 @@
             </button>
         </div>
     </div>
-    
+
     <div class="navButton-wrapper">
         <Button class="navButton" id="RaumSuchen" (click)="navigate('list-room')">
             <div>
@@ -27,7 +27,7 @@
                 Suchen
             </div>
         </Button>
-        <Button class="navButton" id="GebäudeAnsicht">
+        <Button class="navButton" id="GebäudeAnsicht" (click)="navigateWithBuilding('buildingBlueprint', currentBuilding)">
             <div>
                 Gebäude
             </div>
