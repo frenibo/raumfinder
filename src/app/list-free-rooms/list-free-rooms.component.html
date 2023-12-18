@@ -18,7 +18,7 @@
             <input matInput [matDatepicker]="picker" class="inputDatePicker" #input [(ngModel)]="startDate" [hidden]="true">
             <!--mat-hint>MM/DD/YYYY</mat-hint-->
             <mat-datepicker-toggle [for]="picker" [hidden]="true"></mat-datepicker-toggle>
-            <mat-datepicker touchUi #picker>
+            <mat-datepicker touchUi #picker class="datepicker-dialog">
                 <mat-form-field>
                     <input matInput
                            name="selected_time_B"
@@ -37,9 +37,10 @@
                     </mat-form-field-->
                     <div class="datepicker-actions">
                         <button mat-button class="setTime" (click)="timePicker.open()">{{this.getTime(this.startTime)}}</button>   
-                                                    
-                        <button mat-button matDatepickerCancel>Cancel</button>
-                        <button mat-raised-button color="primary" matDatepickerApply >Apply</button>
+                        <div class="datepicker-buttons">                        
+                            <button mat-button matDatepickerCancel>Cancel</button>
+                            <button mat-raised-button color="primary" matDatepickerApply >Apply</button>
+                        </div>
                     </div>
                 </mat-datepicker-actions>
             </mat-datepicker>
