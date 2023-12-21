@@ -54,9 +54,6 @@ export class ListFreeRoomsComponent {
   }
 
   getDate(dateInput?: any): string {
-    const land : Intl.LocalesArgument = 'US';
-    var date = new Date().getDay().toLocaleString(land);
-    console.log(date);
     if(dateInput) {
       //console.log(dateInput.toISOString());
       dateInput = String(dateInput);

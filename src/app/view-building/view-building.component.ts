@@ -30,6 +30,7 @@ export class ViewBuildingComponent {
   async ngOnInit() {
     this.sharedService.currentBuilding.subscribe( currentBuilding => this.currentBuilding = currentBuilding);
     this.sharedService.buildingsChanged.subscribe( buildingsChanged => this.sharedService.updateCurrentBuildingById(this.currentBuilding.id));
+    console.log('view-building init');
   }
 
   navigate(location: string) {
