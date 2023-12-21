@@ -1,12 +1,17 @@
 <div class="wrapper-free-rooms">
     <mat-form-field subscriptSizing="dynamic">
         <!--mat-icon matPrefix>search</mat-icon-->
-        <input matInput matInputAutofocus (keyup)="applyFilter($event)" placeholder="Raumnummer eingeben" #input value="{{defaultValue}}">
+        <input matInput matInputAutofocus (keyup)="applyFilter($event)" placeholder="Gebäudename eingeben" #input value="{{defaultValue}}" [matAutocomplete]="auto">
         <button [disabled]="!input.value" matSuffix mat-icon-button aria-label="Clear" (click)="input.value=''; clearFilter()">
             <div *ngIf="input.value">
                 <mat-icon>close</mat-icon>
             </div>
         </button>
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                <mat-option *ngFor="let building of dataSourceBuildings.connect().value" (click)="input.value = building.name">
+                    {{building.name}}
+                </mat-option>
+        </mat-autocomplete>
     </mat-form-field>
 
     <div>
@@ -47,9 +52,9 @@
         </mat-form-field>
     </div>
 
-    <div *ngIf="dataSource.filteredData?.length; else noMatch">
+    <div *ngIf="dataSourceRooms.filteredData?.length; else noMatch">
         <div class="cards">
-            <div *ngFor="let room of dataSource.connect().value">
+            <div *ngFor="let room of dataSourceRooms.connect().value">
                     <mat-card class="single-card" (click)="navigate('view-room', room)">
                         <mat-card-header>
                             <mat-card-title>{{room.name}}</mat-card-title>
@@ -67,6 +72,6 @@
         </div>
     </div>
     <ng-template #noMatch>
-        <div>No data matching the filter "{{this.dataSource.filter}}"</div>
+        <div>No data matching the filter "{{this.dataSourceRooms.filter}}"</div>
     </ng-template>
 </div>

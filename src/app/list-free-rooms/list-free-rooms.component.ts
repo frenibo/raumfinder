@@ -29,8 +29,9 @@ export class ListFreeRoomsComponent {
   floors: Floor[] = [];
   buildings: Building[] = [];
   displayedColumns: string[] = ['name', 'building', 'floor'];
-  dataSource = new MatTableDataSource(this.rooms);
-  defaultValue: string = '';
+  dataSourceRooms = new MatTableDataSource(this.rooms);
+  dataSourceBuildings = new MatTableDataSource(this.buildings);
+  defaultValue: string = 'ZIMT';
   dateSet: string = '';
   timeSet: string = '';
   startDate: Date | undefined;
@@ -43,14 +44,20 @@ export class ListFreeRoomsComponent {
   async ngOnInit(): Promise<void> {
     await this.checkLoaded();
     this.getRooms();
-    this.dataSource = new MatTableDataSource<Room>(this.rooms);
+    this.dataSourceRooms = new MatTableDataSource<Room>(this.rooms);
+    this.getBuildings();
+    this.dataSourceBuildings = new MatTableDataSource<Building>(this.buildings);
    
     this.sharedService.currentFilter.subscribe(
-      currentFilter => currentFilter ? this.dataSource.filter = this.defaultValue = currentFilter + ' ' : null);2
+      currentFilter => currentFilter ? this.dataSourceBuildings.filter = this.defaultValue = currentFilter + ' ' : null);
   }
 
   getRooms() {
     return this.rooms =  this.sharedService.rooms
+  }
+
+  getBuildings() {
+    return this.buildings =  this.sharedService.buildings
   }
 
   getDate(dateInput?: any): string {
@@ -76,17 +83,17 @@ export class ListFreeRoomsComponent {
 
   convertMonthStringtoNum(month: string): string {
     if(month == 'Jan') { return '01' }
-    if(month == 'Feb') { return '02' }
-    if(month == 'Mar') { return '03' }
-    if(month == 'Apr') { return '04' }
-    if(month == 'May') { return '05' }
-    if(month == 'Jun') { return '06' }
-    if(month == 'Jul') { return '07' }
-    if(month == 'Aug') { return '08' }
-    if(month == 'Sep') { return '09' }
-    if(month == 'Oct') { return '10' }
-    if(month == 'Nov') { return '11' }
-    if(month == 'Dec') { return '12' }
+    else if(month == 'Feb') { return '02' }
+    else if(month == 'Mar') { return '03' }
+    else if(month == 'Apr') { return '04' }
+    else if(month == 'May') { return '05' }
+    else if(month == 'Jun') { return '06' }
+    else if(month == 'Jul') { return '07' }
+    else if(month == 'Aug') { return '08' }
+    else if(month == 'Sep') { return '09' }
+    else if(month == 'Oct') { return '10' }
+    else if(month == 'Nov') { return '11' }
+    else if(month == 'Dec') { return '12' }
 
     return '00'
   }
@@ -122,17 +129,18 @@ export class ListFreeRoomsComponent {
 
 
   applyFilter(event: Event) {
-    this.dataSource = new MatTableDataSource(this.rooms);
+    this.dataSourceRooms = new MatTableDataSource(this.rooms);
     const filterValue = (event.target as HTMLInputElement).value;
     const filterArray = filterValue.toLocaleLowerCase().split(' ');
     filterArray.forEach(filterValue => {
-      this.dataSource.filter = filterValue;
-      this.dataSource = new MatTableDataSource(this.dataSource.filteredData);
+      this.dataSourceRooms.filter = filterValue;
+      this.dataSourceRooms = new MatTableDataSource(this.dataSourceRooms.filteredData);
     });
   }
 
   clearFilter() {
-    this.dataSource.filter = "";
+    this.dataSourceBuildings.filter = "";
+    this.dataSourceRooms.filter = "";
   }
 
   navigate(location: string, room: Room) {
