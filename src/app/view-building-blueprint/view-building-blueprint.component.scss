@@ -1,7 +1,3 @@
-p {
-  margin: 0;
-  padding: 0;
-}
 
 .button-wrapper {
   width: 100%;
@@ -64,18 +60,29 @@ p {
 }
 
 .flex-wrapper {
-  //height: calc(100% - 3rem);
-  height: 100%;
+  height: calc(100% - 3rem);
+//  height: 100%;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
 
-  .blueprintImage {
+  .blueprintContainer {
     background-color: white;
     width: 100%;
-    flex-basis: 50vh;
-    flex-grow: 2;
+    height: 100%;
+    background-size: contain;
+    flex-basis: 50vh; /* Die Basisgröße Flex-Containers beträgt 50% der Viewport-Höhe /
+      flex-grow: 2; / Das Element kann sich im Verhältnis 2:1 gegenüber anderen flexiblen Elementen vergrößern */
+    overflow: hidden;
+  }
+
+  .blueprintImage {
+    width: 100%;
+    height: 100%;;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
   }
 
   .info-bar {
@@ -106,23 +113,6 @@ p {
         width: 100%;
         //margin-right: 0.2rem;
       }
-
-    }
-    .info-button-wrapper {
-      width: 20%;
-      margin-left: auto;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      .info-button {
-        background-color: transparent;
-        border: none;
-        color:white;
-        width: 3rem;
-        height: 3rem;
-        //font-size: 100px !important;
-
-      }
     }
   }
 
@@ -131,7 +121,6 @@ p {
   }
 
   .navButton-wrapper {
-
     width: 100%;
     display: flex;
     flex-wrap: nowrap;
