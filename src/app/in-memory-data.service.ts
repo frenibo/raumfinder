@@ -28,7 +28,7 @@ export class InMemoryDataService implements InMemoryDbService {
       },
 
       { id: 3,
-        name: 'A003',
+        name: 'A03',
         floor: 'EG',
         building: 'AB-Gebäude',
         building_id: 2,
