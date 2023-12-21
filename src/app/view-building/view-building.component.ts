@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 import { SharedService } from '../shared.service';
 import { Building } from '../building';
 import {Room} from "../room";

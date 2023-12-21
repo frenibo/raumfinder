@@ -1,5 +1,5 @@
 <!--
-Möchte man für ein neues Component einen Header erstellen, kopiert man eines der bereits erstellten Header und passt 
+Möchte man für ein neues Component einen Header erstellen, kopiert man eines der bereits erstellten Header und passt
 *ngIf="currentLocation === 'startmenu'" an. 'startmenu' wird durch den im app-routing-module für das component konfigurierten string ersetzt.
 
 
@@ -59,4 +59,11 @@ Möchte man für ein neues Component einen Header erstellen, kopiert man eines d
     <button class="button" mat-icon-button disabled>
         <mat-icon>star</mat-icon>
     </button>
+</div>
+
+<div class="header" id="buildingBlueprint" *ngIf="currentLocation === 'buildingBlueprint'">
+  <button class="return" mat-icon-button (click)="goBack()">
+    <mat-icon>keyboard_arrow_left</mat-icon>
+  </button>
+  <div class="title">Gebäudeplan {{currentBuilding.name}}</div>
 </div>
