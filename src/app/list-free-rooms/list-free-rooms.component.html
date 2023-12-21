@@ -1,14 +1,14 @@
 <div class="wrapper-free-rooms">
     <mat-form-field subscriptSizing="dynamic">
         <!--mat-icon matPrefix>search</mat-icon-->
-        <input matInput matInputAutofocus (keyup)="applyFilter($event)" placeholder="Gebäudename eingeben" #input value="{{defaultValue}}" [matAutocomplete]="auto">
-        <button [disabled]="!input.value" matSuffix mat-icon-button aria-label="Clear" (click)="input.value=''; clearFilter()">
+        <input matInput (keyup)="applyFilter($event)" (change)="applyFilter($event)" placeholder="Gebäudename eingeben" #input value="{{defaultValue}}" [matAutocomplete]="auto">
+        <!--button [disabled]="!input.value" matSuffix mat-icon-button aria-label="Clear" (click)="input.value=''; clearFilter()">
             <div *ngIf="input.value">
                 <mat-icon>close</mat-icon>
             </div>
-        </button>
+        </button-->
         <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-                <mat-option *ngFor="let building of dataSourceBuildings.connect().value" (click)="input.value = building.name">
+                <mat-option *ngFor="let building of dataSourceBuildings.connect().value" (click)="input.value = building.name; applyFilter($event)">
                     {{building.name}}
                 </mat-option>
         </mat-autocomplete>
