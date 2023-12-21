@@ -5,7 +5,7 @@
         </mat-button-toggle>
     </ng-container>
     <mat-button-toggle-group name="fontStyle" aria-label="Font Style" #toggleButtons>
-        <ng-container *ngFor="let floor of currentRoomBuildingFloors; index as i">
+        <ng-container *ngFor="let floor of currentRoomBuilding.floor_ids; index as i">
             <mat-button-toggle class="toggle-button" [checked]="floorName == this.currentRoomBuildingFloors[i].name" (click)="toggleBlueprint(this.currentRoomBuildingFloors[i].name)">
                 {{this.currentRoomBuildingFloors[i].name}}
             </mat-button-toggle>

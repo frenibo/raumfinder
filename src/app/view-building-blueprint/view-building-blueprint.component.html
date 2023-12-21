@@ -1,17 +1,17 @@
 <div class="button-wrapper">
-  <ng-container *ngIf="currentRoomBuildingFloors.length >= 5">
+  <ng-container *ngIf="currentBuildingFloors.length >= 5">
     <mat-button-toggle class="scroll-toggle-left" (click)="scroll('left')">
       <span class="material-icons">arrow_left</span>
     </mat-button-toggle>
   </ng-container>
   <mat-button-toggle-group name="fontStyle" aria-label="Font Style" #toggleButtons>
-    <ng-container *ngFor="let floor of currentRoomBuildingFloors; index as i">
-      <mat-button-toggle class="toggle-button" [checked]="floorName == this.currentRoomBuildingFloors[i].name" (click)="toggleBlueprint(this.currentRoomBuildingFloors[i].name)">
-        {{this.currentRoomBuildingFloors[i].name}}
+    <ng-container *ngFor="let floor of currentBuildingFloors; index as i">
+      <mat-button-toggle class="toggle-button" [checked]="floorName == this.currentBuildingFloors[i].name" (click)="toggleBlueprint(this.currentBuildingFloors[i].name)">
+        {{this.currentBuildingFloors[i].name}}
       </mat-button-toggle>
     </ng-container>
   </mat-button-toggle-group>
-  <ng-container *ngIf="currentRoomBuildingFloors.length >= 5">
+  <ng-container *ngIf="currentBuildingFloors.length >= 5">
     <mat-button-toggle class="scroll-toggle-right" (click)="scroll('right')">
       <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="arrow_right"></mat-icon>
     </mat-button-toggle>

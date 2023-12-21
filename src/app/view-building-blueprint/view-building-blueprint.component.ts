@@ -1,6 +1,8 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import {Building} from "../building";
 import { SharedService } from '../shared.service';
+import {Room} from "../room";
+import {lastValueFrom} from "rxjs";
 
 @Component({
   selector: 'app-view-building-blueprint',
@@ -26,14 +28,14 @@ export class ViewBuildingBlueprintComponent {
     favorite: false,
   };
 
-  currentRoomBuilding: Building = this.sharedService.defaultBuilding;
-  currentRoomBuildingFloors: any[] = [];
+  currentBuildingFloors: any[] = [];
   floorName: string = 'EG';
   scrollToggle: boolean = false;
 
   @ViewChild('toggleButtons') toggleButtons: ElementRef | undefined;
 
   async ngOnInit() {
+    this.sharedService.currentBuilding.subscribe( currentBuilding => this.getData(currentBuilding));
     this.sharedService.currentBuilding.subscribe( currentBuilding => this.currentBuilding = currentBuilding);
     this.sharedService.buildingsChanged.subscribe( buildingsChanged => this.sharedService.updateCurrentBuildingById(this.currentBuilding.id));
   }
@@ -50,10 +52,24 @@ export class ViewBuildingBlueprintComponent {
   toggleBlueprint(floorName: string) {
     this.floorName = floorName;
   }
-  
+
 
   navigate(location: string) {
     this.sharedService.navigate(location);
     this.sharedService.setCurrentFilter(this.currentBuilding.name);
   }
+
+  async getData(building: Building) {
+    this.currentBuilding = building;
+    if(this.currentBuilding.floor_ids) {
+      this.currentBuildingFloors = [];
+      for(let i = 0; i < this.currentBuilding.floor_ids.length; i++) {
+        this.sharedService.floors.forEach( floor => {
+          floor.id == this.currentBuilding.floor_ids[i] ? this.currentBuildingFloors.push(floor) : null
+        });
+      }
+    }
+    this.floorName = "EG";
+  }
+
 }
