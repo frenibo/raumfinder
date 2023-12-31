@@ -1,0 +1,63 @@
+<div class="button-wrapper">
+  <ng-container *ngIf="currentBuildingFloors.length >= 5">
+    <mat-button-toggle class="scroll-toggle-left" (click)="scroll('left')">
+      <span class="material-icons">arrow_left</span>
+    </mat-button-toggle>
+  </ng-container>
+  <mat-button-toggle-group name="fontStyle" aria-label="Font Style" #toggleButtons>
+    <ng-container *ngFor="let floor of currentBuildingFloors; index as i">
+      <mat-button-toggle class="toggle-button" [checked]="floorName == this.currentBuildingFloors[i].name" (click)="toggleBlueprint(this.currentBuildingFloors[i].name)">
+        {{this.currentBuildingFloors[i].name}}
+      </mat-button-toggle>
+    </ng-container>
+  </mat-button-toggle-group>
+  <ng-container *ngIf="currentBuildingFloors.length >= 5">
+    <mat-button-toggle class="scroll-toggle-right" (click)="scroll('right')">
+      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="arrow_right"></mat-icon>
+    </mat-button-toggle>
+  </ng-container>
+</div>
+
+<div class="flex-wrapper">
+<!--  <div class="blueprintImage">-->
+<!--    {{currentBuilding.name}}-->
+<!--  </div>-->
+  <div class="blueprintContainer">
+    <div
+      class="blueprintImage" style="background-image: url('../../assets/hsb assets/{{currentBuilding.name}}_{{floorName}}.png');" alt="Room Image">
+    </div>
+  </div>
+  <div class="info-bar">
+    <div class="oeffnungszeiten">
+      <span id="oeffnungszeitenTitel">Öffnungszeiten</span>
+      <span id="oeffnungszeitenText">Montag bis Freitag: 6 bis 22 Uhr<p></p>Sa-So: Zugang nur über Kartenleser</span>
+    </div>
+  </div>
+
+  <div class="navButton-wrapper">
+    <Button class="navButton" id="RaumSuchen" (click)="navigate('list-room')">
+      <div>
+        Raum
+      </div>
+      <div>
+        Suchen
+      </div>
+    </Button>
+    <Button class="navButton" id="KartenAnsicht" (click)="navigate('view-building')">
+      <div>
+        Karten
+      </div>
+      <div>
+        Ansicht
+      </div>
+    </Button>
+    <Button class="navButton" id="FreieRäume">
+      <div>
+        Freie
+      </div>
+      <div>
+        Räume
+      </div>
+    </Button>
+  </div>
+</div>

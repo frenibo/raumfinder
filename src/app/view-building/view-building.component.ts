@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 import { SharedService } from '../shared.service';
 import { Building } from '../building';
+import {Room} from "../room";
 
 @Component({
   selector: 'app-view-building',
@@ -37,6 +38,12 @@ export class ViewBuildingComponent {
   navigate(location: string) {
     this.sharedService.navigate(location);
     this.sharedService.setCurrentFilter(this.currentBuilding.name);
+  }
+
+  navigateWithBuilding(location: string, building: Building) {
+    const path: string = location.concat('/' + String(building.id));
+    this.sharedService.navigate(path);
+    this.sharedService.updateCurrentBuilding(building);
   }
 
 }
