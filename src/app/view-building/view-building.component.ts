@@ -10,6 +10,8 @@ import {Room} from "../room";
 })
 export class ViewBuildingComponent {
 
+  imageURL: string = '';
+
   constructor(
     private sharedService: SharedService,
   ) {}

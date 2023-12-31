@@ -1,18 +1,15 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, ReplaySubject, Subject, lastValueFrom } from 'rxjs';
-import { Room } from './room';
-import { RoomService } from './room.service';
-import { Floor } from './floor';
-import { FloorService } from './floor.service';
-import { Building } from './building';
-import { BuildingService } from './building.service';
+import {Injectable} from '@angular/core';
+import {BehaviorSubject, lastValueFrom} from 'rxjs';
+import {Room} from './room';
+import {RoomService} from './room.service';
+import {Floor} from './floor';
+import {FloorService} from './floor.service';
+import {Building} from './building';
+import {BuildingService} from './building.service';
 
-import { LoaderComponent } from './loader/loader.component';
-
-import { ActivatedRoute, ActivatedRouteSnapshot, NavigationEnd } from '@angular/router';
-import { ParamMap, Params, Router } from '@angular/router';
-import { Location } from '@angular/common';
-import { CookieService } from 'ngx-cookie-service';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {Location} from '@angular/common';
+import {CookieService} from 'ngx-cookie-service';
 
 
 @Injectable({
@@ -79,6 +76,18 @@ export class SharedService {
       this.router.navigate([location]);
     }
     this.currentFilter.next('');
+  }
+
+  loadBuildingImage(building: Building): string {
+    // Gebäude existiert und das Bildattribut nicht null
+    if (building && building.image) {
+      // Gib den vollständigen Pfad zurück
+      return `../../assets/hsb/assets/${building.image}`;
+    } else {
+      // Handle den Fall, wenn das Bild nicht gefunden wird
+      console.error('Bild nicht gefunden');
+      return ''; // oder einen Standardpfad oder eine leere Zeichenfolge zurückgeben
+    }
   }
 
   goBack() {
@@ -166,7 +175,7 @@ export class SharedService {
       }
     }
     this.roomsChanged.next(!this.roomsChanged.value);
-    
+
   }
 
   getFavBuildings() {
@@ -186,7 +195,7 @@ export class SharedService {
       }
     }
     this.buildingsChanged.next(!this.buildingsChanged.value);
-    
+
   }
 
   async deleteFav(id: number, key: string) {
@@ -253,5 +262,5 @@ export class SharedService {
     const favdIdsAsNumber: Number[] = favIdsAsString.map(function(item) {
       return Number(item)
     })
-    
+
 */

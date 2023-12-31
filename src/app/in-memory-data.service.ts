@@ -28,7 +28,7 @@ export class InMemoryDataService implements InMemoryDbService {
       },
 
       { id: 3,
-        name: 'A003',
+        name: 'A03',
         floor: 'EG',
         building: 'AB-Gebäude',
         building_id: 2,
@@ -70,7 +70,7 @@ export class InMemoryDataService implements InMemoryDbService {
     ];
 
     const buildings = [
-      { 
+      {
         id: 1,
         name: 'ZIMT',
         street: 'Flughafenallee',
@@ -83,7 +83,7 @@ export class InMemoryDataService implements InMemoryDbService {
         room_ids: [1,2],
         favorite: false,
       },
-      { 
+      {
         id: 2,
         name: 'AB-Gebäude',
         street: 'Flughafenallee',
@@ -116,4 +116,5 @@ export class InMemoryDataService implements InMemoryDbService {
   genId(objects: any[]): number {
     return objects.length > 0 ? Math.max(...objects.map(object => object.id)) + 1 : 1;
   }
+
 }

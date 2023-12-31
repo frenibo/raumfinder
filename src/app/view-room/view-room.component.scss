@@ -13,14 +13,14 @@
         background-color: #ffffff !important;
         color: #000000 !important;
     }
-    
+
     .scroll-toggle-left {
         flex-basis:20vw;
         flex-grow: 0;
         border-width: 1px;
         border-color: grey;
         border-radius: 0%;
-        
+
     }
     .scroll-toggle-right {
         flex-basis:20vw;
@@ -65,11 +65,25 @@
     flex-wrap: wrap;
     flex-direction: column;
 
-    .blueprintImage {
-        background-color: white;
+     .blueprintContainer {
+      background-color: white;
+      width: 100%;
+      height: 100%;
+      background-size: contain;
+      flex-basis: 50vh; /* Die Basisgröße Flex-Containers beträgt 50% der Viewport-Höhe */
+      flex-grow: 2; /* Das Element kann sich im Verhältnis 2:1 gegenüber anderen flexiblen Elementen vergrößern */
+      overflow: hidden;
+    }
+    .imageWrapper {
+      height:100%;
+      width: 100%;
+      .blueprintImage {
         width: 100%;
-        flex-basis: 50vh;
-        flex-grow: 2;
+        height: 100%;;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+      }
     }
 
     .info-bar {
@@ -109,7 +123,7 @@
                 margin-right: 0.2rem;
             }
             #ort {
-    
+
             }
         }
         .info-button-wrapper {
@@ -125,7 +139,7 @@
                 width: 3rem;
                 height: 3rem;
                 //font-size: 100px !important;
-                
+
             }
         }
     }
@@ -133,9 +147,9 @@
     i.material.symbols.outlined {
         font-size: 50px !important;
     }
-    
+
     .navButton-wrapper {
-        
+
         width: 100%;
         display: flex;
         flex-wrap: nowrap;
@@ -167,6 +181,6 @@
             flex-grow: 1;
         }
     }
-    
+
 }
 
