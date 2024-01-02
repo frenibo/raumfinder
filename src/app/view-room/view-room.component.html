@@ -22,7 +22,7 @@
 
 <div class="flex-wrapper">
 
-    <div *ngFor="let floor of currentRoomBuildingFloors; index as j">
+    <ng-container *ngFor="let floor of currentRoomBuildingFloors; index as j">
         <ng-container *ngIf="currentRoom.floor === floorName">
             <pinch-zoom>
                 <img class="blueprintImage" src="../../assets/hsb assets/{{currentRoom.building}}_Room_{{currentRoom.name}}_{{floor.name}}.png" [hidden]="this.currentRoomBuildingFloors[j].name !== floorName">
@@ -33,7 +33,7 @@
                 <img class="blueprintImage" src="../../assets/hsb assets/{{currentRoom.building}}_{{floor.name}}.png" [hidden]="this.currentRoomBuildingFloors[j].name !== floorName">
             </pinch-zoom>
         </ng-container>
-    </div>
+    </ng-container>
 
     <div class="info-bar">
         <div class="adress">

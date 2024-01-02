@@ -4,7 +4,7 @@ table {
 }
   
 .mat-mdc-form-field {
-    font-size: 14px;
+    font-size: 14px; //TODO: responsive sizes
     width: 100%;
 }
 
@@ -17,3 +17,16 @@ app-searchbar {
     color:white;
     cursor: pointer;
 }
+
+.imgBubble-wrapper {
+
+    height: 3rem; //TODO: responsive sizes
+
+    .imgBubble {
+        height: 100%;
+        aspect-ratio: 1 / 1;
+        width: auto;
+        border-radius: 50%;
+    }
+}
+

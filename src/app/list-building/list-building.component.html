@@ -13,7 +13,11 @@
     <!-- Position Column -->
     <ng-container matColumnDef="image">
         <th mat-header-cell *matHeaderCellDef>  </th>
-        <td mat-cell *matCellDef="let building"> {{building.image}} </td>
+        <td mat-cell *matCellDef="let building" mat-card-avatar>
+            <div class="imgBubble-wrapper">
+                <img class="imgBubble" src="../../assets/hsb assets/{{building.image}}" alt="{{building.image}}">
+            </div>
+        </td>
     </ng-container>
 
     <!-- Name Column -->
