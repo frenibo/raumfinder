@@ -35,7 +35,14 @@ import { FavoriteBuildingComponent } from './favorite-building/favorite-building
 import { FavoritesComponent } from './favorites/favorites.component';
 import { AutofocusDirective } from './autofocus.directive';
 import { ViewBuildingBlueprintComponent } from './view-building-blueprint/view-building-blueprint.component';
-
+import { DialogInfoBuildingComponent } from './dialogs/dialog-info-building/dialog-info-building.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ListFreeRoomsComponent } from './list-free-rooms/list-free-rooms.component';
+import { MatCardModule } from '@angular/material/card';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import { SettingsComponent } from './settings/settings.component';
+import { NgxMatTimepickerModule } from 'ngx-mat-timepicker'; 
 
 @NgModule({
     declarations: [
@@ -77,6 +84,11 @@ import { ViewBuildingBlueprintComponent } from './view-building-blueprint/view-b
             InMemoryDataService, { dataEncapsulation: false }
         ),
         MatButtonToggleModule,
+        MatDialogModule,
+        MatCardModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        NgxMatTimepickerModule,
     ]
 })
 export class AppModule { }
