@@ -8,8 +8,9 @@
 </div>
 
 <div [hidden]="!loadingComplete" class="loaded">
-
-    <app-header></app-header>
+    <div #header>
+        <app-header></app-header>
+    </div>
 
     <div class="below-header">
         <router-outlet></router-outlet>

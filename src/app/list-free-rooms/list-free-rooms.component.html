@@ -1,0 +1,77 @@
+<div class="wrapper-free-rooms">
+    <mat-form-field subscriptSizing="dynamic">
+        <!--mat-icon matPrefix>search</mat-icon-->
+        <input matInput (keyup)="applyFilter($event)" (change)="applyFilter($event)" placeholder="Gebäudename eingeben" #input value="{{defaultValue}}" [matAutocomplete]="auto">
+        <!--button [disabled]="!input.value" matSuffix mat-icon-button aria-label="Clear" (click)="input.value=''; clearFilter()">
+            <div *ngIf="input.value">
+                <mat-icon>close</mat-icon>
+            </div>
+        </button-->
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                <mat-option *ngFor="let building of dataSourceBuildings.connect().value" (click)="input.value = building.name; applyFilter($event)">
+                    {{building.name}}
+                </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+
+    <div>
+        <button mat-button (click)="picker.open()" class="datePickerButton">
+            {{this.getDate(this.startDate)}} {{this.getTime(this.startTime)}}
+        </button>
+        <mat-form-field subscriptSizing="dynamic" class="mat-form-field-no-padding" [class.cdk-visually-hidden]="true">
+            <!--mat-label>{{this.getDate()}}</mat-label-->
+            <input matInput [matDatepicker]="picker" class="inputDatePicker" #input [(ngModel)]="startDate" [hidden]="true">
+            <!--mat-hint>MM/DD/YYYY</mat-hint-->
+            <mat-datepicker-toggle [for]="picker" [hidden]="true"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #picker class="datepicker-dialog">
+                <mat-form-field>
+                    <input matInput
+                           name="selected_time_B"
+                           [format]="24"
+                           [(ngModel)]="startTime"
+                           [ngxMatTimepicker]="timePicker"
+                           placeholder="16:00"
+                           readonly />
+                </mat-form-field>
+                <ngx-mat-timepicker #timePicker [(ngModel)]="startTime"></ngx-mat-timepicker>
+                
+                <mat-datepicker-actions>
+                    <!--mat-form-field appearance="fill">
+                        <mat-label>Uhrzeit</mat-label>
+                        <input matInput type="time" [(ngModel)]="startTime">
+                    </mat-form-field-->
+                    <div class="datepicker-actions">
+                        <button mat-button class="setTime" (click)="timePicker.open()">{{this.getTime(this.startTime)}}</button>   
+                        <div class="datepicker-buttons">                        
+                            <button mat-button matDatepickerCancel>Cancel</button>
+                            <button mat-raised-button color="primary" matDatepickerApply >Apply</button>
+                        </div>
+                    </div>
+                </mat-datepicker-actions>
+            </mat-datepicker>
+        </mat-form-field>
+    </div>
+
+    <div *ngIf="dataSourceRooms.filteredData?.length; else noMatch">
+        <div class="cards">
+            <div *ngFor="let room of dataSourceRooms.connect().value">
+                    <mat-card class="single-card" (click)="navigate('view-room', room)">
+                        <mat-card-header>
+                            <mat-card-title>{{room.name}}</mat-card-title>
+                            <mat-card-subtitle></mat-card-subtitle>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <button (click)="navigate('view-room', room)">
+                                Raum anzeigen
+                            </button>
+                        </mat-card-content>
+                        <mat-card-actions>
+                        </mat-card-actions>
+                    </mat-card>
+            </div>
+        </div>
+    </div>
+    <ng-template #noMatch>
+        <div>No data matching the filter "{{this.dataSourceRooms.filter}}"</div>
+    </ng-template>
+</div>

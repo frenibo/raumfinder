@@ -5,6 +5,7 @@ import { Building } from '../building';
 import { Floor } from '../floor';
 import { BuildingService } from '../building.service';
 import { FloorService } from '../floor.service';
+import { DialogService } from '../dialog.service';
 
 import { lastValueFrom } from 'rxjs';
 
@@ -19,6 +20,7 @@ export class ViewRoomComponent {
     private sharedService: SharedService,
     private buildingService: BuildingService,
     private floorService: FloorService,
+    private dialogService: DialogService,
   ) {}
 
   currentRoom: Room = {
@@ -69,5 +71,10 @@ export class ViewRoomComponent {
 
   toggleBlueprint(floorName: string) {
     this.floorName = floorName;
+  }
+
+  openDialogInfoBuilding() {
+    this.dialogService.openDialogInfoBuilding();
+
   }
 }

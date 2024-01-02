@@ -7,8 +7,10 @@ Möchte man für ein neues Component einen Header erstellen, kopiert man eines d
 
 
 <div class="header" id="startmenu" *ngIf="currentLocation === 'startmenu'">
-    <img class="hsb-key" src="../../assets/hsb assets/key_hsb.png">
-    <div class="title">RAUMFINDER</div>
+    <div class="logo-wrapper">
+        <img class="hsb-key" src="../../assets/hsb assets/key_hsb.png">
+        <div class="title">RAUMFINDER</div>
+    </div>
 </div>
 
 <div class="header" id="list-room" *ngIf="currentLocation === 'list-room'">
@@ -23,6 +25,20 @@ Möchte man für ein neues Component einen Header erstellen, kopiert man eines d
         <mat-icon>keyboard_arrow_left</mat-icon>
     </button>
     <div class="title">Gebäude suchen</div>
+</div>
+
+<div class="header" id="list-free-rooms" *ngIf="currentLocation === 'list-free-rooms'">
+    <button class="return" mat-icon-button (click)="goBack()">
+        <mat-icon>keyboard_arrow_left</mat-icon>
+    </button>
+    <div class="title">Freie Räume</div>
+</div>
+
+<div class="header" id="settins" *ngIf="currentLocation === 'settings'">
+    <button class="return" mat-icon-button (click)="goBack()">
+        <mat-icon>keyboard_arrow_left</mat-icon>
+    </button>
+    <div class="title">Einstellungen</div>
 </div>
 
 <div class="header" id="view-room" *ngIf="currentLocation === 'view-room'">
