@@ -1,6 +1,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
 
-<div class="button-wrapper">
+<!--
+    Gebäudeplan Stockwerke Toggle
+-->
+<div class="button-wrapper" *ngIf="viewToggle[0] === 'Belegungs'">
     <ng-container *ngIf="currentRoomBuildingFloors.length >= 5">
         <mat-button-toggle class="scroll-toggle-left" (click)="scroll('left')">
             <span class="material-icons">arrow_left</span>
@@ -20,19 +23,48 @@
     </ng-container>
 </div>
 
+<!--
+    Raumplan Wochentage Toggle
+-->
+<div class="button-wrapper" *ngIf="viewToggle[0] === 'Gebäude'">
+    <mat-button-toggle class="scroll-toggle-left" (click)="toggleWeekday('zurück')">
+        <span class="material-icons">arrow_left</span>
+    </mat-button-toggle>
+    <mat-button-toggle-group>
+        <mat-button-toggle class="toggle-button" id="weekday" #toggleButtons (click)="toggleWeekday('vor')">
+            {{weekdays[dayNumber]}}
+        </mat-button-toggle>
+    </mat-button-toggle-group>
+    <mat-button-toggle class="scroll-toggle-right" (click)="toggleWeekday('vor')">
+        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="arrow_right"></mat-icon>
+    </mat-button-toggle>
+</div>
+
 <div class="flex-wrapper">
 
-    <ng-container *ngFor="let floor of currentRoomBuildingFloors; index as j">
-        <ng-container *ngIf="currentRoom.floor === floor.name">
-            <pinch-zoom>
-                <img class="blueprintImage" src="../../assets/hsb assets/{{currentRoom.building}}_Room_{{currentRoom.name}}_{{floor.name}}.png" [hidden]="this.currentRoomBuildingFloors[j].name !== floorName">
-            </pinch-zoom>
+<!--
+    Gebäudeplan Stockwerke Bilder
+-->
+    <ng-container *ngIf="viewToggle[0] === 'Belegungs'">
+        <ng-container *ngFor="let floor of currentRoomBuildingFloors; index as j">
+            <ng-container *ngIf="currentRoom.floor === floor.name">
+                <pinch-zoom>
+                    <img class="blueprintImage" src="../../assets/hsb assets/{{currentRoom.building}}_Room_{{currentRoom.name}}_{{floor.name}}.png" [hidden]="this.currentRoomBuildingFloors[j].name !== floorName">
+                </pinch-zoom>
+            </ng-container>
+            <ng-container *ngIf="currentRoom.floor !== floor.name">
+                <pinch-zoom>
+                    <img class="blueprintImage" src="../../assets/hsb assets/{{currentRoom.building}}_{{floor.name}}.png" [hidden]="this.currentRoomBuildingFloors[j].name !== floorName">
+                </pinch-zoom>
+            </ng-container>
         </ng-container>
-        <ng-container *ngIf="currentRoom.floor !== floor.name">
-            <pinch-zoom>
-                <img class="blueprintImage" src="../../assets/hsb assets/{{currentRoom.building}}_{{floor.name}}.png" [hidden]="this.currentRoomBuildingFloors[j].name !== floorName">
-            </pinch-zoom>
-        </ng-container>
+    </ng-container>
+
+<!--
+    Raumplan Wochentage Bilder
+-->
+    <ng-container *ngIf="viewToggle[0] === 'Gebäude'">
+        <img class="blueprintImage" src="../../assets/Raumplan_{{currentRoom.building}}_{{weekdays[dayNumber]}}.png" alt="../../assets/Raumplan_{{currentRoom.building}}_{{weekdays[dayNumber]}}.png">
     </ng-container>
 
     <div class="info-bar">
@@ -65,12 +97,12 @@
                 Ansicht
             </div>
         </Button>
-        <Button class="navButton" id="BelegungsPlan">
+        <Button class="navButton" id="BelegungsPlan" (click)="toggleView()">
             <div>
-                Belegungs
+                {{viewToggle[0]}}
             </div>
             <div>
-                Plan
+                {{viewToggle[1]}}
             </div>
         </Button>
         <Button class="navButton" id="FreieRäume">

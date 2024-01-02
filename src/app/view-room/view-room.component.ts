@@ -36,6 +36,18 @@ export class ViewRoomComponent {
   currentRoomBuildingFloors: any[] = [];
   floorName: string = 'EG';
   scrollToggle: boolean = false;
+  viewToggle: string[] = [
+    'Belegungs',
+    'Plan'
+  ];
+  weekdays: string[] = [
+    'Montag',
+    'Dienstag',
+    'Mittwoch',
+    'Donnerstag',
+    'Freitag'
+  ]
+  dayNumber: number = 0;
 
   @ViewChild('toggleButtons') toggleButtons: ElementRef | undefined;
 
@@ -76,5 +88,30 @@ export class ViewRoomComponent {
   openDialogInfoBuilding() {
     this.dialogService.openDialogInfoBuilding();
 
+  }
+
+  toggleView(){
+    if(this.viewToggle[0] === 'Gebäude') {
+      this.viewToggle[0] = 'Belegungs';
+    }
+    else if(this.viewToggle[0] === 'Belegungs') {
+      this.viewToggle[0] = 'Gebäude';
+    }
+  }
+
+  toggleWeekday(direction: string){
+    if(direction === 'vor') {
+      this.dayNumber += 1;
+    }
+    else if(direction === 'zurück') {
+      this.dayNumber -= 1;
+    }
+
+    if(this.dayNumber == -1) {
+      this.dayNumber = 4;
+    }
+    if(this.dayNumber == 5) {
+      this.dayNumber = 0;
+    }
   }
 }
