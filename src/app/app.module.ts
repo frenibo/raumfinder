@@ -60,6 +60,10 @@ import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
         FavoritesComponent,
         AutofocusDirective,
         ViewBuildingBlueprintComponent,
+        DialogInfoBuildingComponent,
+        ListFreeRoomsComponent,
+        
+
     ],
     providers: [
         CookieService,
