@@ -64,26 +64,15 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-
-     .blueprintContainer {
-      background-color: white;
-      width: 100%;
-      height: 100%;
-      background-size: contain;
-      flex-basis: 50vh; /* Die Basisgröße Flex-Containers beträgt 50% der Viewport-Höhe */
-      flex-grow: 2; /* Das Element kann sich im Verhältnis 2:1 gegenüber anderen flexiblen Elementen vergrößern */
-      overflow: hidden;
-    }
-    .imageWrapper {
-      height:100%;
-      width: 100%;
-      .blueprintImage {
+    
+    .blueprintImage {
         width: 100%;
-        height: 100%;;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center center;
-      }
+        flex-basis: 60vh; /* Die Basisgröße Flex-Containers beträgt 50% der Viewport-Höhe */
+        min-height: 60vh;
+        flex-grow: 2; /* Das Element kann sich im Verhältnis 2:1 gegenüber anderen flexiblen Elementen vergrößern */
+        background-color:#ffffff;
+        background-size:cover;
+        object-fit: contain;
     }
 
     .info-bar {

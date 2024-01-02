@@ -11,6 +11,15 @@ import { LoaderComponent } from './loader/loader.component';
 import { StartmenuComponent } from './startmenu/startmenu.component';
 import { ViewRoomComponent } from './view-room/view-room.component';
 import { ListRoomComponent } from './list-room/list-room.component';
+import { SettingsComponent } from './settings/settings.component';
+import { FavoriteRoomComponent } from './favorite-room/favorite-room.component';
+import { FavoriteBuildingComponent } from './favorite-building/favorite-building.component';
+import { FavoritesComponent } from './favorites/favorites.component';
+import { ListBuildingComponent } from './list-building/list-building.component';
+import { ViewBuildingComponent } from './view-building/view-building.component';
+import { ViewBuildingBlueprintComponent } from './view-building-blueprint/view-building-blueprint.component';
+import { DialogInfoBuildingComponent } from './dialogs/dialog-info-building/dialog-info-building.component';
+import { ListFreeRoomsComponent } from './list-free-rooms/list-free-rooms.component';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { HttpClientModule } from '@angular/common/http';
@@ -27,22 +36,15 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { ListBuildingComponent } from './list-building/list-building.component';
-import { ViewBuildingComponent } from './view-building/view-building.component';
 import { CookieService } from 'ngx-cookie-service';
-import { FavoriteRoomComponent } from './favorite-room/favorite-room.component';
-import { FavoriteBuildingComponent } from './favorite-building/favorite-building.component';
-import { FavoritesComponent } from './favorites/favorites.component';
+
 import { AutofocusDirective } from './autofocus.directive';
-import { ViewBuildingBlueprintComponent } from './view-building-blueprint/view-building-blueprint.component';
-import { DialogInfoBuildingComponent } from './dialogs/dialog-info-building/dialog-info-building.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { ListFreeRoomsComponent } from './list-free-rooms/list-free-rooms.component';
 import { MatCardModule } from '@angular/material/card';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
-import { SettingsComponent } from './settings/settings.component';
-import { NgxMatTimepickerModule } from 'ngx-mat-timepicker'; 
+import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
+import { PinchZoomComponent, PinchZoomModule } from '@meddv/ngx-pinch-zoom';
 
 @NgModule({
     declarations: [
@@ -62,8 +64,7 @@ import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
         ViewBuildingBlueprintComponent,
         DialogInfoBuildingComponent,
         ListFreeRoomsComponent,
-        
-
+        SettingsComponent,
     ],
     providers: [
         CookieService,
@@ -93,6 +94,7 @@ import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
         MatDatepickerModule,
         MatNativeDateModule,
         NgxMatTimepickerModule,
+        PinchZoomModule,
     ]
 })
 export class AppModule { }
