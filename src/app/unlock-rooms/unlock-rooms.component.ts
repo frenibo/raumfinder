@@ -95,7 +95,9 @@ export class UnlockRoomsComponent {
   // Chip Methods
 
   unlockRoom(room: Room) {
-    this.unlockedRooms.push(room);
+    if(this.unlockedRooms.indexOf(room) == -1) {
+      this.unlockedRooms.push(room);
+    }
     this.filterInput.nativeElement.value = '';
     //this.filterCtrl.setValue(null);
   }
