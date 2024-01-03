@@ -58,6 +58,12 @@ export class ViewBuildingBlueprintComponent {
     this.sharedService.navigate(location, replaceUrl, setFilter);
   }
 
+  navigateWithBuilding(location: string, building: Building, replaceUrl?: boolean | undefined) {
+    const path: string = location.concat('/' + String(building.id));
+    this.sharedService.navigate(path, replaceUrl);
+    this.sharedService.updateCurrentBuilding(building);
+  }
+
   async getData(building: Building) {
     this.currentBuilding = building;
     if(this.currentBuilding.floor_ids) {
