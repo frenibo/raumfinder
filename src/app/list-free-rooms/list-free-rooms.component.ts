@@ -153,6 +153,8 @@ export class ListFreeRoomsComponent {
     this.sharedService.updateCurrentRoom(room);
   }
 
+  //Not sure why this works and other approaches don't
+
   triggerFilterInput(inputValue: string) {
     this.filterInput!.nativeElement.value = inputValue;
     let event = new KeyboardEvent('keyup');

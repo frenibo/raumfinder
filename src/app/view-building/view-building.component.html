@@ -26,7 +26,7 @@
     </div>
 
     <div class="navButton-wrapper">
-        <Button class="navButton" id="RaumSuchen" (click)="navigate('list-room')">
+        <Button class="navButton" id="RaumSuchen" (click)="navigate('list-room', false, currentBuilding.name)">
             <div>
                 Raum
             </div>
@@ -42,7 +42,7 @@
                 Plan
             </div>
         </Button>
-        <Button class="navButton" id="FreieRäume">
+        <Button class="navButton" id="FreieRäume" (click)="navigate('list-free-rooms', false, currentBuilding.name)">
             <div>
                 Freie
             </div>

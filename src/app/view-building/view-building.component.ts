@@ -35,9 +35,8 @@ export class ViewBuildingComponent {
     this.sharedService.buildingsChanged.subscribe( buildingsChanged => this.sharedService.updateCurrentBuildingById(this.currentBuilding.id));
   }
 
-  navigate(location: string, replaceUrl?: boolean | undefined) {
-    this.sharedService.navigate(location, replaceUrl);
-    this.sharedService.setCurrentFilter(this.currentBuilding.name);
+  navigate(location: string, replaceUrl?: boolean | undefined, setFilter?: string | undefined) {
+    this.sharedService.navigate(location, replaceUrl, setFilter);
   }
 
   navigateWithBuilding(location: string, building: Building, replaceUrl?: boolean | undefined) {
@@ -45,5 +44,4 @@ export class ViewBuildingComponent {
     this.sharedService.navigate(path, replaceUrl);
     this.sharedService.updateCurrentBuilding(building);
   }
-
 }

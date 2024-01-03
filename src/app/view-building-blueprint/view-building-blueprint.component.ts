@@ -54,9 +54,8 @@ export class ViewBuildingBlueprintComponent {
   }
 
 
-  navigate(location: string, replaceUrl?: boolean | undefined) {
-    this.sharedService.navigate(location, replaceUrl);
-    this.sharedService.setCurrentFilter(this.currentBuilding.name);
+  navigate(location: string, replaceUrl?: boolean | undefined, setFilter?: string | undefined) {
+    this.sharedService.navigate(location, replaceUrl, setFilter);
   }
 
   async getData(building: Building) {
