@@ -145,6 +145,8 @@ export class ListFreeRoomsComponent {
   clearFilter() {
     this.dataSourceBuildings.filter = "";
     this.dataSourceRooms.filter = "";
+    let event = new KeyboardEvent('keyup');
+    this.filterInput!.nativeElement.dispatchEvent(event);
   }
 
   navigate(location: string, room: Room) {

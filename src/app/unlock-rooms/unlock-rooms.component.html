@@ -1,14 +1,101 @@
-<mat-form-field subscriptSizing="dynamic">
-    <mat-icon matPrefix>search</mat-icon>
-    <input matInput matInputAutofocus (keyup)="applyFilter($event)" placeholder="Raumnummer eingeben" #input value="{{defaultValue}}" [matAutocomplete]="auto">
-    <button [disabled]="!input.value" matSuffix mat-icon-button aria-label="Clear" (click)="input.value=''; clearFilter()">
-        <div *ngIf="input.value">
-            <mat-icon>close</mat-icon>
+<form>
+    <mat-form-field class="example-chip-list">
+        <mat-icon matPrefix>search</mat-icon>
+        <input placeholder="Raum suchen und freischalten" #filterInput
+            [matChipInputFor]="chipGrid" [matAutocomplete]="auto"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            (matChipInputTokenEnd)="add($event)"
+            (keyup)="applyFilter($event)"
+            value="{{defaultValue}}"
+            />
+        <button [disabled]="!filterInput.value" matSuffix mat-icon-button aria-label="Clear" (click)="filterInput.value=''; clearFilter()">
+            <div *ngIf="filterInput.value">
+                <mat-icon>close</mat-icon>
+            </div>
+        </button>
+        <mat-autocomplete #auto="matAutocomplete">
+            @for (room of dataSource.connect().value; track room) {
+                <mat-option (click)="unlockRoom(room)">
+                    <span class="material-symbols-outlined">
+                        key
+                    </span>
+                    {{room.name}}
+                </mat-option>
+            }
+        </mat-autocomplete>
+        <div [hidden]="true">
+            <mat-chip-grid #chipGrid aria-label="filter selection">
+                @for (room of unlockedRooms; track room) {
+                <mat-chip-row (removed)="remove(room)">
+                    {{room.name}} {{room.building}}
+                    <button matChipRemove [attr.aria-label]="'remove ' + room">
+                    <mat-icon>cancel</mat-icon>
+                    </button>
+                </mat-chip-row>
+                }
+            </mat-chip-grid>
         </div>
-    </button>
-    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-        <mat-option *ngFor="let room of dataSource.connect().value">
-            {{room.name}}
-        </mat-option>
-    </mat-autocomplete>
-</mat-form-field>
+    </mat-form-field>
+
+
+
+
+    <mat-chip-grid #chipGrid aria-label="Fruit selection">
+        @for (room of unlockedRooms; track room) {
+        <mat-chip-row (removed)="remove(room)">
+            {{room.name}} {{room.building}}
+            <button matChipRemove [attr.aria-label]="'remove ' + room">
+            <mat-icon>cancel</mat-icon>
+            </button>
+        </mat-chip-row>
+        }
+    </mat-chip-grid>
+
+</form>
+
+<!--form>
+    <mat-form-field class="example-chip-list">
+        
+        <input placeholder="Raum suchen und freischalten" #fruitInput [formControl]="fruitCtrl"
+            [matChipInputFor]="chipGrid" [matAutocomplete]="auto2"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            (matChipInputTokenEnd)="add($event)"/>
+        <button [disabled]="!fruitInput.value" matSuffix mat-icon-button aria-label="Clear" (click)="fruitInput.value=''; clearFilter()">
+            <div *ngIf="fruitInput.value">
+                <mat-icon>close</mat-icon>
+            </div>
+        </button>
+        <mat-autocomplete #auto2="matAutocomplete" (optionSelected)="selected($event)">
+            @for (fruit of filteredFruits | async; track fruit) {
+            <mat-option [value]="fruit">{{fruit}}</mat-option>
+            }
+        </mat-autocomplete>
+        <div [hidden]="true">
+            <mat-chip-grid #chipGrid aria-label="Fruit selection">
+                @for (fruit of fruits; track fruit) {
+                <mat-chip-row (removed)="remove(fruit)">
+                    {{fruit}}
+                    <button matChipRemove [attr.aria-label]="'remove ' + fruit">
+                    <mat-icon>cancel</mat-icon>
+                    </button>
+                </mat-chip-row>
+                }
+            </mat-chip-grid>
+        </div>
+    </mat-form-field>
+
+
+
+
+    <mat-chip-grid #chipGrid aria-label="Fruit selection">
+        @for (fruit of fruits; track fruit) {
+        <mat-chip-row (removed)="remove(fruit)">
+            {{fruit}}
+            <button matChipRemove [attr.aria-label]="'remove ' + fruit">
+            <mat-icon>cancel</mat-icon>
+            </button>
+        </mat-chip-row>
+        }
+    </mat-chip-grid>
+
+</form-->

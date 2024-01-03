@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 
 import { Room } from '../room';
 import { RoomService } from '../room.service';
@@ -32,6 +32,8 @@ export class ListBuildingComponent {
   dataSource = new MatTableDataSource(this.buildings);
   defaultValue: string = '';
 
+  @ViewChild('filterInput') filterInput: ElementRef<any> | undefined;
+
   async ngOnInit(): Promise<void> {
     await this.checkLoaded();
     this.getBuildings();
@@ -54,6 +56,8 @@ export class ListBuildingComponent {
 
   clearFilter() {
     this.dataSource.filter = "";
+    let event = new KeyboardEvent('keyup');
+    this.filterInput!.nativeElement.dispatchEvent(event);
   }
 
   navigate(location: string, building: Building) {

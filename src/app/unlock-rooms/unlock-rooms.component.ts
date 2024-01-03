@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild, inject } from '@angular/core';
 import { SharedService } from '../shared.service';
 import { BuildingService } from '../building.service';
 import { FloorService } from '../floor.service';
@@ -7,6 +7,13 @@ import { Room } from '../room';
 import { Floor } from '../floor';
 import { Building } from '../building';
 import { MatTableDataSource } from '@angular/material/table';
+import { FormControl } from '@angular/forms';
+import { Observable, map, startWith } from 'rxjs';
+import { MatChipInputEvent } from '@angular/material/chips';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { LiveAnnouncer } from '@angular/cdk/a11y';
+import {AsyncPipe} from '@angular/common';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
 
 @Component({
   selector: 'app-unlock-rooms',
@@ -15,12 +22,29 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class UnlockRoomsComponent {
 
+  // Chip constants
+  separatorKeysCodes: number[] = [ENTER, COMMA];
+  //filterCtrl = new FormControl('');
+  // filteredRooms: Observable<Room[]>;
+  unlockedRooms: Room[] = [];
+
+  @ViewChild('filterInput') filterInput!: ElementRef<HTMLInputElement>;
+
+  announcer = inject(LiveAnnouncer);
+  
   constructor(
     private roomService: RoomService,
     private floorService: FloorService,
     private buildingService: BuildingService,
     private sharedService: SharedService,
-  ) {}
+  ) {
+    /*
+    this.filteredRooms = this.filterCtrl.valueChanges.pipe(
+      startWith(null),
+      map((room: string | null) => (room ? this._filter(room) : this.rooms.slice())),
+    );
+    */
+  }
 
   rooms: Room[] = [];
   floors: Floor[] = [];
@@ -33,9 +57,6 @@ export class UnlockRoomsComponent {
     await this.checkLoaded();
     this.getRooms();
     this.dataSource = new MatTableDataSource<Room>(this.rooms);
-   
-    this.sharedService.currentFilter.subscribe(
-      currentFilter => currentFilter ? this.dataSource.filter = this.defaultValue = currentFilter + ' ' : null);
   }
 
   getRooms() {
@@ -58,7 +79,11 @@ export class UnlockRoomsComponent {
   }
 
   clearFilter() {
-    this.dataSource.filter = "";
+    this.dataSource.filter = '';
+    let event = new KeyboardEvent('keyup');
+    this.filterInput!.nativeElement.dispatchEvent(event);
+    //this.filterInput.nativeElement.value = '';
+    //this.filterCtrl.setValue(null);
   }
 
   navigate(location: string, room: Room) {
@@ -66,5 +91,43 @@ export class UnlockRoomsComponent {
     this.sharedService.navigate(path);
     this.sharedService.updateCurrentRoom(room);
   }
+
+  // Chip Methods
+
+  unlockRoom(room: Room) {
+    this.unlockedRooms.push(room);
+    this.filterInput.nativeElement.value = '';
+    //this.filterCtrl.setValue(null);
+  }
+
+  add(event: MatChipInputEvent): void {
+    // Clear the input value
+    event.chipInput!.clear();
+
+    //this.filterCtrl.setValue(null);
+  }
+
+  remove(room: Room): void {
+    const index = this.unlockedRooms.indexOf(room);
+
+    if (index >= 0) {
+      this.unlockedRooms.splice(index, 1);
+
+      this.announcer.announce(`Removed ${room}`);
+    }
+  }
+
+  selected(event: MatAutocompleteSelectedEvent): void {
+    this.unlockedRooms.push(event.option.value);
+    this.filterInput.nativeElement.value = '';
+    //this.filterCtrl.setValue(null);
+  }
+  /*
+  private _filter(value: string): Room[] {
+    const filterValue = value.toLowerCase();
+
+    return this.rooms.filter(room => room.name.toLowerCase().includes(filterValue));
+  }*/
+
 
 }

@@ -47,6 +47,8 @@ import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
 import { PinchZoomComponent, PinchZoomModule } from '@meddv/ngx-pinch-zoom';
 import {MatSelectModule} from '@angular/material/select';
 import { UnlockRoomsComponent } from './unlock-rooms/unlock-rooms.component';
+import { MatChipsModule } from '@angular/material/chips';
+import { AsyncPipe } from '@angular/common';
 
 @NgModule({
     declarations: [
@@ -99,6 +101,14 @@ import { UnlockRoomsComponent } from './unlock-rooms/unlock-rooms.component';
         NgxMatTimepickerModule,
         PinchZoomModule,
         MatSelectModule,
+        MatChipsModule,
+        FormsModule,
+        MatFormFieldModule,
+        MatChipsModule,
+        MatIconModule,
+        MatAutocompleteModule,
+        ReactiveFormsModule,
+        AsyncPipe,
     ]
 })
 export class AppModule { }
