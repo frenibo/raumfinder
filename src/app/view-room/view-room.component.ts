@@ -114,4 +114,9 @@ export class ViewRoomComponent {
       this.dayNumber = 0;
     }
   }
+
+  navigate(location: string, replaceUrl?: boolean | undefined, setFilter?: string | undefined) {
+    this.sharedService.navigate(location, replaceUrl, setFilter);
+    //this.sharedService.setCurrentFilter(this.currentRoomBuilding.name);
+  }
 }

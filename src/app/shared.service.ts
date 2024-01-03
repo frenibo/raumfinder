@@ -68,14 +68,23 @@ export class SharedService {
 
   currentBuilding: BehaviorSubject<Building> = new BehaviorSubject<Building>(this.defaultBuilding);
 
-  navigate(location: string, replaceUrl?: boolean | undefined): void {
+  navigate(location: string, replaceUrl?: boolean | undefined, setFilter?: string | undefined): void {
     if( replaceUrl == true ) {
       this.router.navigate([location], { replaceUrl: true});
     }
     else {
       this.router.navigate([location]);
     }
-    this.currentFilter.next('');
+
+    if (typeof setFilter === 'undefined') {
+      this.currentFilter.next('');
+      console.log('undefined');
+    }
+    else {
+      this.currentFilter.next(setFilter);
+      console.log(setFilter);
+    }
+    
   }
 
   loadBuildingImage(building: Building): string {

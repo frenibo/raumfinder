@@ -45,6 +45,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
 import { PinchZoomComponent, PinchZoomModule } from '@meddv/ngx-pinch-zoom';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
     declarations: [
@@ -95,6 +96,7 @@ import { PinchZoomComponent, PinchZoomModule } from '@meddv/ngx-pinch-zoom';
         MatNativeDateModule,
         NgxMatTimepickerModule,
         PinchZoomModule,
+        MatSelectModule,
     ]
 })
 export class AppModule { }

@@ -31,7 +31,7 @@ export class ListFreeRoomsComponent {
   displayedColumns: string[] = ['name', 'building', 'floor'];
   dataSourceRooms = new MatTableDataSource(this.rooms);
   dataSourceBuildings = new MatTableDataSource(this.buildings);
-  defaultValue: string = 'ZIMT';
+  defaultFilterValue: string = 'ZIMT';
   dateSet: string = '';
   timeSet: string = '';
   startDate: Date | undefined;
@@ -39,24 +39,29 @@ export class ListFreeRoomsComponent {
   //selectedTimes.B: any[] | undefined;
   format24: number = 24;
 
-  @ViewChild('input') input: ElementRef<any> | undefined;
+  @ViewChild('filterInput') filterInput: ElementRef<any> | undefined;
 
   async ngOnInit(): Promise<void> {
     await this.checkLoaded();
-    this.getRooms();
+
+    await this.getRooms();
     this.dataSourceRooms = new MatTableDataSource<Room>(this.rooms);
-    this.getBuildings();
+    await this.getBuildings();
     this.dataSourceBuildings = new MatTableDataSource<Building>(this.buildings);
-   
+
     this.sharedService.currentFilter.subscribe(
-      currentFilter => currentFilter ? this.dataSourceBuildings.filter = this.defaultValue = currentFilter + ' ' : null);
+      currentFilter => currentFilter ? this.defaultFilterValue = currentFilter : this.triggerFilterInput(this.defaultFilterValue));
   }
 
-  getRooms() {
+  async ngAfterViewChecked(): Promise<void> {
+    this.triggerFilterInput(this.filterInput!.nativeElement.value);
+  }
+
+  async getRooms(): Promise<Room[]> {
     return this.rooms =  this.sharedService.rooms
   }
 
-  getBuildings() {
+  async getBuildings(): Promise<Building[]> {
     return this.buildings =  this.sharedService.buildings
   }
 
@@ -127,7 +132,6 @@ export class ListFreeRoomsComponent {
     return await this.sharedService.checkLoaded();
   }
 
-
   applyFilter(event: Event) {
     this.dataSourceRooms = new MatTableDataSource(this.rooms);
     const filterValue = (event.target as HTMLInputElement).value;
@@ -147,6 +151,13 @@ export class ListFreeRoomsComponent {
     const path: string = location.concat('/' + String(room.id));
     this.sharedService.navigate(path);
     this.sharedService.updateCurrentRoom(room);
+  }
+
+  triggerFilterInput(inputValue: string) {
+    this.filterInput!.nativeElement.value = inputValue;
+    let event = new KeyboardEvent('keyup');
+    //let event = new KeyboardEvent('keyup',{'bubbles':true});
+    this.filterInput!.nativeElement.dispatchEvent(event);
   }
 
 }

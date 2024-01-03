@@ -105,7 +105,7 @@
                 {{viewToggle[1]}}
             </div>
         </Button>
-        <Button class="navButton" id="FreieRäume">
+        <Button class="navButton" id="FreieRäume" (click)="navigate('list-free-rooms', false, currentRoomBuilding.name)">
             <div>
                 Freie
             </div>

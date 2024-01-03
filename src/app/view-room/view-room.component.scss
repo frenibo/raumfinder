@@ -72,8 +72,8 @@
     
     .blueprintImage {
         width: 100%;
-        flex-basis: 60vh; /* Die Basisgröße Flex-Containers beträgt 50% der Viewport-Höhe */
-        min-height: 60vh;
+        flex-basis: 50vh; /* Die Basisgröße Flex-Containers beträgt 50% der Viewport-Höhe */
+        min-height: 50vh;
         flex-grow: 2; /* Das Element kann sich im Verhältnis 2:1 gegenüber anderen flexiblen Elementen vergrößern */
         background-color:#ffffff;
         background-size:cover;
