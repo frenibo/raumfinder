@@ -1,8 +1,33 @@
 
-<div class="headline-wrapper">
-    <span class="headline">Persönlich</span>
-</div>
+<div class="element-wrapper">
 
-<div class="headline-wrapper">
-    <span class="headline">Anzeige und Textgröße</span>
+    <div class="headline-wrapper">
+        <span class="headline">Persönlich</span>
+    </div>
+
+    <button mat-button class="element" (click)="navigate('unlock-rooms')">
+        Räume freischalten
+        <mat-icon iconPositionEnd class="arrow">keyboard_arrow_right</mat-icon>
+    </button>
+
+    <div class="headline-wrapper">
+        <span class="headline">Anzeige und Textgröße</span>
+    </div>
+
+    <button mat-button class="element">
+        Textgröße
+        <mat-icon iconPositionEnd class="arrow">keyboard_arrow_right</mat-icon>
+    </button>
+
+    <button mat-button class="element">
+        Ohne Farbe differenzieren
+        <mat-icon iconPositionEnd class="arrow">keyboard_arrow_right</mat-icon>
+    </button>
+
+    <button mat-button class="element">
+        <mat-icon>keyboard_arrow_right</mat-icon>
+        <div class="button-text">Helligkeit</div>
+        <mat-icon iconPositionEnd class="arrow">keyboard_arrow_right</mat-icon>
+    </button>
+
 </div>

@@ -46,6 +46,7 @@ import {MatNativeDateModule} from '@angular/material/core';
 import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
 import { PinchZoomComponent, PinchZoomModule } from '@meddv/ngx-pinch-zoom';
 import {MatSelectModule} from '@angular/material/select';
+import { UnlockRoomsComponent } from './unlock-rooms/unlock-rooms.component';
 
 @NgModule({
     declarations: [
@@ -66,6 +67,7 @@ import {MatSelectModule} from '@angular/material/select';
         DialogInfoBuildingComponent,
         ListFreeRoomsComponent,
         SettingsComponent,
+        UnlockRoomsComponent,
     ],
     providers: [
         CookieService,

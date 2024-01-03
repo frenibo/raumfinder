@@ -41,6 +41,13 @@ Möchte man für ein neues Component einen Header erstellen, kopiert man eines d
     <div class="title">Einstellungen</div>
 </div>
 
+<div class="header" id="unlock-rooms" *ngIf="currentLocation === 'unlock-rooms'">
+    <button class="return" mat-icon-button (click)="goBack()">
+        <mat-icon>keyboard_arrow_left</mat-icon>
+    </button>
+    <div class="title">Räume Freischalten</div>
+</div>
+
 <div class="header" id="view-room" *ngIf="currentLocation === 'view-room'">
     <button class="return" mat-icon-button (click)="goBack()">
         <mat-icon>keyboard_arrow_left</mat-icon>

@@ -1,12 +1,34 @@
-.headline-wrapper {
+.element-wrapper {
     width: 100%;
     display: flex;
+    flex-direction: column;
     background-color: white;
-    border-radius: 1px;
-    border-color: grey;
-    .headline {
-        margin-left: auto;
-        margin-right: auto;
+
+    .headline-wrapper {
+        width: 100%;
+        display: flex;
+        background-color: white;
+        border-bottom:1px solid black;
+        .headline {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
     }
-    
+    .element {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: nowrap;
+        border-bottom:1px solid grey;
+        .button-text {
+        }
+        .arrow {
+            margin-left: auto;
+        }
+
+    }
+
 }
+

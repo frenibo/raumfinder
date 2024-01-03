@@ -11,6 +11,7 @@ import { FavoritesComponent } from './favorites/favorites.component';
 import {ViewBuildingBlueprintComponent} from './view-building-blueprint/view-building-blueprint.component';
 import { ListFreeRoomsComponent } from './list-free-rooms/list-free-rooms.component';
 import { SettingsComponent } from './settings/settings.component';
+import { UnlockRoomsComponent } from './unlock-rooms/unlock-rooms.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'loading', pathMatch: 'full' },
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'buildingBlueprint/:id', component: ViewBuildingBlueprintComponent},
   { path: 'list-free-rooms', component: ListFreeRoomsComponent },
   { path: 'settings', component: SettingsComponent },
+  { path: 'unlock-rooms', component: UnlockRoomsComponent },
 
 ];
 
