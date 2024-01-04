@@ -71,7 +71,8 @@ export class ListFreeRoomsComponent {
       dateInput = String(dateInput);
       const dateParams = dateInput.split(' ');
       var month = this.convertMonthStringtoNum(dateParams[1]);
-      var newDate = String('').concat(dateParams[0], ', ', dateParams[2], '.', month, '.', dateParams[3]);
+      var day = this.translateDay(dateParams[0]);
+      var newDate = String('').concat(day, ', ', dateParams[2], '.', month, '.', dateParams[3]);
       this.dateSet = newDate;
     }
     
@@ -81,7 +82,8 @@ export class ListFreeRoomsComponent {
     else {
       const dateParams = Date().split(' ');
       var month = this.convertMonthStringtoNum(dateParams[1]);
-      var newDate = String('').concat(dateParams[0], ', ', dateParams[2], '.', month, '.', dateParams[3]);
+      var day = this.translateDay(dateParams[0]);
+      var newDate = String('').concat(day, ', ', dateParams[2], '.', month, '.', dateParams[3]);
     }
     return newDate
   }
@@ -101,6 +103,18 @@ export class ListFreeRoomsComponent {
     else if(month == 'Dec') { return '12' }
 
     return '00'
+  }
+
+  translateDay(day: string): string {
+    if(day == 'Mon') { return 'Mo' }
+    else if(day == 'Tue') { return 'Di' }
+    else if(day == 'Wed') { return 'Mi' }
+    else if(day == 'Thu') { return 'Do' }
+    else if(day == 'Fri') { return 'Fr' }
+    else if(day == 'Sat') { return 'Sa' }
+    else if(day == 'Sun') { return 'So' }
+
+    return day
   }
 
   getTime(timeInput?: any): string {

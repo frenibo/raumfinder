@@ -38,6 +38,8 @@ export class SharedService {
     building: '',
     building_id: 0,
     favorite: false,
+    unlock: false,
+    type: 'Laborraum',
   }
 
   defaultBuilding: Building = {

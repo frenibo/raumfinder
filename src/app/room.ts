@@ -7,4 +7,6 @@ export interface Room {
     building: string;
     building_id: number;
     favorite: boolean;
+    unlock: boolean;
+    type: string;
 }

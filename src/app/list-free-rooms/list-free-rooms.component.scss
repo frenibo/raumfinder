@@ -16,7 +16,41 @@
         justify-content: center;
     
         .single-card {
-            //width: 46.25vw;
+            background-color: #feffd8;
+            // width: 46.25vw;
+            width: 100%;
+            mat-card-header-text {
+                width: 46.25vw;
+                mat-card-header {
+                    width: 100%;
+                    mat-card-title {
+                        width: 100%;
+                        .spacer {
+                            width: 50px;
+                        }
+                        .icon {
+                            margin-left: auto;
+                        }
+                    }
+
+                    mat-card-subtitle {
+                        color: rgb(51, 51, 51);
+                        display: flex;
+                        flex-direction: row;
+                        .row {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+            mat-card-actions {
+                .action-button {
+                    width: 100% !important;
+                    height: 4rem !important;
+                    background-color: #001D3D;
+                    color: white;
+                }
+            }
         }
     }
 }

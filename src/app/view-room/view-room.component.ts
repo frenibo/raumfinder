@@ -30,6 +30,8 @@ export class ViewRoomComponent {
     building: '',
     building_id: 0,
     favorite: false,
+    unlock: false,
+    type: 'Laborraum',
   };
 
   currentRoomBuilding: Building = this.sharedService.defaultBuilding;

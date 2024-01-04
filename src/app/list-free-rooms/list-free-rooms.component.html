@@ -19,7 +19,7 @@
 
     <div>
         <button mat-button (click)="picker.open()" class="datePickerButton">
-            {{this.getDate(this.startDate)}} {{this.getTime(this.startTime)}}
+            {{this.getDate(this.startDate)}} &nbsp; &nbsp; &nbsp; {{this.getTime(this.startTime)}}
         </button>
         <mat-form-field subscriptSizing="dynamic" class="mat-form-field-no-padding" [class.cdk-visually-hidden]="true">
             <!--mat-label>{{this.getDate()}}</mat-label-->
@@ -60,15 +60,26 @@
             <div *ngFor="let room of dataSourceRooms.connect().value">
                     <mat-card class="single-card" (click)="navigate('view-room', room)">
                         <mat-card-header>
-                            <mat-card-title>{{room.name}}</mat-card-title>
-                            <mat-card-subtitle></mat-card-subtitle>
+                            <mat-card-title>
+                                {{room.name}}
+                                <span class="spacer">
+                                    &nbsp;
+                                </span>
+                                <span class="icon"> <i mat-icon class="material-icons">lock</i> </span>
+                            </mat-card-title>
+                            <mat-card-subtitle>
+                                <div class="row">{{room.type}}</div>
+                                <div class="row">Etage: {{room.floor}}</div>
+                                <div class="row">Frei bis: 15:00</div>
+                            </mat-card-subtitle>
                         </mat-card-header>
                         <mat-card-content>
-                            <button (click)="navigate('view-room', room)">
-                                Raum anzeigen
-                            </button>
+                            
                         </mat-card-content>
                         <mat-card-actions>
+                            <button mat-button class="action-button" (click)="navigate('view-room', room)">
+                                Raum anzeigen
+                            </button>
                         </mat-card-actions>
                     </mat-card>
             </div>

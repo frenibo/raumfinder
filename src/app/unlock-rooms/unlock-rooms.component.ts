@@ -50,6 +50,7 @@ export class UnlockRoomsComponent {
     this.dataSource = new MatTableDataSource<Room>(this.rooms);
 
     this.sharedService.unlockedRooms.subscribe( unlockedRooms => this.unlockedRooms = unlockedRooms);
+    this.sharedService.roomsChanged.subscribe( roomsChanged => this.getRooms());
   }
 
   getRooms() {

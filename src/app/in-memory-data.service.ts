@@ -17,6 +17,8 @@ export class InMemoryDataService implements InMemoryDbService {
         building: 'ZIMT',
         building_id: 1,
         favorite: false,
+        unlock: false,
+        type: 'Laborraum',
       },
 
       { id: 2,
@@ -25,6 +27,8 @@ export class InMemoryDataService implements InMemoryDbService {
         building: 'ZIMT',
         building_id: 1,
         favorite: false,
+        unlock: false,
+        type: 'Laborraum',
       },
 
       { id: 3,
@@ -33,6 +37,8 @@ export class InMemoryDataService implements InMemoryDbService {
         building: 'AB-Gebäude',
         building_id: 2,
         favorite: false,
+        unlock: false,
+        type: 'Laborraum',
       },
     ];
 
