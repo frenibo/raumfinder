@@ -17,3 +17,12 @@ table {
     cursor: pointer;
 }
 
+.chip-grid {
+    //margin-top: 30vh;
+}
+
+mat-chip-row {
+    height: 3rem;
+    width: 10rem;
+    font-size: 3rem;
+}

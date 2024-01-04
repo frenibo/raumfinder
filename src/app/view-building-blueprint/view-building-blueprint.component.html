@@ -22,11 +22,10 @@
 <!--  <div class="blueprintImage">-->
 <!--    {{currentBuilding.name}}-->
 <!--  </div>-->
-  <div class="blueprintContainer">
-    <div
-      class="blueprintImage" style="background-image: url('../../assets/hsb assets/{{currentBuilding.name}}_{{floorName}}.png');" alt="Room Image">
-    </div>
-  </div>
+  <pinch-zoom>
+    <img class="blueprintImage" src='../../assets/hsb assets/{{currentBuilding.name}}_{{floorName}}.png' alt="Room Image">
+  </pinch-zoom>
+
   <div class="info-bar">
     <div class="oeffnungszeiten">
       <span id="oeffnungszeitenTitel">Öffnungszeiten</span>

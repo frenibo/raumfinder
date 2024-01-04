@@ -24,8 +24,6 @@ export class UnlockRoomsComponent {
 
   // Chip constants
   separatorKeysCodes: number[] = [ENTER, COMMA];
-  //filterCtrl = new FormControl('');
-  // filteredRooms: Observable<Room[]>;
   unlockedRooms: Room[] = [];
 
   @ViewChild('filterInput') filterInput!: ElementRef<HTMLInputElement>;
@@ -37,14 +35,7 @@ export class UnlockRoomsComponent {
     private floorService: FloorService,
     private buildingService: BuildingService,
     private sharedService: SharedService,
-  ) {
-    /*
-    this.filteredRooms = this.filterCtrl.valueChanges.pipe(
-      startWith(null),
-      map((room: string | null) => (room ? this._filter(room) : this.rooms.slice())),
-    );
-    */
-  }
+  ) {}
 
   rooms: Room[] = [];
   floors: Floor[] = [];
@@ -57,6 +48,8 @@ export class UnlockRoomsComponent {
     await this.checkLoaded();
     this.getRooms();
     this.dataSource = new MatTableDataSource<Room>(this.rooms);
+
+    this.sharedService.unlockedRooms.subscribe( unlockedRooms => this.unlockedRooms = unlockedRooms);
   }
 
   getRooms() {
@@ -82,8 +75,6 @@ export class UnlockRoomsComponent {
     this.dataSource.filter = '';
     let event = new KeyboardEvent('keyup');
     this.filterInput!.nativeElement.dispatchEvent(event);
-    //this.filterInput.nativeElement.value = '';
-    //this.filterCtrl.setValue(null);
   }
 
   navigate(location: string, room: Room) {
@@ -97,16 +88,14 @@ export class UnlockRoomsComponent {
   unlockRoom(room: Room) {
     if(this.unlockedRooms.indexOf(room) == -1) {
       this.unlockedRooms.push(room);
+      this.sharedService.unlockedRooms.next(this.unlockedRooms);
     }
     this.filterInput.nativeElement.value = '';
-    //this.filterCtrl.setValue(null);
   }
 
   add(event: MatChipInputEvent): void {
     // Clear the input value
     event.chipInput!.clear();
-
-    //this.filterCtrl.setValue(null);
   }
 
   remove(room: Room): void {
@@ -114,22 +103,15 @@ export class UnlockRoomsComponent {
 
     if (index >= 0) {
       this.unlockedRooms.splice(index, 1);
-
+      this.sharedService.unlockedRooms.next(this.unlockedRooms);
       this.announcer.announce(`Removed ${room}`);
     }
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {
     this.unlockedRooms.push(event.option.value);
+    this.sharedService.unlockedRooms.next(this.unlockedRooms);
     this.filterInput.nativeElement.value = '';
-    //this.filterCtrl.setValue(null);
   }
-  /*
-  private _filter(value: string): Room[] {
-    const filterValue = value.toLowerCase();
-
-    return this.rooms.filter(room => room.name.toLowerCase().includes(filterValue));
-  }*/
-
 
 }

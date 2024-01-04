@@ -24,7 +24,7 @@
             }
         </mat-autocomplete>
         <div [hidden]="true">
-            <mat-chip-grid #chipGrid aria-label="filter selection">
+            <mat-chip-grid #chipGrid aria-label="room selection">
                 @for (room of unlockedRooms; track room) {
                 <mat-chip-row (removed)="remove(room)">
                     {{room.name}} {{room.building}}
@@ -40,12 +40,12 @@
 
 
 
-    <mat-chip-grid #chipGrid aria-label="Fruit selection">
+    <mat-chip-grid #chipGrid aria-label="room selection" class="chip-grid">
         @for (room of unlockedRooms; track room) {
-        <mat-chip-row (removed)="remove(room)">
+        <mat-chip-row (removed)="remove(room)" (click)="remove(room)">
             {{room.name}} {{room.building}}
             <button matChipRemove [attr.aria-label]="'remove ' + room">
-            <mat-icon>cancel</mat-icon>
+                <mat-icon>cancel</mat-icon>
             </button>
         </mat-chip-row>
         }

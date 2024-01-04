@@ -68,6 +68,8 @@ export class SharedService {
 
   currentBuilding: BehaviorSubject<Building> = new BehaviorSubject<Building>(this.defaultBuilding);
 
+  unlockedRooms: BehaviorSubject<Room[]> = new BehaviorSubject<Room[]>([]);
+
   navigate(location: string, replaceUrl?: boolean | undefined, setFilter?: string | undefined): void {
     if( replaceUrl == true ) {
       this.router.navigate([location], { replaceUrl: true});
