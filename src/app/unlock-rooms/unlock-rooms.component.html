@@ -42,10 +42,11 @@
 
     <mat-chip-grid #chipGrid aria-label="room selection" class="chip-grid">
         @for (room of unlockedRooms; track room) {
-        <mat-chip-row (removed)="remove(room)" (click)="remove(room)">
+        <mat-chip-row (removed)="remove(room)" (click)="remove(room)" class="single-chip">
             {{room.name}} {{room.building}}
             <button matChipRemove [attr.aria-label]="'remove ' + room">
-                <mat-icon>cancel</mat-icon>
+                <mat-icon>close</mat-icon>
+                <!--mat-icon>cancel</mat-icon-->
             </button>
         </mat-chip-row>
         }

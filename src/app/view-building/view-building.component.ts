@@ -11,6 +11,7 @@ import {Room} from "../room";
 export class ViewBuildingComponent {
 
   imageURL: string = '';
+  humidityPercentage: any;
 
   constructor(
     private sharedService: SharedService,
@@ -33,6 +34,7 @@ export class ViewBuildingComponent {
   async ngOnInit() {
     this.sharedService.currentBuilding.subscribe( currentBuilding => this.currentBuilding = currentBuilding);
     this.sharedService.buildingsChanged.subscribe( buildingsChanged => this.sharedService.updateCurrentBuildingById(this.currentBuilding.id));
+    this.humidityPercentage = 50 + '%'
   }
 
   navigate(location: string, replaceUrl?: boolean | undefined, setFilter?: string | undefined) {

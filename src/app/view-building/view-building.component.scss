@@ -54,23 +54,30 @@ p {
       }
     }
 
-    .info-button-wrapper {
+    .map-button-wrapper {
       width: 20%;
       margin-left: auto;
       display: flex;
       justify-content: center;
       align-items: center;
 
-      .info-button {
+      .map-button {
         background-color: transparent;
         border: none;
         color: white;
-        width: 3rem;
-        height: 3rem;
+        width: 5rem;
+        height: 5rem;
         //font-size: 100px !important;
+        img {
+          transform: scale(2);
+        }
 
       }
     }
+  }
+
+  .mat-icon-lg {
+    transform: scale(2);
   }
 
   i.material.symbols.outlined {

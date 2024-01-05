@@ -92,8 +92,8 @@ export class InMemoryDataService implements InMemoryDbService {
       {
         id: 2,
         name: 'AB-Gebäude',
-        street: 'Flughafenallee',
-        street_number: '10',
+        street: 'Neustadtswall',
+        street_number: '30',
         ort: 'Bremen',
         plz: 28199,
         country: 'Deutschland',

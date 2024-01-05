@@ -25,4 +25,14 @@ mat-chip-row {
     height: 3rem;
     width: 10rem;
     font-size: 3rem;
+    background-color: #001D3D !important;
+    button {
+        color:white !important;
+        //height: 0.1rem;
+        font-size: 1rem;
+    }
+}
+
+.mat-mdc-standard-chip {
+    --mdc-chip-label-text-color: #fff;
 }

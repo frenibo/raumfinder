@@ -8,17 +8,16 @@
             <span id="oeffnungszeitenTitel">Öffnungszeiten</span>
             <span id="oeffnungszeitenText">Montag bis Freitag: 6 bis 22 Uhr<p></p>Sa-So: Zugang nur über Kartenleser</span>
         </div>
-        <div class="info-button-wrapper">
-            <button mat-icon-button class="info-button">
-                <mat-icon>
-                    info
-                </mat-icon>
+        <div class="map-button-wrapper">
+            <button mat-icon-button class="map-button">
+                <img src="../../assets/Icons/google-maps.svg">
             </button>
         </div>
     </div>
 
     <div class="navButton-wrapper">
         <Button class="navButton" id="RaumSuchen" (click)="navigate('list-room', false, currentBuilding.name)">
+            <img src="../../assets/Icons/Raum_Suchen.png">
             <div>
                 Raum
             </div>
