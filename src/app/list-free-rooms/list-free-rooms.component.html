@@ -1,4 +1,14 @@
 <div class="wrapper-free-rooms">
+    <!--
+    <mat-form-field subscriptSizing="dynamic">
+    <mat-select [(value)]="defaultFilterValue">
+        <mat-option *ngFor="let building of dataSourceBuildings.connect().value" (click)="triggerFilterInput(building.name)" value="building.name">
+            {{building.name}}
+        </mat-option>
+    </mat-select>
+    </mat-form-field>
+    -->
+
     <mat-form-field subscriptSizing="dynamic">
         <!--mat-icon matPrefix>search</mat-icon-->
         <input matInput (keyup)="applyFilter($event)" placeholder="Gebäude wählen" #filterInput value="{{defaultFilterValue}}" [matAutocomplete]="auto">
