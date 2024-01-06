@@ -1,3 +1,7 @@
+p {
+  margin: 0;
+  padding: 0;
+}
 
 .button-wrapper {
   width: 100%;
@@ -65,36 +69,71 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  
+
+  .blueprintImage-wrapper {
+
+    width: 100%;
+    //height: calc(100% - 220px);
+    flex-basis: 10px; /* Die Basisgröße Flex-Containers beträgt 50% der Viewport-Höhe */
+    flex-shrink: 0;
+    flex-grow: 4; /* Das Element kann sich im Verhältnis 2:1 gegenüber anderen flexiblen Elementen vergrößern */
+    display: flex;
+    //background-color: white;
+    //color: white;
+    //background-size: cover;
+    //object-fit: contain;
+
+    pinch-zoom {
+        background-color: white !important;
+        display: flex;
+        
+
+        .blueprintImage {
+            width: 100%;
+            flex-basis: 10px;
+            flex-grow: 4;
+            //background-color:#ffffff !important;
+            //background-size: cover;
+            object-fit: contain;
+        }
+
+    }
+
+    
+}
+  /*
   .blueprintImage {
       width: 100%;
-      flex-basis: 50vh; /* Die Basisgröße Flex-Containers beträgt 50% der Viewport-Höhe */
-      min-height: 50vh;
-      flex-grow: 2; /* Das Element kann sich im Verhältnis 2:1 gegenüber anderen flexiblen Elementen vergrößern */
+      flex-basis: 50vh;
+      min-height: 60vh;
+      flex-grow: 2;
       background-color:#ffffff;
       background-size:cover;
       object-fit: contain;
   }
 
-  .blueprintImage {
+  .blueprintImage2 {
     width: 100%;
     height: 100%;;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
   }
+  */
 
   .info-bar {
-    color:white;
+    color: white;
     width: 100%;
-    flex-basis: 15vh;
-    background-image: url(../../assets/hsb\ assets/hsb_loader.png);
+    //flex-basis: 15vh;
+    height: 100px;
+    //background-image: url(../../assets/hsb\ assets/hsb_loader.png);
     box-shadow: inset 0 0 0 100vh rgba(0, 29, 61, 0.6);
     background-size: cover;
     background-position: center;
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
+    
     .oeffnungszeiten {
       display: flex;
       flex-direction: row;
@@ -104,15 +143,40 @@
       margin-left: 5%;
       margin-right: auto;
       font-size: 0.8rem;
-      #oeffnungszeitenTitel {
-        width: 100%;
-        font-size: 1.2rem;
-      }
-      #oeffnungszeitenText {
-        width: 100%;
-        //margin-right: 0.2rem;
+
+        #oeffnungszeitenTitel {
+          width: 100%;
+          font-size: 1.2rem;
+        }
+
+        #oeffnungszeitenText {
+          width: 100%;
+          //margin-right: 0.2rem;
+        }
+    }
+    .info-button-wrapper {
+      width: 20%;
+      margin-left: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .info-button {
+          background-color: transparent;
+          border: none;
+          color:white;
+          //width: 3rem;
+          //height: 3rem;
+          //font-size: 100px !important;
+          img {
+              transform: scale(1.4);
+          }
+
       }
     }
+  }
+
+  .mat-icon-lg {
+    transform: scale(2);
   }
 
   i.material.symbols.outlined {
@@ -124,8 +188,8 @@
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
-    flex-basis: 10vh;
-    flex-grow: 1;
+    flex-basis: 120px;
+    flex-grow: 0;
     .navButtons {
       display:flex;
       flex-direction: row;
@@ -137,14 +201,30 @@
     #RaumSuchen {
       flex-basis: 33%;
       flex-grow: 1;
+      font-size: large;
+      mat-icon {
+        transform: scale(1.8);
+        margin-bottom: 5px;
+        //height: 20px;
+      }
     }
+
     #KartenAnsicht {
       flex-basis: 33%;
       flex-grow: 1;
+      font-size: large;
+      img {
+        height: 40px;
+      }
     }
+
     #FreieRäume {
       flex-basis: 33%;
       flex-grow: 1;
+      font-size: large;
+      img {
+        height: 40px;
+      }
     }
   }
 }

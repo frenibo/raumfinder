@@ -93,11 +93,11 @@ export class ViewRoomComponent {
   }
 
   toggleView(){
-    if(this.viewToggle[0] === 'Gebäude') {
+    if(this.viewToggle[0] === 'Raum') {
       this.viewToggle[0] = 'Belegungs';
     }
     else if(this.viewToggle[0] === 'Belegungs') {
-      this.viewToggle[0] = 'Gebäude';
+      this.viewToggle[0] = 'Raum';
     }
   }
 

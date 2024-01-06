@@ -3,7 +3,7 @@
 
     <img class="blueprintImage" src="../../assets/hsb assets/Map_{{currentBuilding.name}}.png" alt="Building Image">
 
-    <div class="info-bar">
+    <div class="info-bar" style="background-image: url('../../assets/hsb assets/{{currentBuilding.image}}')">
         <div class="oeffnungszeiten">
             <span id="oeffnungszeitenTitel">Öffnungszeiten</span>
             <span id="oeffnungszeitenText">Montag bis Freitag: 6 bis 22 Uhr<p></p>Sa-So: Zugang nur über Kartenleser</span>
@@ -17,7 +17,7 @@
 
     <div class="navButton-wrapper">
         <Button class="navButton" id="RaumSuchen" (click)="navigate('list-room', false, currentBuilding.name)">
-            <img src="../../assets/Icons/Raum_Suchen.png">
+            <mat-icon>search</mat-icon>
             <div>
                 Raum
             </div>
@@ -26,6 +26,7 @@
             </div>
         </Button>
         <Button class="navButton" id="GebäudeAnsicht" (click)="navigateWithBuilding('buildingBlueprint', currentBuilding, true)">
+            <img src="../../assets/Icons/Gebäude_Ansicht.png">
             <div>
                 Gebäude
             </div>
@@ -34,6 +35,7 @@
             </div>
         </Button>
         <Button class="navButton" id="FreieRäume" (click)="navigate('list-free-rooms', false, currentBuilding.name)">
+            <img src="../../assets/Icons/Freie Räume Icon.png">
             <div>
                 Freie
             </div>

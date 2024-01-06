@@ -3,6 +3,7 @@ import {Building} from "../building";
 import { SharedService } from '../shared.service';
 import {Room} from "../room";
 import {lastValueFrom} from "rxjs";
+import { DialogService } from '../dialog.service';
 
 @Component({
   selector: 'app-view-building-blueprint',
@@ -12,6 +13,7 @@ import {lastValueFrom} from "rxjs";
 export class ViewBuildingBlueprintComponent {
   constructor(
     private sharedService: SharedService,
+    private dialogService: DialogService,
   ) {}
 
   currentBuilding: Building = {
@@ -38,6 +40,10 @@ export class ViewBuildingBlueprintComponent {
     this.sharedService.currentBuilding.subscribe( currentBuilding => this.getData(currentBuilding));
     this.sharedService.currentBuilding.subscribe( currentBuilding => this.currentBuilding = currentBuilding);
     this.sharedService.buildingsChanged.subscribe( buildingsChanged => this.sharedService.updateCurrentBuildingById(this.currentBuilding.id));
+  }
+
+  openDialogInfoBuilding() {
+    this.dialogService.openDialogInfoBuilding();
   }
 
   scroll(direction: string) {

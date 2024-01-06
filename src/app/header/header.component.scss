@@ -4,101 +4,79 @@
     background-color: #001D3D;
     //background-image: url(../../assets/hsb\ assets/caleidoscope_green.svg)
     display: flex;
-    flex-wrap: flex;
-    align-items: flex-start;
+    flex-wrap: nowrap;
+    align-items: center;
+    align-content: center;
     justify-content: flex-start;
     width: 100%;
     //height: 90px;
-    height: 10vh;
-    overflow: hidden;
+    height: 85px;
+    //overflow: hidden;
+    .logo-wrapper {
+        width: 100%;
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        .raumfinder {
+            color: white;
+            font-size: 42px;
+            font-weight: bold;
+        }
+        
+        .hsb-key {
+            //padding:0.5rem;
+            //padding-right: 1rem;
+            height: 25px;
+            width: auto;
+            margin-right: 5px;
+        }
+    }
+    .return {
+        color: white;
+        background-color: transparent;
+        border-style: hidden;
+        height: 40px;
+        width: auto;
+        cursor: pointer;
+        margin-bottom: 10px;
+        
+        mat-icon {
+            transform:scale(1.8);
+        }
+    }
+    .title {
+        color: white;
+        font-size: 30px;
+        font-weight: bold;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        .roomName {
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+        }
+        .buildingName {
+            font-weight: normal;
+        }
+        .buildingAddress {
+            width: 100%;
+            font-weight: normal;
+            font-size: 15px;
+        }
+    }
+    .icon-right {
+        color: white;
+        background-color: transparent;
+        border-style: hidden;
+        transform: scale(1.8);
+        margin-left: auto;
+        padding-right: 50px;
+    }
 }
 
-.title {
-    //margin:0.5rem;
-    margin: 0px;
-    color: white;
-    font-size: 5vh;
-    font-weight: bold;
-    height: 10vh;
-}
-
-.hsb-key {
-    //padding:0.5rem;
-    //padding-right: 1rem;
-    height: 4vh;
-    width: auto;
-}
-
-.logo-wrapper {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-}
-
-.button {
-    padding:0.5vw;
-    color: white;
-    background-color: transparent;
-    border-style: hidden;
-    align-self: center;
-    position: absolute;
-    right: 0;
-    //margin-right: 1vw;
-    //font-size: 18px;
-    //line-height: 36px;
-    height: 10vw;
-    width: 10vw;
-    display:flex;
-    align-items: center;
-    justify-content: flex-start;
-    
-}
-
-.button-unlock {
-    padding:0.5vw;
-    color: white;
-    background-color: transparent;
-    border-style: hidden;
-    align-self: center;
-    margin-left: auto;
-    //margin-right: 1vw;
-    //font-size: 18px;
-    //line-height: 36px;
-    height: 10vw;
-    width: 10vw;
-    display:flex;
-    flex-direction: column;
-    //align-items: center;
-    //justify-content: flex-start;
-    
-}
-
-.return {
-    color: white;
-    background-color: transparent;
-    border-style: hidden;
-    align-self: center;
-    height: 10vw;
-    width: 10vw;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    cursor: pointer;
-}
-
-mat-icon {
-    font-size: 8vw;
-    //line-height: 5vw;
-    //vertical-align: middle;
-    //align-items: center;
-    height: auto;
-    width: 10vw;
-    //align-self:center; 
-}
-
-i {
-    color: white;
-}
 
 .mat-mdc-icon-button .mat-mdc-button-touch-target {
     /*
@@ -112,10 +90,5 @@ i {
     width: inherit !important;
 }
 
-#startmenu {
-    .hsb-key {
-        
-    }
-}
 
  

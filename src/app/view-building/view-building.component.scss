@@ -24,8 +24,9 @@ p {
   .info-bar {
     color: white;
     width: 100%;
-    flex-basis: 15vh;
-    background-image: url(../../assets/hsb\ assets/hsb_loader.png);
+    //flex-basis: 15vh;
+    height: 100px;
+    //background-image: url(../../assets/hsb\ assets/hsb_loader.png);
     box-shadow: inset 0 0 0 100vh rgba(0, 29, 61, 0.6);
     background-size: cover;
     background-position: center;
@@ -90,16 +91,14 @@ p {
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
-    flex-basis: 10vh;
-    flex-grow: 1;
+    flex-basis: 120px;
+    flex-grow: 0;
 
     .navButtons {
       display: flex;
       flex-direction: row;
       flex-wrap: nowrap;
-
       div {
-
         width: 100%;
       }
     }
@@ -107,16 +106,30 @@ p {
     #RaumSuchen {
       flex-basis: 33%;
       flex-grow: 1;
+      font-size: large;
+      mat-icon {
+        transform: scale(1.8);
+        margin-bottom: 5px;
+        //height: 20px;
+      }
     }
 
     #GebäudeAnsicht {
       flex-basis: 33%;
       flex-grow: 1;
+      font-size: large;
+      img {
+        height: 40px;
+      }
     }
 
     #FreieRäume {
       flex-basis: 33%;
       flex-grow: 1;
+      font-size: large;
+      img {
+        height: 40px;
+      }
     }
   }
 }

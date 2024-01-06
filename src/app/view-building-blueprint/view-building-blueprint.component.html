@@ -1,5 +1,5 @@
 <div class="button-wrapper">
-  <ng-container *ngIf="currentBuildingFloors.length >= 5">
+  <ng-container *ngIf="currentBuildingFloors.length >= 6">
     <mat-button-toggle class="scroll-toggle-left" (click)="scroll('left')">
       <span class="material-icons">arrow_left</span>
     </mat-button-toggle>
@@ -11,7 +11,7 @@
       </mat-button-toggle>
     </ng-container>
   </mat-button-toggle-group>
-  <ng-container *ngIf="currentBuildingFloors.length >= 5">
+  <ng-container *ngIf="currentBuildingFloors.length >= 6">
     <mat-button-toggle class="scroll-toggle-right" (click)="scroll('right')">
       <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="arrow_right"></mat-icon>
     </mat-button-toggle>
@@ -22,19 +22,27 @@
 <!--  <div class="blueprintImage">-->
 <!--    {{currentBuilding.name}}-->
 <!--  </div>-->
-  <pinch-zoom>
-    <img class="blueprintImage" src='../../assets/hsb assets/{{currentBuilding.name}}_{{floorName}}.png' alt="Room Image">
-  </pinch-zoom>
+  <div class="blueprintImage-wrapper">
+    <pinch-zoom>
+      <img class="blueprintImage" src='../../assets/hsb assets/{{currentBuilding.name}}_{{floorName}}.png' alt="Room Image">
+    </pinch-zoom>
+  </div>
 
-  <div class="info-bar">
+  <div class="info-bar" style="background-image: url('../../assets/hsb assets/{{currentBuilding.image}}')">
     <div class="oeffnungszeiten">
       <span id="oeffnungszeitenTitel">Öffnungszeiten</span>
       <span id="oeffnungszeitenText">Montag bis Freitag: 6 bis 22 Uhr<p></p>Sa-So: Zugang nur über Kartenleser</span>
     </div>
+    <div class="info-button-wrapper">
+      <button mat-icon-button class="info-button" (click)="openDialogInfoBuilding()">
+          <img src="../../assets/Icons/Raum_Info.png">
+      </button>
+  </div>
   </div>
 
   <div class="navButton-wrapper">
     <Button class="navButton" id="RaumSuchen" (click)="navigate('list-room', false, currentBuilding.name)">
+      <mat-icon>search</mat-icon>
       <div>
         Raum
       </div>
@@ -43,6 +51,7 @@
       </div>
     </Button>
     <Button class="navButton" id="KartenAnsicht" (click)="navigateWithBuilding('view-building', currentBuilding, true)">
+      <img src="../../assets/Icons/Karten_Ansicht.png">
       <div>
         Karten
       </div>
@@ -51,6 +60,7 @@
       </div>
     </Button>
     <Button class="navButton" id="FreieRäume" (click)="navigate('list-free-rooms', false, currentBuilding.name)">
+      <img src="../../assets/Icons/Freie Räume Icon.png">
       <div>
         Freie
       </div>
