@@ -26,6 +26,7 @@ export class ListFreeRoomsComponent {
   ) {}
 
   rooms: Room[] = [];
+  unlockedRooms: Room[] = []
   floors: Floor[] = [];
   buildings: Building[] = [];
   displayedColumns: string[] = ['name', 'building', 'floor'];
@@ -51,10 +52,24 @@ export class ListFreeRoomsComponent {
 
     this.sharedService.currentFilter.subscribe(
       currentFilter => currentFilter ? this.defaultFilterValue = currentFilter : this.triggerFilterInput(this.defaultFilterValue));
+
+    this.sharedService.unlockedRooms.subscribe( unlockedRooms => this.unlockedRooms = unlockedRooms);
   }
 
   async ngAfterViewChecked(): Promise<void> {
     this.triggerFilterInput(this.filterInput!.nativeElement.value);
+  }
+
+  isUnlocked(room: Room): boolean {
+    const index = this.unlockedRooms.indexOf(room);
+
+    if (index >= 0) {
+      return true
+    }
+    else {
+      return false
+    }
+
   }
 
   async getRooms(): Promise<Room[]> {

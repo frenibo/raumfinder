@@ -47,7 +47,7 @@
                            readonly />
                 </mat-form-field>
                 <ngx-mat-timepicker #timePicker [(ngModel)]="startTime"></ngx-mat-timepicker>
-                                
+
                 <mat-datepicker-actions>
                     <div class="datepicker-actions">
                         <button mat-button class="setTime" (click)="timePicker.open()">{{this.getTime(this.startTime)}}</button>   
@@ -71,7 +71,12 @@
                                 <span class="spacer">
                                     &nbsp;
                                 </span>
-                                <span class="icon"> <i mat-icon class="material-icons">lock</i> </span>
+                                <ng-container *ngIf="isUnlocked(room) == false">
+                                    <span class="icon"> <i mat-icon class="material-icons">lock</i> </span>
+                                </ng-container>
+                                <ng-container *ngIf="isUnlocked(room) == true">
+                                    <span class="icon"> <i mat-icon class="material-icons">lock_open</i> </span>
+                                </ng-container>
                             </mat-card-title>
                             <mat-card-subtitle>
                                 <div class="row">{{room.type}}</div>
