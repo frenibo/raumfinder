@@ -3,3 +3,19 @@
     color:white;
     cursor: pointer;
 }
+
+.striped-row {
+    background-color: #4545451a;
+    border: none;
+}
+
+.mat-mdc-cell {
+    border-bottom-color: transparent !important;
+}
+
+.mat-mdc-header-cell {
+    border-bottom-color: #4e4e4e !important;
+    border-bottom-width: 1px !important;
+    border-bottom-style: solid;
+    
+}

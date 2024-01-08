@@ -23,7 +23,8 @@
         class="nonheader-row"
         mat-row 
         (click)="navigate('view-building', row)"
-        *matRowDef="let row; columns: displayedColumns;"
+        *matRowDef="let row; let odd = odd; columns: displayedColumns;"
+        [class.striped-row]="odd"
     ></tr>
 
     <!-- Row shown when there is no matching data. -->
