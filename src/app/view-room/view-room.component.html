@@ -1,4 +1,5 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+<!--meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2.5" /-->
 
 <!--
     Gebäudeplan Stockwerke Toggle
@@ -49,12 +50,12 @@
         <div class="blueprintImage-wrapper">
             <ng-container *ngFor="let floor of currentRoomBuildingFloors; index as j">
                 <ng-container *ngIf="currentRoom.floor === floor.name">
-                    <pinch-zoom>
+                    <pinch-zoom disableZoomControl="never">
                         <img class="blueprintImage" src="../../assets/hsb assets/{{currentRoom.building}}_Room_{{currentRoom.name}}_{{floor.name}}.png" [hidden]="this.currentRoomBuildingFloors[j].name !== floorName">
                     </pinch-zoom>
                 </ng-container>
                 <ng-container *ngIf="currentRoom.floor !== floor.name">
-                    <pinch-zoom>
+                    <pinch-zoom disableZoomControl="never">
                         <img class="blueprintImage" src="../../assets/hsb assets/{{currentRoom.building}}_{{floor.name}}.png" [hidden]="this.currentRoomBuildingFloors[j].name !== floorName">
                     </pinch-zoom>
                 </ng-container>
