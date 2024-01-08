@@ -10,22 +10,24 @@
         background-color: white;
         border-bottom:1px solid black;
         .headline {
+            zoom: 1.2;
+            font-weight: bold;
             margin-left: auto;
             margin-right: auto;
         }
         
     }
     .element {
+        zoom: 1.4;
         width: 100%;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        flex-wrap: nowrap;
         border-bottom:1px solid grey;
         .button-text {
         }
         .arrow {
             margin-left: auto;
+        }
+        #iconRäumeFreischalten {
+            transform: scale(0.3);
         }
 
     }
