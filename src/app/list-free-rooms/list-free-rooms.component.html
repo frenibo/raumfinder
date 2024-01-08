@@ -47,12 +47,8 @@
                            readonly />
                 </mat-form-field>
                 <ngx-mat-timepicker #timePicker [(ngModel)]="startTime"></ngx-mat-timepicker>
-                
+                                
                 <mat-datepicker-actions>
-                    <!--mat-form-field appearance="fill">
-                        <mat-label>Uhrzeit</mat-label>
-                        <input matInput type="time" [(ngModel)]="startTime">
-                    </mat-form-field-->
                     <div class="datepicker-actions">
                         <button mat-button class="setTime" (click)="timePicker.open()">{{this.getTime(this.startTime)}}</button>   
                         <div class="datepicker-buttons">                        

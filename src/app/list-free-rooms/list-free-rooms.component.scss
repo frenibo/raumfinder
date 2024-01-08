@@ -16,7 +16,7 @@
         justify-content: center;
     
         .single-card {
-            background-color: #feffd8;
+            background-color: #a6d0ab;
             // width: 46.25vw;
             width: 100%;
             mat-card-header-text {
@@ -56,20 +56,46 @@
 }
 
 .datePickerButton {
-    width:100%;
+    width: 100%;
     padding: 0;
     font-size: 1.5rem;
     background-color: white;
 }
 
+::ng-deep .mat-datepicker-content .mat-calendar
+{ 
+    //zoom: 1.5;
+}
+
+::ng-deep .md-datepicker-input-container {
+    //width: 400px;
+}
+
+::ng-deep {
+    .mat-datepicker-actions  {
+      //width: 100% !important;
+      //height: 600px !important;
+    }
+}
+
+.mat-datepicker {
+    height: 400px !important;
+}
+
 mat-datepicker-actions {
     width: 100%;
-    margin-bottom: auto;
+    margin-bottom: 100px;
     
 }
 
-
 .datepicker-actions {
+    background-color: white;
+    padding-bottom: 10px;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-bottom: 8px;
+    border-radius: 2%;
+    border-color: white;
     height: 100%;
     width: 100%;
     display: flex;
@@ -87,5 +113,6 @@ mat-datepicker-actions {
     }
     .datepicker-buttons {
         margin-left: auto;
+        //background-color: white;
     }
 }
