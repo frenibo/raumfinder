@@ -49,6 +49,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { UnlockRoomsComponent } from './unlock-rooms/unlock-rooms.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { AsyncPipe } from '@angular/common';
+import { DialogInfoRoomComponent } from './dialogs/dialog-info-room/dialog-info-room.component';
 
 @NgModule({
     declarations: [
@@ -70,6 +71,7 @@ import { AsyncPipe } from '@angular/common';
         ListFreeRoomsComponent,
         SettingsComponent,
         UnlockRoomsComponent,
+        DialogInfoRoomComponent,
     ],
     providers: [
         CookieService,

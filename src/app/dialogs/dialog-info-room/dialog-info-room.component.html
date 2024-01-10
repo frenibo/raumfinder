@@ -1,0 +1,15 @@
+<span>
+    <button mat-icon-button [mat-dialog-close] class="close-button" [autofocus]="false">
+        <mat-icon>close</mat-icon>
+    </button>
+</span>
+<div class="info-text" cdkFocusRegionstart>
+    <div class="headline">Ausstattung im Raum {{data.room.name}}</div>
+    <div>Klassifizierung: {{data.room.type}}</div>
+    <div>Sitzplätze: {{data.room.seats}}</div>
+    <div>PCs für Studenten: {{data.room.pcs}}</div>
+    <div>Whiteboard: {{jaNein(data.room.whiteboard)}}</div>
+    <div>Beamer: {{jaNein(data.room.beamer)}}</div>
+    <div>Beamer-Anschlüsse:{{data.room.beamer_connectors}}</div>
+</div>
+

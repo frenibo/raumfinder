@@ -40,6 +40,11 @@ export class SharedService {
     favorite: false,
     unlock: false,
     type: 'Laborraum',
+    seats: 0,
+    beamer: false,
+    beamer_connectors: [],
+    whiteboard: false,
+    pcs: 0,
   }
 
   defaultBuilding: Building = {

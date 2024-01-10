@@ -13,6 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ParamMap, Params, Router } from '@angular/router';
 
 import { DialogInfoBuildingComponent } from './dialogs/dialog-info-building/dialog-info-building.component';
+import { DialogInfoRoomComponent } from './dialogs/dialog-info-room/dialog-info-room.component';
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +36,19 @@ export class DialogService {
     const dialogRef = this.dialog.open(DialogInfoBuildingComponent, {
       data: { 
         
+      },
+    });
+    
+    dialogRef.afterClosed().subscribe(result => {
+    })
+
+  }
+
+  async openDialogInfoRoom(room: Room): Promise<any> {
+
+    const dialogRef = this.dialog.open(DialogInfoRoomComponent, {
+      data: { 
+        room: room,
       },
     });
     

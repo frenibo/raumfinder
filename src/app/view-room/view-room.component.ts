@@ -32,6 +32,11 @@ export class ViewRoomComponent {
     favorite: false,
     unlock: false,
     type: 'Laborraum',
+    seats: 0,
+    beamer: false,
+    beamer_connectors: [],
+    whiteboard: false,
+    pcs: 0,
   };
 
   currentRoomBuilding: Building = this.sharedService.defaultBuilding;
@@ -87,8 +92,8 @@ export class ViewRoomComponent {
     this.floorName = floorName;
   }
 
-  openDialogInfoBuilding() {
-    this.dialogService.openDialogInfoBuilding();
+  async openDialogInfoRoom(room: Room) {
+    await this.dialogService.openDialogInfoRoom(room);
 
   }
 
