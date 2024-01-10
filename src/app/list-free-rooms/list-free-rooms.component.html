@@ -52,8 +52,8 @@
                     <div class="datepicker-actions">
                         <button mat-button class="setTime" (click)="timePicker.open()">{{this.getTime(this.startTime)}}</button>   
                         <div class="datepicker-buttons">                        
-                            <button mat-button matDatepickerCancel>Cancel</button>
-                            <button mat-raised-button color="primary" matDatepickerApply >Apply</button>
+                            <button mat-button matDatepickerCancel>Abbrechen</button>
+                            <button mat-raised-button color="primary" matDatepickerApply >Übernehmen</button>
                         </div>
                     </div>
                 </mat-datepicker-actions>
@@ -97,6 +97,6 @@
         </div>
     </div>
     <ng-template #noMatch>
-        <div>No data matching the filter "{{this.dataSourceRooms.filter}}"</div>
+        <div>Keine übereinstimmenden Ergebnisse für den Filter "{{this.dataSourceRooms.filter}}"</div>
     </ng-template>
 </div>

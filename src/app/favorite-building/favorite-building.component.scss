@@ -19,3 +19,15 @@
     border-bottom-style: solid;
     
 }
+
+.imgBubble-wrapper {
+
+    height: 3rem; //TODO: responsive sizes
+
+    .imgBubble {
+        height: 100%;
+        aspect-ratio: 1 / 1;
+        width: auto;
+        border-radius: 50%;
+    }
+}
