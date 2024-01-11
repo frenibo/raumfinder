@@ -1,0 +1,17 @@
+.close-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.info-text {
+    margin: 10px;
+    .headline {
+        margin-right: 50px;
+        font-weight: bold;
+        text-decoration: underline;
+    }
+    div {
+        margin: 2px;
+    }
+}

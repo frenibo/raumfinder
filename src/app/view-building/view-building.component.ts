@@ -2,6 +2,7 @@ import {Component, ElementRef, ViewChild} from '@angular/core';
 import { SharedService } from '../shared.service';
 import { Building } from '../building';
 import {Room} from "../room";
+import { DialogService } from '../dialog.service';
 
 @Component({
   selector: 'app-view-building',
@@ -15,6 +16,7 @@ export class ViewBuildingComponent {
 
   constructor(
     private sharedService: SharedService,
+    private dialogService: DialogService,
   ) {}
 
   currentBuilding: Building = {
@@ -45,5 +47,10 @@ export class ViewBuildingComponent {
     const path: string = location.concat('/' + String(building.id));
     this.sharedService.navigate(path, replaceUrl);
     this.sharedService.updateCurrentBuilding(building);
+  }
+
+  async openDialogMap() {
+    await this.dialogService.openDialogMap();
+
   }
 }

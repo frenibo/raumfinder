@@ -50,6 +50,7 @@ import { UnlockRoomsComponent } from './unlock-rooms/unlock-rooms.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { AsyncPipe } from '@angular/common';
 import { DialogInfoRoomComponent } from './dialogs/dialog-info-room/dialog-info-room.component';
+import { DialogMapComponent } from './dialogs/dialog-map/dialog-map.component';
 
 @NgModule({
     declarations: [
@@ -72,6 +73,7 @@ import { DialogInfoRoomComponent } from './dialogs/dialog-info-room/dialog-info-
         SettingsComponent,
         UnlockRoomsComponent,
         DialogInfoRoomComponent,
+        DialogMapComponent,
     ],
     providers: [
         CookieService,
