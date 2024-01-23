@@ -14,6 +14,7 @@ import { ParamMap, Params, Router } from '@angular/router';
 
 import { DialogInfoBuildingComponent } from './dialogs/dialog-info-building/dialog-info-building.component';
 import { DialogInfoRoomComponent } from './dialogs/dialog-info-room/dialog-info-room.component';
+import { DialogInfoUnlockComponent } from './dialogs/dialog-info-unlock/dialog-info-unlock.component';
 import { DialogMapComponent } from './dialogs/dialog-map/dialog-map.component';
 
 @Injectable({
@@ -50,6 +51,19 @@ export class DialogService {
     const dialogRef = this.dialog.open(DialogInfoRoomComponent, {
       data: { 
         room: room,
+      },
+    });
+    
+    dialogRef.afterClosed().subscribe(result => {
+    })
+
+  }
+
+  async openDialogInfoUnlock(): Promise<any> {
+
+    const dialogRef = this.dialog.open(DialogInfoUnlockComponent, {
+      data: { 
+        //room: room,
       },
     });
     

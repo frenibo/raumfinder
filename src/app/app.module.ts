@@ -51,6 +51,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { AsyncPipe } from '@angular/common';
 import { DialogInfoRoomComponent } from './dialogs/dialog-info-room/dialog-info-room.component';
 import { DialogMapComponent } from './dialogs/dialog-map/dialog-map.component';
+import { DialogInfoUnlockComponent } from './dialogs/dialog-info-unlock/dialog-info-unlock.component';
 
 @NgModule({
     declarations: [
@@ -74,6 +75,7 @@ import { DialogMapComponent } from './dialogs/dialog-map/dialog-map.component';
         UnlockRoomsComponent,
         DialogInfoRoomComponent,
         DialogMapComponent,
+        DialogInfoUnlockComponent,
     ],
     providers: [
         CookieService,
@@ -114,7 +116,7 @@ import { DialogMapComponent } from './dialogs/dialog-map/dialog-map.component';
         ReactiveFormsModule,
         AsyncPipe,
         MatSelectModule,
-        
+
     ]
 })
 export class AppModule { }
