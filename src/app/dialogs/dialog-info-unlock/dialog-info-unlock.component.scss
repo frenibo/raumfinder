@@ -1,0 +1,30 @@
+.close-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.info-text {
+    margin: 10px;
+    margin-bottom: 0;
+    .headline {
+        margin-right: 50px;
+        font-weight: bold;
+        text-decoration: underline;
+    }
+    div {
+        margin: 2px;
+        font-size: 18px;
+        font-family: Inter, sans-serif;
+    }
+}
+
+.ok-button {
+    //width: 100% !important;
+    height: 3rem !important;
+    background-color: #001D3D;
+    color: white !important;
+    font-size:larger;
+    margin: 0.5rem;
+
+}

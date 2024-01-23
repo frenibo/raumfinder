@@ -27,6 +27,8 @@ export class SharedService {
     private cookie: CookieService,
   ) { }
 
+  unlockInfo: boolean = false;
+
   rooms: Room[] = [];
   floors: Floor[] = [];
   buildings: Building[] = [];

@@ -1,1 +1,16 @@
-<p>dialog-info-unlock works!</p>
+<!--span>
+    <button mat-icon-button [mat-dialog-close] class="close-button" [autofocus]="false">
+        <mat-icon>close</mat-icon>
+    </button>
+</span-->
+<div class="info-text" cdkFocusRegionstart>
+    <!--div class="headline">INFO</div-->
+    <div>Markiere hier Räume, die für dich freigeschaltet sind.</div>
+    <div>Zur tatsächlichen Freischaltung, melde dich im Büro der Hausverwaltung des jeweiligen Hochschul-Gebäudes.</div>
+</div>
+
+<button mat-button [mat-dialog-close] class="ok-button" [autofocus]="false">
+    <span>
+        OK
+    </span>
+</button>

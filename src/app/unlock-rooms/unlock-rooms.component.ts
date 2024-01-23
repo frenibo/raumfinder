@@ -19,6 +19,7 @@ import {
   MatSnackBarHorizontalPosition,
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
+import { DialogService } from '../dialog.service';
 
 @Component({
   selector: 'app-unlock-rooms',
@@ -41,6 +42,7 @@ export class UnlockRoomsComponent {
     private buildingService: BuildingService,
     private sharedService: SharedService,
     private _snackBar: MatSnackBar,
+    private dialogService: DialogService,
   ) {}
 
   rooms: Room[] = [];
@@ -49,7 +51,7 @@ export class UnlockRoomsComponent {
   displayedColumns: string[] = ['name', 'building', 'floor'];
   dataSource = new MatTableDataSource(this.rooms);
   defaultValue: string = '';
-  durationInSeconds: number = 1000;
+  durationInSeconds: number = 1;
 
   async ngOnInit(): Promise<void> {
     await this.checkLoaded();
@@ -58,6 +60,8 @@ export class UnlockRoomsComponent {
 
     this.sharedService.unlockedRooms.subscribe( unlockedRooms => this.unlockedRooms = unlockedRooms);
     this.sharedService.roomsChanged.subscribe( roomsChanged => this.getRooms());
+
+    this.triggerInfoDialog();
   }
 
   getRooms() {
@@ -129,6 +133,13 @@ export class UnlockRoomsComponent {
     this._snackBar.open(message, action, {
       duration: this.durationInSeconds * 1000,
     });
+  }
+
+  triggerInfoDialog() {
+    if(!this.sharedService.unlockInfo) {
+      this.dialogService.openDialogInfoUnlock();
+      this.sharedService.unlockInfo = true;
+    }
   }
 
 }
