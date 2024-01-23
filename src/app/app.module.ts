@@ -113,6 +113,8 @@ import { DialogMapComponent } from './dialogs/dialog-map/dialog-map.component';
         MatAutocompleteModule,
         ReactiveFormsModule,
         AsyncPipe,
+        MatSelectModule,
+        
     ]
 })
 export class AppModule { }

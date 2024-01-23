@@ -64,7 +64,7 @@
     <div *ngIf="dataSourceRooms.filteredData?.length; else noMatch">
         <div class="cards">
             <div *ngFor="let room of dataSourceRooms.connect().value">
-                    <mat-card class="single-card" (click)="navigate('view-room', room)">
+                    <mat-card class="single-card">
                         <mat-card-header>
                             <mat-card-title>
                                 {{room.name}}

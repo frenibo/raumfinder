@@ -14,6 +14,11 @@ import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import {AsyncPipe} from '@angular/common';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-unlock-rooms',
@@ -35,6 +40,7 @@ export class UnlockRoomsComponent {
     private floorService: FloorService,
     private buildingService: BuildingService,
     private sharedService: SharedService,
+    private _snackBar: MatSnackBar,
   ) {}
 
   rooms: Room[] = [];
@@ -43,6 +49,7 @@ export class UnlockRoomsComponent {
   displayedColumns: string[] = ['name', 'building', 'floor'];
   dataSource = new MatTableDataSource(this.rooms);
   defaultValue: string = '';
+  durationInSeconds: number = 1000;
 
   async ngOnInit(): Promise<void> {
     await this.checkLoaded();
@@ -92,6 +99,7 @@ export class UnlockRoomsComponent {
       this.sharedService.unlockedRooms.next(this.unlockedRooms);
     }
     this.filterInput.nativeElement.value = '';
+    this.openSnackBar('Raum freigeschaltet');
   }
 
   add(event: MatChipInputEvent): void {
@@ -107,12 +115,20 @@ export class UnlockRoomsComponent {
       this.sharedService.unlockedRooms.next(this.unlockedRooms);
       this.announcer.announce(`Removed ${room}`);
     }
+
+    this.openSnackBar('Freischaltung aufgehoben');
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {
     this.unlockedRooms.push(event.option.value);
     this.sharedService.unlockedRooms.next(this.unlockedRooms);
     this.filterInput.nativeElement.value = '';
+  }
+
+  openSnackBar(message: string, action?: string) {
+    this._snackBar.open(message, action, {
+      duration: this.durationInSeconds * 1000,
+    });
   }
 
 }

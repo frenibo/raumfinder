@@ -42,3 +42,23 @@ body {
 .pz-zoom-button[_ngcontent-ng-c1903382626] {
     background-image: url('../src/assets/Icons/pz-zoom-in-button.svg'), url('../src/assets/Icons/pz-zoom-out-button.svg') !important;
 }
+
+// snackbar
+.cdk-overlay-pane {
+    .mat-mdc-snack-bar-container {
+        width: auto !important;
+        max-width: max-content !important;
+        margin-bottom: 5rem !important;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.mat-mdc-snack-bar-container .mdc-snackbar__surface {
+    background-color: rgb(5, 47, 255) !important;
+}
+
+.mat-mdc-snack-bar-container .mdc-snackbar__label {
+    font-size: x-large !important;
+    font-family: Inter, sans-serif;
+}
