@@ -56,12 +56,13 @@ body {
 
 .mat-mdc-snack-bar-container .mdc-snackbar__surface {
     //background-color: rgb(5, 47, 255) !important;
-    background-color: #001D3D !important;
+    background-color: white !important;
 }
 
 .mat-mdc-snack-bar-container .mdc-snackbar__label {
     //font-size: x-large !important;
     //font-family: Inter, sans-serif;
-    font-size: 22px;
+    font-size: 1rem !important;
     font-family: Inter, sans-serif;
+    color:#001D3D !important;
 }
